@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #eee;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: solid 1px #eee;
+}
+
+h1, h2 {
+    text-shadow: #ccc 0px 2px 3px;
+}
+
+.radiogroup {
+    margin: 10px 0;
+}
+
+input[type="radio"] {
+    margin-left: 10px;
+}
+
+input[type="radio"]:first-child {
+    margin-left: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.container {
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/**
+ * Image Containers
+ */
+
+.img-container {
+    display: table-cell;
+    background-image: url("2011-07-02-154408.jpg");
+    background-size: cover;
+    background-color: #ddd;
+    height: 60px;
+    width: 60px;
+    padding: 25px;
+}
+
+.img-container--rounded {
+    border-radius: 50%;
+}
+
+.img-container--bordered {
+    border-top: solid 8px #f80;
+    border-bottom: solid 8px #880;
+}
+
+.img-container__text-top {
+    display: table-cell;
+    vertical-align: top;
+    padding-left: 10px;
+}
+
+.img-container__text-middle {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+
+.img-container__text-bottom {
+    display: table-cell;
+    vertical-align: bottom;
+    padding-left: 10px;
+}
+
+/**
+ * Animations
+ */
+
+ /* Gradually slide text in from left effect */
+@keyframes slidetextfromleft {
+    0% {left: -1000px; top: 0; opacity: 0; background-color: #000;}
+    50% {left: -750; top: 0; opacity: .5; background-color: #888;}
+    75% {left: -500; top: 0; opacity: .75; background-color: #ccc}
+    100% {left: 0; top: 0; opacity: 1; background-color: #fff;}
+}
+
+ /* Gradually slide text in from right effect */
+@keyframes slidetextfromright {
+    0% {right: -1000px; top: 0; opacity: 0; background-color: #000;}
+    50% {right: -750; top: 0; opacity: .5; background-color: #888;}
+    75% {right: -500; top: 0; opacity: .75; background-color: #ccc}
+    100% {right: 0; top: 0; opacity: 1; background-color: #fff;}
+}
+
+div.slide-text-from-left-effect p {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: #000;
+    opacity: 1;
+    animation-name: slidetextfromleft;
+    animation-duration: .4s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-timing-function: ease;
+}
+
+div.slide-text-from-right-effect p {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: #000;
+    opacity: 1;
+    animation-name: slidetextfromright;
+    animation-duration: .4s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-timing-function: ease;
+}
