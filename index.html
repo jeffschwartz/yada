@@ -4,14 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="style/gadam.css">
+    <!--<link rel="stylesheet" href="style/style.css">-->
 </head>
 
 <body>
+    <div class="container">
+        <!--images-->
+        <div class="row">
+            <div class="col-m-3 text-align-center">
+                <img src="images/2011-07-02-154408.jpg" width="140" alt="rounded image" title="rounded image" class="rounded-img">
+                <!--<div style="display: inline-block; position: relative; top: -70px; left: 0; font-weight: bold; color: #fff;">140 x 140</div>-->
+            </div>
+            <div class="col-m-3 text-align-center">
+                <img src="images/2011-07-02-154408.jpg" width="140" alt="circled image" title="circled image" class="circled-img">
+            </div>
+            <div class="col-m-3 text-align-center">
+                <img src="images/2011-07-02-154408.jpg" width="140" alt="thumbnail" title="thumbnail" class="thumbnail">
+            </div>
+            <div class="col-m-3 text-align-center">
+                <a href="#" title="thumbnail link" class="thumbnail-link">
+                    <img src="images/2011-07-02-154408.jpg" width="140" alt="thumbnail link">
+               </a>
+            </div>
+        </div>
+
+        <!--avatar images-->
+        <div class="row">
+            <div class="col-m-3 text-align-center">
+                <img src="images/2011-07-02-154408.jpg" alt="avatar avatar--large" title="avatar" class="avatar avatar--large">
+            </div>
+            <div class="col-m-3 text-align-center">
+                <img src="images/2011-07-02-154408.jpg" alt="avatar with border" title="avatar with border" class="avatar avatar--bordered">
+            </div>
+            <div class="col-m-3 text-align-center">
+                <img src="images/2011-07-02-154408.jpg" alt="rounded avatar" title="rounded avatar" class="avatar avatar--rounded">
+            </div>
+            <div class="col-m-3 text-align-center">
+                <img src="images/2011-07-02-154408.jpg" alt="rounded avatar with border" title="rounded avatar with border" class="avatar avatar--rounded avatar--bordered">
+            </div>
+        </div>
+
+        <!--Cards-->
+        <div class="row">
+            <div class="col-m-3">
+                <div class="text-align-center" ><span>Card with no header and footer</span></div>
+                <div class="card">
+                    <img src="images/2011-07-02-154408.jpg" alt="image" title="card">
+                </div>
+            </div>
+            <div class="col-m-3">
+                <div class="card">
+                    <div class="card__header">Card with header</div>
+                    <img src="images/2011-07-02-154408.jpg" alt="image" title="card with header">
+                </div>
+            </div>
+            <div class="col-m-3">
+                <div class="card">
+                    <img src="images/2011-07-02-154408.jpg" alt="image" title="card with footer">
+                    <div class="card__footer">Card with footer</div>
+                </div>
+            </div>
+            <div class="col-m-3">
+                <div class="card">
+                    <div class="card__header">Card with header and footer</div>
+                    <img src="images/2011-07-02-154408.jpg" alt="image" title="card with header and footer">
+                    <div class="card__footer">Card with header and footer</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <!--Image Containers-->
 
-    <div class="container">
+    <!--<div class="container">
         <div class="img-container"></div>
         <div class="img-container__text-top">
             <p>Image Container with text top aligned</p>
@@ -48,49 +116,45 @@
         </div>
     </div>
     <div class="container">
-        <div class="img-container img-container--rounded"></div>
+        <div class="img-container img-container--circle"></div>
         <div class="img-container__text-top">
-            <p>Rounded Image Container with text top aligned</p>
+            <p>Circle Image Container with text top aligned</p>
         </div>
     </div>
     <div class="container">
-        <div class="img-container img-container--rounded"></div>
+        <div class="img-container img-container--circle"></div>
         <div class="img-container__text-middle">
-            <p>Rounded Image Container with text middle aligned</p>
+            <p>Circle Image Container with text middle aligned</p>
         </div>
     </div>
     <div class="container">
-        <div class="img-container img-container--rounded"></div>
+        <div class="img-container img-container--circle"></div>
         <div class="img-container__text-bottom">
-            <p>Rounded Image Container with text bottom aligned</p>
+            <p>Circle Image Container with text bottom aligned</p>
         </div>
     </div>
     <div class="container">
-        <div class="img-container img-container--rounded img-container--bordered"></div>
+        <div class="img-container img-container--circle img-container--bordered"></div>
         <div class="img-container__text-top">
-            <p>Rounded Bordered Image Container with text top aligned</p>
+            <p>Circle Bordered Image Container with text top aligned</p>
         </div>
     </div>
     <div class="container">
-        <div class="img-container img-container--rounded img-container--bordered"></div>
+        <div class="img-container img-container--circle img-container--bordered"></div>
         <div class="img-container__text-middle">
-            <p>Rounded Bordered Image Container with text middle aligned</p>
+            <p>Circle Bordered Image Container with text middle aligned</p>
         </div>
     </div>
     <div class="container">
-        <div class="img-container img-container--rounded img-container--bordered"></div>
+        <div class="img-container img-container--circle img-container--bordered"></div>
         <div class="img-container__text-bottom">
-            <p>Rounded Bordered Image Container with text bottom aligned</p>
+            <p>Circle Bordered Image Container with text bottom aligned</p>
         </div>
-    </div>
+    </div>-->
 
     <!--Animations-->
 
     <!--<div class="container">
-        <div class="animation-target">Animation Target</div>
-    </div>-->
-
-    <div class="container">
         <h2>Gradually expose some text from the left</h2>
         <div id="grp1" class="radiogroup">
             <input type="radio" id="red1" name="grp1" value="red" checked/>
@@ -116,7 +180,7 @@
             <p id="greentext2" class="hidden">Animation Target Green Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus recusandae in quisquam soluta, facilis reiciendis autem enim voluptatibus dignissimos odit, sapiente possimus! Voluptate quam corporis, modi fugiat, neque adipisci nulla.</p>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js"></script>-->
 </body>
 
 </html>
