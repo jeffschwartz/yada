@@ -8,8 +8,43 @@
     padding: 0;
 }
 
+html, body {
+    font-size: 14px;
+    line-height: 1.428;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+h5 {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+h6 {
+    font-size: 12px;
+    font-weight: 500;
 }
 
 /**
@@ -203,13 +238,28 @@ body {
 }
 
 /**
- * Cards
+ * Card & Story
  */
 
-.card {
+.card, .story{
     display: inline-block;
-    background-color: white;
+    background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.story {
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.story__caption {
+    display: inline-block;
+    font-size: 1.7rem;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.7);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.15/fonr);
 }
 
 .card__header, .card__footer {
@@ -221,6 +271,30 @@ body {
     font-size: 1.2em;
 }
 
-.card img {
-    max-width: 100%
+.card img, .story img {
+    max-width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.story img:first-child {
+    margin-bottom: 10px;
+}
+
+.story img:first-child.left {
+    margin-right: 20px;
+    float: left;
+}
+
+.story img:first-child.right {
+    margin-left: 20px;
+    float: right;
+}
+
+.story p {
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.story p:first-child {
+    border-top: solid 100px black;
 }
