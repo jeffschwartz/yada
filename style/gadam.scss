@@ -15,6 +15,7 @@ html, body {
 
 body {
     font-family: 'Roboto', sans-serif;
+    margin-top: 58px;
 }
 
 h1 {
@@ -306,6 +307,10 @@ h6 {
     color: rgba(0, 0, 0, 0.8);
 }
 
+/**
+ * Navbar
+ */
+
 .navbar {
    width: 100%;
    margin-bottom: 20px;
@@ -314,11 +319,19 @@ h6 {
    color: #000;
    font-weight: normal;
    line-height: 2em;
-   box-shadow: 0 4px 4px 8px rgba(204, 204, 204, 0.2);
+   box-shadow: 0 1px 1px 4px rgba(128, 128, 128, 0.4), 0 4px 1px 4px rgba(128, 128, 128, 0.4);
+}
+
+.navbar--inverted {
+   background-color: #000;
+   color: #fff;
+   box-shadow: 0 1px 1px 4px rgba(64, 64, 64, 0.4), 0 4px 1px 4px rgba(128, 128, 128, 0.4);
 }
 
 .navbar--fixed {
     position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .navbar__name {
@@ -344,5 +357,10 @@ h6 {
 }
 
 .navbar__nav a {
+    color: #000;
     text-decoration: none;
+}
+
+.navbar.navbar--inverted .navbar__nav a {
+    color: #fff;
 }
