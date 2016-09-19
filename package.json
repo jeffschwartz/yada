@@ -5,10 +5,13 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^3.5.0"
+    "eslint": "^3.5.0",
+    "live-server": "^1.1.0",
+    "node-sass": "^3.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node-sass --watch style/gadam.scss style/gadam.css & live-server"
   },
   "keywords": [],
   "author": "",
