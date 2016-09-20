@@ -10,12 +10,15 @@
 </head>
 
 <body>
-    <div class="navbar navbar--fixed">
+    <div class="navbar navbar--fixed navbar--default">
         <div class="container">
-            <div class="navbar__name">Yada</div>
-            <div class="navbar__nav"><a href="#">Yoda</a></div>
-            <div class="navbar__nav navbar__nav--right"><a href="#">Yoda</a></div>
-            <div class="navbar__nav navbar__nav--right"><a href="#">Toda</a></div>
+            <div class="navbar__brand">Yada</div>
+            <span class="navbar__collapse-icon oi" data-glyph="menu"></span>
+            <div class="navbar__nav-items">
+                <div class="navbar__nav"><a href="#">Yoda</a></div>
+                <div class="navbar__nav navbar__nav--right"><a href="#">Yoda</a></div>
+                <div class="navbar__nav navbar__nav--right"><a href="#">Toda</a></div>
+            </div>
         </div>
     </div>
     <div class="container">
@@ -85,13 +88,14 @@
             </div>
         </div>
 
+        <!--Stories-->
         <div class="row">
             <h2>Stories</h2>
             <div class="col-m-4">
                 <div class="story">
                     <img class="left" width="140" src="images/Beatles.jpg" alt="image" title="story image">
                     <h1 class="story__caption">Story Caption</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate, veniam libero rem.</p>
+                    <p class="story--first-letter fancy-quotes">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate, veniam libero rem.</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate, veniam libero rem.</p>
                 </div>
             </div>
@@ -113,6 +117,7 @@
             </div>
         </div>
     </div>
+    <script src="scripts/public/app.bundle.js"></script>
 </body>
 
 </html>

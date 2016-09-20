@@ -86,7 +86,7 @@ p.fancy-quotes:after {
 }
 
 /* tablet columns: */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
     [class*="col-"] {
         float: left;
         padding: 15px;
@@ -328,31 +328,41 @@ p.fancy-quotes:after {
  * Navbar
  */
 
+// Container
 .navbar {
     width: 100%;
     margin-bottom: 20px;
     padding: 5px 0;
-    background-color: #eee;
-    color: #000;
     font-weight: normal;
     line-height: 2em;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.8), 0 2px 12px 4px rgba(0, 0, 0, 0.4);
 }
 
+// Default coloring
+.navbar--default {
+    background-color: #eee;
+    color: #000;
+}
+
+// Inverted coloring
 .navbar--inverted {
     background-color: #000;
     color: #fff;
 }
 
+// Expose/Collape icon
 .navbar__collapse-icon {
     float: right;
 }
 
+// Fixes the Navbar to the top of the page
 .navbar--fixed {
     position: fixed;
     top: 0;
     left: 0;
 }
 
+// Navbar Brand
 .navbar__brand {
     float: left;
     font-weight: bold;
@@ -360,25 +370,36 @@ p.fancy-quotes:after {
     margin-right: 2em;
 }
 
+// Container for Navs
 .navbar__nav-items {
-}
-
-.navbar__nav {
-    float: left;
-    font-size: 1.1rem;
-    line-height: 2rem;
-    margin-right: 20px;
+    clear: both;
+    width: 100%;
     display: none;
 }
 
-.navbar__nav::first-child {
-    margin-left: 10em;
+.navbar--default .navbar__nav-items {
+    background-color: #eee;
+    color: #000;
 }
 
+.navbar--inverted .navbar__nav-items {
+    background-color: #000;
+    color: #fff;
+}
+
+// Nav
+.navbar__nav {
+    font-size: 1.1rem;
+    line-height: 2rem;
+    // margin-left: 23px;
+}
+
+// Right aligned Nav
 .navbar__nav--right {
-    float: right;
+    float: none;
 }
 
+// Nav Anchor
 .navbar__nav a {
     color: #000;
     text-decoration: none;
@@ -389,14 +410,29 @@ p.fancy-quotes:after {
 }
 
 @media only screen and (min-width: 600px) {
-    .navbar {
-        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.8), 0 2px 12px 4px rgba(0, 0, 0, 0.4);
+    // .navbar {
+    // }
+    // .navbar__brand {
+    // }
+    .navbar__nav-items {
+        clear: none;
+        position: static;
+        width: auto;
+        box-shadow: none;
+        display: block;
     }
     .navbar__nav {
         display: block;
+        float: left;
         font-size: 1.1rem;
         line-height: 2rem;
         margin-right: 20px;
+    }
+    .navbar__nav::first-child {
+        margin-left: 10em;
+    }
+    .navbar__nav--right {
+        float: right;
     }
     .navbar__collapse-icon {
         display: none;
