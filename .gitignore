@@ -1,3 +1,4 @@
 node_modules
 style/gadam.css
 .sass-cache
+scripts/public/app.bundle.js
