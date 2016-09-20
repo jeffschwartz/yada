@@ -8,10 +8,10 @@ let Navbar = (function () {
     console.log("navbarNavItems", navbarNavItems);
     navbarCollapseIconEl.addEventListener("click", function (e) {
         console.log("icon clicked");
-        if (navbarNavItems.style.display === "none") {
+        if (navbarNavItems.style.display === "") {
             navbarNavItems.style.display = "block";
         } else {
-            navbarNavItems.style.display = "none";
+            navbarNavItems.style.display = "";
         }
     });
 }());
