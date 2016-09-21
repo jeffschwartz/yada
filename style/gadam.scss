@@ -375,6 +375,9 @@ p.fancy-quotes:after {
     clear: both;
     width: 100%;
     display: none;
+    opacity: 1;
+    animation-name: navbar__nav_items;
+    animation-duration: 0.5s;
 }
 
 .navbar--default .navbar__nav-items {
@@ -408,6 +411,19 @@ p.fancy-quotes:after {
 .navbar.navbar--inverted .navbar__nav a {
     color: #fff;
 }
+
+/**
+ * keyframes
+ */
+
+@keyframes navbar__nav_items {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+/**
+ * Media Queries
+ */
 
 @media only screen and (min-width: 600px) {
     // .navbar {
