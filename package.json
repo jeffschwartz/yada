@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
-    "dev": "node-sass --watch style/gadam.scss style/gadam.css & live-server"
+    "dev": "node-sass style/gadam.scss style/gadam.css && node-sass --watch style/gadam.scss style/gadam.css & live-server"
   },
   "keywords": [],
   "author": "",

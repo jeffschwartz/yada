@@ -1,1 +1,2 @@
-import Navbar from "./navbar";
+export Navbar from "./navbar";
+export Carousel from "./carousel";

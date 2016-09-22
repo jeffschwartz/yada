@@ -5,7 +5,7 @@ var BUILD_DIR = path.resolve(__dirname, "scripts/public");
 var APP_DIR = path.resolve(__dirname, "scripts/app");
 
 module.exports = {
-    entry: APP_DIR + "/css.js",
+    entry: APP_DIR + "/yada.js",
     output: {
         path: BUILD_DIR,
         filename: "app.bundle.js"

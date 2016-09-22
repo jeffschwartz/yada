@@ -372,7 +372,7 @@ p.fancy-quotes:after {
     width: 100%;
     display: none;
     opacity: 1;
-    animation-name: navbar__nav_items;
+    animation-name: opacity;
     animation-duration: 0.5s;
 }
 
@@ -409,10 +409,26 @@ p.fancy-quotes:after {
 }
 
 /**
+ * Carousel
+ */
+
+.carousel {
+    overflow: hidden;
+    img {
+        display: none;
+        max-width: 100%;
+        height: auto;
+        background-color: green;
+        animation-name: opacity;
+        animation-duration: 2s;
+    }
+}
+
+/**
  * keyframes
  */
 
-@keyframes navbar__nav_items {
+@keyframes opacity {
     from {opacity: 0}
     to {opacity: 1}
 }
