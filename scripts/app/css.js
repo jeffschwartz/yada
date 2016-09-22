@@ -1,2 +1,2 @@
-export Navbar from "./navbar";
-export Carousel from "./carousel";
+import "./navbar"; // for side effects only
+import "./carousel"; // for side effects only

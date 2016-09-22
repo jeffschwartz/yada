@@ -372,7 +372,7 @@ p.fancy-quotes:after {
     width: 100%;
     display: none;
     opacity: 1;
-    animation-name: opacity;
+    animation-name: opacity_fade_in;
     animation-duration: 0.5s;
 }
 
@@ -418,8 +418,8 @@ p.fancy-quotes:after {
         display: none;
         max-width: 100%;
         height: auto;
-        background-color: green;
-        animation-name: opacity;
+        background-color: #000;
+        animation-name: opacity_fade_in;
         animation-duration: 2s;
     }
 }
@@ -428,8 +428,8 @@ p.fancy-quotes:after {
  * keyframes
  */
 
-@keyframes opacity {
-    from {opacity: 0}
+@keyframes opacity_fade_in {
+    from {opacity: 0.3}
     to {opacity: 1}
 }
 

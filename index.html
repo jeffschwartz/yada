@@ -6,7 +6,7 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
     <link href="style/open-iconic/font/css/open-iconic.css" rel="stylesheet">
-    <link rel="stylesheet" href="style/gadam.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
             <div class="col-m-3 text-align-center">
                 <a href="#" title="thumbnail link" class="thumbnail-link">
                     <img src="images/2011-07-02-154408.jpg" width="140" alt="thumbnail link">
-               </a>
+                </a>
             </div>
         </div>
 
@@ -62,7 +62,7 @@
         <div class="row">
             <h2>CARDS</h2>
             <div class="col-m-3">
-                <div class="text-align-center" ><span>Card with no header and footer</span></div>
+                <div class="text-align-center"><span>Card with no header and footer</span></div>
                 <div class="card">
                     <img src="images/Beatles.jpg" alt="image" title="card">
                 </div>
@@ -95,24 +95,36 @@
                 <div class="story">
                     <h1 class="story__caption">Story Caption</h1>
                     <img class="left" width="140" src="images/Beatles.jpg" alt="image" title="story image">
-                    <p class="story--first-letter fancy-quotes">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate, veniam libero rem.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate, veniam libero rem.</p>
+                    <p class="story--first-letter fancy-quotes">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur
+                        ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate,
+                        veniam libero rem.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur
+                        ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate,
+                        veniam libero rem.</p>
                 </div>
             </div>
             <div class="col-m-4">
                 <div class="story">
                     <h1 class="story__caption">Story Caption</h1>
                     <img class="top" src="images/Beatles.jpg" alt="image" title="story image">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate, veniam libero rem.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate, veniam libero rem.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur
+                        ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate,
+                        veniam libero rem.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur
+                        ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate,
+                        veniam libero rem.</p>
                 </div>
             </div>
             <div class="col-m-4">
                 <div class="story">
                     <h1 class="story__caption">Story Caption</h1>
                     <img class="right" width="140" src="images/Beatles.jpg" alt="image" title="story image">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate, veniam libero rem.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate, veniam libero rem.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur
+                        ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate,
+                        veniam libero rem.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus ipsum pariatur voluptas consequatur
+                        ea magnam fugit, necessitatibus excepturi, quibusdam velit nemo laboriosam, iste dicta in eum. Voluptate,
+                        veniam libero rem.</p>
                 </div>
             </div>
         </div>
@@ -120,10 +132,11 @@
         <!--Carousel-->
         <div class="row">
             <h2>CAROUSEL</h2>
-            <div class="col-m-3">
-                <div class="carousel">
-                    <img src="images/rocket-clipart.png" width="400" height="400" alt="image Beatles" class="carousel1-img">
-                    <img src="images/2011-07-02-154408.jpg" width="400" alt="image Mr. Yada" class="carousel1-img">
+            <div id="carousel1" class="carousel" data-slide-duration="4000" data-auto-play="true" >
+                <div class="carousel__slides">
+                    <img class="active" src="images/carousel/PIA21043-orig.jpg" alt="image Beatles">
+                    <img src="images/carousel/PIA21044-orig.jpg" alt="image Mr. Yada">
+                    <img src="images/carousel/PIA21045-orig.jpg" alt="image Mr. Yada">
                 </div>
             </div>
         </div>

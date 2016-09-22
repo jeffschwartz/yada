@@ -1,4 +1,7 @@
 import * as Yada from "./css";
 
-Yada.Carousel("carousel1-img", 3000);
-
+window.addEventListener("load", function (e) {
+    // play the carousel - it returns a func that when called stops the carousel
+    // let carouselEl = document.getElementById("carousel1");
+    // carouselEl.carousel.play(0);
+});
