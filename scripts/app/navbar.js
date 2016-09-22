@@ -1,4 +1,4 @@
-let Navbar = (function () {
+document.addEventListener("DOMContentLoaded", function (e) {
     let navbarEl = document.getElementsByClassName("navbar")[0];
     console.log("navbarEl", navbarEl);
     let navbarCollapseIconEl =
@@ -14,6 +14,4 @@ let Navbar = (function () {
             navbarNavItems.style.display = "";
         }
     });
-}());
-
-export default Navbar;
+});
