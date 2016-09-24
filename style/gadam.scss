@@ -4,6 +4,12 @@
     padding: 0;
 }
 
+@mixin clearfix {
+    content: "";
+    clear: both;
+    display: block;
+}
+
 html, body {
     font-size: 14px;
     line-height: 1.428;
@@ -65,7 +71,9 @@ p.fancy-quotes:after {
     max-width: 90%;
     margin: 0 auto;
     background-color: transparent;
-    overflow: hidden;
+    &::after {
+        @include clearfix;
+    }
 }
 
 /**
@@ -73,10 +81,11 @@ p.fancy-quotes:after {
  */
 
  /* clear fix */
-.row::after {
-    content: "";
-    clear: both;
-    display: block;
+ .row {
+    width: 100%;
+    &:after {
+        @include clearfix;
+    }
 }
 
 /* mobile columns */
@@ -86,7 +95,7 @@ p.fancy-quotes:after {
 }
 
 /* tablet columns: */
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 768px) {
     [class*="col-"] {
         float: left;
         padding: 15px;
@@ -312,7 +321,7 @@ p.fancy-quotes:after {
     color: rgba(0, 0, 0, 1);
 }
 
-.story p.story--first-letter::first-letter {
+.story p.story--first-letter:first-letter {
     font-weight: normal;
     font-size: 1.3em;
     font-style: italic;
@@ -327,11 +336,11 @@ p.fancy-quotes:after {
 // Container
 .navbar {
     width: 100%;
-    margin-bottom: 20px;
-    padding: 5px 0;
+    padding: 10px 0;
     font-weight: normal;
     line-height: 2em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
 }
 
 // Default coloring
@@ -390,7 +399,6 @@ p.fancy-quotes:after {
 .navbar__nav {
     font-size: 1.1rem;
     line-height: 2rem;
-    // margin-left: 23px;
 }
 
 // Right aligned Nav
@@ -419,8 +427,8 @@ p.fancy-quotes:after {
         max-width: 100%;
         height: auto;
         background-color: #000;
-        animation-name: opacity_fade_in;
-        animation-duration: 2s;
+        animation-name: carousel;
+        animation-duration: 0.5s;
     }
 }
 
@@ -433,15 +441,16 @@ p.fancy-quotes:after {
     to {opacity: 1}
 }
 
+@keyframes carousel {
+    0% {opacity: 0.0}
+    10% {opacity: 0.5}
+    100% {opacity: 1}
+}
 /**
  * Media Queries
  */
 
 @media only screen and (min-width: 600px) {
-    // .navbar {
-    // }
-    // .navbar__brand {
-    // }
     .navbar__nav-items {
         clear: none;
         position: static;
@@ -456,11 +465,10 @@ p.fancy-quotes:after {
         line-height: 2rem;
         margin-right: 20px;
     }
-    .navbar__nav::first-child {
-        margin-left: 10em;
-    }
     .navbar__nav--right {
         float: right;
+        margin-right: 0;
+        margin-left: 20px;
     }
     .navbar__collapse-icon {
         display: none;

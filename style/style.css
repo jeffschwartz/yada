@@ -51,17 +51,22 @@ p.fancy-quotes:after {
 .container {
   max-width: 90%;
   margin: 0 auto;
-  background-color: transparent;
-  overflow: hidden; }
+  background-color: transparent; }
+  .container::after {
+    content: "";
+    clear: both;
+    display: block; }
 
 /**
  * 12 Column, Mobile First Grid System
  */
 /* clear fix */
-.row::after {
-  content: "";
-  clear: both;
-  display: block; }
+.row {
+  width: 100%; }
+  .row:after {
+    content: "";
+    clear: both;
+    display: block; }
 
 /* mobile columns */
 [class*="col-"] {
@@ -69,7 +74,7 @@ p.fancy-quotes:after {
   padding: 15px; }
 
 /* tablet columns: */
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 768px) {
   [class*="col-"] {
     float: left;
     padding: 15px; }
@@ -326,7 +331,7 @@ p.fancy-quotes:after {
   margin-bottom: 10px;
   color: black; }
 
-.story p.story--first-letter::first-letter {
+.story p.story--first-letter:first-letter {
   font-weight: normal;
   font-size: 1.3em;
   font-style: italic;
@@ -338,11 +343,11 @@ p.fancy-quotes:after {
  */
 .navbar {
   width: 100%;
-  margin-bottom: 20px;
-  padding: 5px 0;
+  padding: 10px 0;
   font-weight: normal;
   line-height: 2em;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  overflow: hidden; }
 
 .navbar--default {
   background-color: #eee;
@@ -406,8 +411,8 @@ p.fancy-quotes:after {
     max-width: 100%;
     height: auto;
     background-color: #000;
-    animation-name: opacity_fade_in;
-    animation-duration: 2s; }
+    animation-name: carousel;
+    animation-duration: 0.5s; }
 
 /**
  * keyframes
@@ -416,6 +421,14 @@ p.fancy-quotes:after {
   from {
     opacity: 0.3; }
   to {
+    opacity: 1; } }
+
+@keyframes carousel {
+  0% {
+    opacity: 0.0; }
+  10% {
+    opacity: 0.5; }
+  100% {
     opacity: 1; } }
 
 /**
@@ -434,10 +447,10 @@ p.fancy-quotes:after {
     font-size: 1.1rem;
     line-height: 2rem;
     margin-right: 20px; }
-  .navbar__nav::first-child {
-    margin-left: 10em; }
   .navbar__nav--right {
-    float: right; }
+    float: right;
+    margin-right: 0;
+    margin-left: 20px; }
   .navbar__collapse-icon {
     display: none; } }
 
