@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         });
         el.carousel = elApi(id, images, duration, autoPlay);
         if (autoPlay) {
+            // defer auto playing until after all images have been loaded
             window.addEventListener("load", function (e) {
                 el.carousel.play(x);
             });
