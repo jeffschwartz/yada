@@ -422,9 +422,13 @@ p.fancy-quotes:after {
 
 .carousel {
     overflow: hidden;
+    max-width: 100%;
+}
+
+.carousel__slides {
     img {
         display: none;
-        max-width: 100%;
+        width: 100%;
         height: auto;
         background-color: #000;
         animation-name: carousel;
@@ -453,7 +457,6 @@ p.fancy-quotes:after {
 @media only screen and (min-width: 600px) {
     .navbar__nav-items {
         clear: none;
-        position: static;
         width: auto;
         box-shadow: none;
         display: block;
