@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
-    "dev": "node-sass style/style.scss style/style.css && node-sass --watch style/style.scss style/style.css & live-server"
+    "sass": "node-sass style/style.scss style/style.css",
+    "sass-w": "node-sass --watch style/style.scss style/style.css",
+    "dev": "npm run sass & npm run sass-w & live-server"
   },
   "keywords": [],
   "author": "",
