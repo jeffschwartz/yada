@@ -32,19 +32,19 @@ let getSlidesEl = carouselChildEls => {
     return carouselSlidesEl[0];
 };
 
-let getImageEls = (carouselSlidesEl) => {
+let getSlideEls = (carouselSlidesEl) => {
     return [...carouselSlidesEl.children];
 };
 
-let elApi = (id, images, duration, autoPlay) => {
+let elApi = (id, slides, duration, autoPlay) => {
     let stopped = false;
     let stop = () => { stopped = true; };
     let play = (i) => {
         if (!stopped) {
-            images[i].style.display = "inline";
+            slides[i].style.display = "block";
             setTimeout(() => {
-                images[i].style.display = "none";
-                i = i === images.length - 1 ? 0 : i + 1;
+                slides[i].style.display = "none";
+                i = i === slides.length - 1 ? 0 : i + 1;
                 play(i);
             }, duration);
         }
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     carousels.forEach((el) => {
         let id = el.id;
         let slidesEl = getSlidesEl([...el.children]);
-        let images = getImageEls(slidesEl);
+        let slides = getSlideEls(slidesEl);
         let x = 0;
         let duration = el.getAttribute("data-slide-duration");
         duration = duration && duration.length && parseInt(duration, 10) || 5000;
@@ -77,12 +77,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
         autoPlay = autoPlay === "true" && true || autoPlay === "false" && false || false;
         console.log("Carousel ${id} duration", duration);
         console.log("Carousel ${id} auto-play", autoPlay);
-        images.forEach(img => {
+        slides.forEach(img => {
             img.style.display = "none";
         });
-        el.carousel = elApi(id, images, duration, autoPlay);
+        el.carousel = elApi(id, slides, duration, autoPlay);
         if (autoPlay) {
-            // defer auto playing until after all images have been loaded
+            // defer auto playing until after all stylesheets,
+            // images & subframes have been loaded
             window.addEventListener("load", function (e) {
                 el.carousel.play(x);
             });
