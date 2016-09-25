@@ -423,19 +423,20 @@ p.fancy-quotes:after {
 .carousel {
     overflow: hidden;
     max-width: 100%;
-}
-
-.carousel__slides {
-    width: 100%;
-    img {
-        display: none;
-        width: 100%;
-        height: auto;
-        background-color: #000;
-        animation-name: carousel;
-        animation-duration: 0.5s;
+    .carousel__slides {
+        .slide {
+            display: none;
+            width: 100%;
+            height: auto;
+            animation-name: carousel;
+            animation-duration: 0.5s;
+            &.active {
+                display: block;
+            }
+        }
     }
 }
+
 
 /**
  * keyframes

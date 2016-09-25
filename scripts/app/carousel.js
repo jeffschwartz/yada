@@ -36,16 +36,53 @@ let getSlideEls = (carouselSlidesEl) => {
     return [...carouselSlidesEl.children];
 };
 
-let elApi = (id, slides, duration, autoPlay) => {
+let getActiveSlideEl = slideEls => {
+    let i = -1;
+    for (let x = 0; x < slideEls.length; x++) {
+        let classNames = slideEls[x].className.split(" ");
+        for (let xx = 0; xx < classNames.length; xx++) {
+            if (classNames[xx] === "active") {
+                i = x;
+                break;
+            }
+        }
+        if (i !== -1) { break; }
+    }
+    i = i === -1 && 0 || i;
+    console.log("active slide index =", i);
+    return i;
+};
+
+let removeActiveClassFromSlideEl = slideEl => {
+    let classNames = slideEl.className.split(" ");
+    slideEl.className = classNames.reduce((prev, el) => {
+        if (el !== "active") {
+            return prev === "" ? el : prev + " " + el;
+        } else {
+            return prev;
+        }
+    }, "");
+};
+
+let addActiveClassToSlideEl = slideEl => {
+    slideEl.className = slideEl.className + " active";
+};
+
+let elApi = (carouselEl, slideEls, duration, autoPlay) => {
     let stopped = false;
     let stop = () => { stopped = true; };
-    let play = (i) => {
+    let i = getActiveSlideEl(slideEls);
+    let play = () => {
         if (!stopped) {
-            slides[i].style.display = "block";
+            // prevent adding class active when already present, which
+            // will be the case when play is called for the first time
+            if (slideEls[i].className.indexOf("active") === -1) {
+                addActiveClassToSlideEl(slideEls[i]);
+            }
             setTimeout(() => {
-                slides[i].style.display = "none";
-                i = i === slides.length - 1 ? 0 : i + 1;
-                play(i);
+                removeActiveClassFromSlideEl(slideEls[i]);
+                i = i === slideEls.length - 1 ? 0 : i + 1;
+                play();
             }, duration);
         }
     };
@@ -77,15 +114,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
         autoPlay = autoPlay === "true" && true || autoPlay === "false" && false || false;
         console.log("Carousel ${id} duration", duration);
         console.log("Carousel ${id} auto-play", autoPlay);
-        slides.forEach(img => {
-            img.style.display = "none";
-        });
-        el.carousel = elApi(id, slides, duration, autoPlay);
+        el.carousel = elApi(el, slides, duration, autoPlay);
         if (autoPlay) {
             // defer auto playing until after all stylesheets,
             // images & subframes have been loaded
             window.addEventListener("load", function (e) {
-                el.carousel.play(x);
+                el.carousel.play();
             });
         };
     });
