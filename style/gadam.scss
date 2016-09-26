@@ -424,8 +424,10 @@ p.fancy-quotes:after {
 .carousel {
     overflow: hidden;
     width: 100%;
+    font-size: .6rem;
     .carousel__slides {
         .carousel__slide {
+            position: relative;
             width: 100%;
             display: none;
             &.active {
@@ -436,6 +438,14 @@ p.fancy-quotes:after {
                 height: auto;
                 animation-name: carousel;
                 animation-duration: 0.5s;
+            }
+            .carousel__caption {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: transparent;
+                height: 100%;
+                width: 100%;
             }
         }
     }
@@ -481,5 +491,8 @@ p.fancy-quotes:after {
     }
     .navbar__collapse-icon {
         display: none;
+    }
+    .carousel {
+        font-size: 1rem;
     }
 }

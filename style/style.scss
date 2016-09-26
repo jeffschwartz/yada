@@ -1,1 +1,30 @@
 @import 'gadam';
+
+.carousel__caption {
+    position: relative;
+    .caption1, .caption2, .caption3 {
+        position: absolute;
+        overflow: hidden;
+        top: 65%;
+        transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+        padding: 0 15px;
+        h3 {
+            font-size: 3em;
+            font-weight: bold;
+        }
+        p {
+            font-size: 1.3em;
+        }
+    }
+    .caption1 {
+        color: #fff;
+    }
+    .caption2 {
+        color: #000;
+    }
+    .caption3 {
+        color: #f00;
+    }
+}
