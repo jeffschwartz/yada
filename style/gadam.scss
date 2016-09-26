@@ -365,6 +365,7 @@ p.fancy-quotes:after {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1000;
 }
 
 // Navbar Brand
