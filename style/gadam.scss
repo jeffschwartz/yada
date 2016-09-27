@@ -422,19 +422,21 @@ p.fancy-quotes:after {
  */
 
 .carousel {
+    // position: relative;
+    
     overflow: hidden;
     width: 100%;
     font-size: .6rem;
     .carousel__slides {
         .carousel__slide {
             position: relative;
-            width: 100%;
             display: none;
             &.active {
                 display: block;
             }
             img {
-                width: 100%;
+                display: block;
+                max-width: 100%;
                 height: auto;
                 animation-name: carousel;
                 animation-duration: 0.5s;
