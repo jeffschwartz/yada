@@ -1,14 +1,24 @@
 @import 'gadam';
 
+.row-carousel1 {
+    background-color: #ccc;
+}
+
+.carousel {
+    border: solid 1px #eee;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
 .carousel__caption {
     position: relative;
-    .caption1, .caption2, .caption3 {
+    .caption1, .caption2, .caption3, .caption4, .caption5 {
         position: absolute;
         overflow: hidden;
-        top: 65%;
-        transform: translateY(-50%);
+        // top: 65%;
+        // bottom: 10%;
         width: 100%;
-        text-align: center;
+        // text-align: center;
+        font-weight: bold;
         padding: 0 15px;
         h3 {
             font-size: 3em;
@@ -19,12 +29,35 @@
         }
     }
     .caption1 {
-        color: #fff;
+        text-align: left;
+        bottom: 10%;
+        color: #f2afa6;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
     }
     .caption2 {
-        color: #000;
+        text-align: right;
+        bottom: 10%;
+        color: #05fdfd;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
     }
     .caption3 {
-        color: #f00;
+        text-align: right;
+        top: 0;
+        color: #e2b564;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    }
+    .caption4 {
+        // transform: translateY(-50%);
+        text-align: left;
+        color: #641a1b;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    }
+    .caption5 {
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        color: #95d2e7;
+        color: #fff;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
     }
 }
