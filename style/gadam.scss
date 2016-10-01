@@ -10,14 +10,14 @@
     display: block;
 }
 
-html, body {
+html {
     font-size: 14px;
-    line-height: 1.428;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    margin-top: 58px;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.8; // 1.8 X the computed size of the element's font size
+    margin-top: 58px; // needed if using navbar--fixed, compute size according to your own needs
 }
 
 h1 {
@@ -77,136 +77,6 @@ p.fancy-quotes:after {
 }
 
 /**
- * 12 Column, Mobile First Grid System
- */
-
- /* clear fix */
- .row {
-    width: 100%;
-    &:after {
-        @include clearfix;
-    }
-}
-
-/* mobile columns */
-[class*="col-"] {
-    width: 100%;
-    padding: 15px;
-}
-
-/* tablet columns: */
-@media only screen and (min-width: 768px) {
-    [class*="col-"] {
-        float: left;
-        padding: 15px;
-    }
-
-    [class*="span-col"]:after {
-        content: "";
-    }
-
-    .col-m-1 {width: 8.33%;}
-    .col-m-2 {width: 16.66%;}
-    .col-m-3 {width: 25%;}
-    .col-m-4 {width: 33.33%;}
-    .col-m-5 {width: 41.66%;}
-    .col-m-6 {width: 50%;}
-    .col-m-7 {width: 58.33%;}
-    .col-m-8 {width: 66.66%;}
-    .col-m-9 {width: 75%;}
-    .col-m-10 {width: 83.33%;}
-    .col-m-11 {width: 91.66%;}
-    .col-m-12 {width: 100%;}
-
-    .span-col-m-left-1 {margin-left: 8.33%;}
-    .span-col-m-left-2 {margin-left: 16.66%;}
-    .span-col-m-left-3 {margin-left: 25%;}
-    .span-col-m-left-4 {margin-left: 33.33%;}
-    .span-col-m-left-5 {margin-left: 41.66%;}
-    .span-col-m-left-6 {margin-left: 50%;}
-    .span-col-m-left-7 {margin-left: 58.33%;}
-    .span-col-m-left-8 {margin-left: 66.66%;}
-    .span-col-m-left-9 {margin-left: 75%;}
-    .span-col-m-left-10 {margin-left: 83.33%;}
-    .span-col-m-left-11 {margin-left: 91.66%;}
-    .span-col-m-left-12 {margin-left: 100%;}
-
-    .span-col-m-right-1 {margin-right: 8.33%;}
-    .span-col-m-right-2 {margin-right: 16.66%;}
-    .span-col-m-right-3 {margin-right: 25%;}
-    .span-col-m-right-4 {margin-right: 33.33%;}
-    .span-col-m-right-5 {margin-right: 41.66%;}
-    .span-col-m-right-6 {margin-right: 50%;}
-    .span-col-m-right-7 {margin-right: 58.33%;}
-    .span-col-m-right-8 {margin-right: 66.66%;}
-    .span-col-m-right-9 {margin-right: 75%;}
-    .span-col-m-right-10 {margin-right: 83.33%;}
-    .span-col-m-right-11 {margin-right: 91.66%;}
-    .span-col-m-right-12 {margin-right: 100%;}
-}
-
-/* desktop columns */
-@media only screen and (min-width: 768px) {
-    [class*="col-"] {
-        float: left;
-        padding: 15px;
-    }
-
-    [class*="span-col"]:after {
-        content: "";
-    }
-
-    .col-1 {width: 8.33%;}
-    .col-2 {width: 16.66%;}
-    .col-3 {width: 25%;}
-    .col-4 {width: 33.33%;}
-    .col-5 {width: 41.66%;}
-    .col-6 {width: 50%;}
-    .col-7 {width: 58.33%;}
-    .col-8 {width: 66.66%;}
-    .col-9 {width: 75%;}
-    .col-10 {width: 83.33%;}
-    .col-11 {width: 91.66%;}
-    .col-12 {width: 100%;}
-
-    .span-col-left-1 {margin-left: 8.33%;}
-    .span-col-left-2 {margin-left: 16.66%;}
-    .span-col-left-3 {margin-left: 25%;}
-    .span-col-left-4 {margin-left: 33.33%;}
-    .span-col-left-5 {margin-left: 41.66%;}
-    .span-col-left-6 {margin-left: 50%;}
-    .span-col-left-7 {margin-left: 58.33%;}
-    .span-col-left-8 {margin-left: 66.66%;}
-    .span-col-left-9 {margin-left: 75%;}
-    .span-col-left-10 {margin-left: 83.33%;}
-    .span-col-left-11 {margin-left: 91.66%;}
-    .span-col-left-12 {margin-left: 100%;}
-
-    .span-col-right-1 {margin-right: 8.33%;}
-    .span-col-right-2 {margin-right: 16.66%;}
-    .span-col-right-3 {margin-right: 25%;}
-    .span-col-right-4 {margin-right: 33.33%;}
-    .span-col-right-5 {margin-right: 41.66%;}
-    .span-col-right-6 {margin-right: 50%;}
-    .span-col-right-7 {margin-right: 58.33%;}
-    .span-col-right-8 {margin-right: 66.66%;}
-    .span-col-right-9 {margin-right: 75%;}
-    .span-col-right-10 {margin-right: 83.33%;}
-    .span-col-riGght-11 {margin-right: 91.66%;}
-    .span-col-right-12 {margin-right: 100%;}
-}
-
-.text-align-right {
-  text-align: right;
-}
-
-.text-align-center {
-  text-align: center;
-}
-
-/* End of 12 Column, Mobile First Grid System */
-
-/**
  * Images
  */
 
@@ -240,6 +110,10 @@ p.fancy-quotes:after {
     transition: 0.3s;
 }
 
+/**
+ * Avatars
+ */
+
 .avatar {
    width: 50px;
 }
@@ -257,7 +131,7 @@ p.fancy-quotes:after {
 }
 
 /**
- * Card & Story
+ * Cards & Stories
  */
 
 .card, .story{
@@ -422,15 +296,12 @@ p.fancy-quotes:after {
  */
 
 .carousel {
-    // position: relative;
-    
-    overflow: hidden;
-    width: 100%;
-    font-size: .6rem;
+    position: relative;
     .carousel__slides {
         .carousel__slide {
             position: relative;
             display: none;
+            overflow: hidden;
             &.active {
                 display: block;
             }
@@ -443,16 +314,160 @@ p.fancy-quotes:after {
             }
             .carousel__caption {
                 position: absolute;
-                top: 0;
-                left: 0;
+                overflow: hidden;
+                z-index: 10;
+                right: 15%;
+                bottom: 20%;
+                left: 15%;
+                text-align: center;
                 background-color: transparent;
-                height: 100%;
-                width: 100%;
             }
         }
     }
 }
+/**
+ * 12 Column, Mobile First Grid System
+ */
 
+ /* clear fix */
+ .row {
+    width: 100%;
+    &:after {
+        @include clearfix;
+    }
+}
+
+/* mobile columns */
+[class*="col-"] {
+    width: 100%;
+    padding: 15px;
+}
+
+/* tablet columns: */
+@media only screen and (min-width: 600px) {
+    .carousel__slides {
+        .container {
+            width: 600px;
+        }
+    }
+
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+    }
+
+    [class*="span-col"]:after {
+        content: "";
+    }
+
+    .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
+
+    .span-col-m-left-1 {margin-left: 8.33%;}
+    .span-col-m-left-2 {margin-left: 16.66%;}
+    .span-col-m-left-3 {margin-left: 25%;}
+    .span-col-m-left-4 {margin-left: 33.33%;}
+    .span-col-m-left-5 {margin-left: 41.66%;}
+    .span-col-m-left-6 {margin-left: 50%;}
+    .span-col-m-left-7 {margin-left: 58.33%;}
+    .span-col-m-left-8 {margin-left: 66.66%;}
+    .span-col-m-left-9 {margin-left: 75%;}
+    .span-col-m-left-10 {margin-left: 83.33%;}
+    .span-col-m-left-11 {margin-left: 91.66%;}
+    .span-col-m-left-12 {margin-left: 100%;}
+
+    .span-col-m-right-1 {margin-right: 8.33%;}
+    .span-col-m-right-2 {margin-right: 16.66%;}
+    .span-col-m-right-3 {margin-right: 25%;}
+    .span-col-m-right-4 {margin-right: 33.33%;}
+    .span-col-m-right-5 {margin-right: 41.66%;}
+    .span-col-m-right-6 {margin-right: 50%;}
+    .span-col-m-right-7 {margin-right: 58.33%;}
+    .span-col-m-right-8 {margin-right: 66.66%;}
+    .span-col-m-right-9 {margin-right: 75%;}
+    .span-col-m-right-10 {margin-right: 83.33%;}
+    .span-col-m-right-11 {margin-right: 91.66%;}
+    .span-col-m-right-12 {margin-right: 100%;}
+}
+
+/* desktop columns */
+@media only screen and (min-width: 768px) {
+    .carousel {
+        .carousel__slides {
+            .container {
+                width: 768px;
+            }
+        }
+    }
+
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+    }
+
+    [class*="span-col"]:after {
+        content: "";
+    }
+
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+
+    .span-col-left-1 {margin-left: 8.33%;}
+    .span-col-left-2 {margin-left: 16.66%;}
+    .span-col-left-3 {margin-left: 25%;}
+    .span-col-left-4 {margin-left: 33.33%;}
+    .span-col-left-5 {margin-left: 41.66%;}
+    .span-col-left-6 {margin-left: 50%;}
+    .span-col-left-7 {margin-left: 58.33%;}
+    .span-col-left-8 {margin-left: 66.66%;}
+    .span-col-left-9 {margin-left: 75%;}
+    .span-col-left-10 {margin-left: 83.33%;}
+    .span-col-left-11 {margin-left: 91.66%;}
+    .span-col-left-12 {margin-left: 100%;}
+
+    .span-col-right-1 {margin-right: 8.33%;}
+    .span-col-right-2 {margin-right: 16.66%;}
+    .span-col-right-3 {margin-right: 25%;}
+    .span-col-right-4 {margin-right: 33.33%;}
+    .span-col-right-5 {margin-right: 41.66%;}
+    .span-col-right-6 {margin-right: 50%;}
+    .span-col-right-7 {margin-right: 58.33%;}
+    .span-col-right-8 {margin-right: 66.66%;}
+    .span-col-right-9 {margin-right: 75%;}
+    .span-col-right-10 {margin-right: 83.33%;}
+    .span-col-riGght-11 {margin-right: 91.66%;}
+    .span-col-right-12 {margin-right: 100%;}
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+/* End of 12 Column, Mobile First Grid System */
 
 /**
  * keyframes
@@ -493,8 +508,5 @@ p.fancy-quotes:after {
     }
     .navbar__collapse-icon {
         display: none;
-    }
-    .carousel {
-        font-size: 1rem;
     }
 }
