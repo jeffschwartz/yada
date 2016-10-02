@@ -309,6 +309,7 @@ p.fancy-quotes:after {
                 display: block;
                 max-width: 100%;
                 height: auto;
+                margin: 0 auto;
                 animation-name: carousel;
                 animation-duration: 0.5s;
             }
@@ -345,12 +346,6 @@ p.fancy-quotes:after {
 
 /* tablet columns: */
 @media only screen and (min-width: 600px) {
-    .carousel__slides {
-        .container {
-            width: 600px;
-        }
-    }
-
     [class*="col-"] {
         float: left;
         padding: 15px;
@@ -402,14 +397,6 @@ p.fancy-quotes:after {
 
 /* desktop columns */
 @media only screen and (min-width: 768px) {
-    .carousel {
-        .carousel__slides {
-            .container {
-                width: 768px;
-            }
-        }
-    }
-
     [class*="col-"] {
         float: left;
         padding: 15px;

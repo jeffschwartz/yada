@@ -31,7 +31,7 @@ let getSlidesEl = carouselChildEls => {
     });
     // returns the 1st child, which is a div.container
     // whose chidren are div.carousel__slide elements
-    return carouselSlidesEl[0].children[0];
+    return carouselSlidesEl[0];
 };
 
 let getSlideEls = (carouselSlidesEl) => {
