@@ -10,14 +10,14 @@
     display: block;
 }
 
-html, body {
+html {
     font-size: 14px;
-    line-height: 1.428;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    margin-top: 58px;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.8; // 1.8 X the computed size of the element's font size
+    margin-top: 58px; // needed if using navbar--fixed, compute size according to your own needs
 }
 
 h1 {
@@ -77,6 +77,256 @@ p.fancy-quotes:after {
 }
 
 /**
+ * Images
+ */
+
+.rounded-img {
+    border-radius: 8px;
+}
+
+.circled-img {
+    border: 1px;
+    border-radius: 50%;
+}
+
+.thumbnail {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.thumbnail-link {
+    display: inline-block;
+}
+
+.thumbnail-link img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.thumbnail-link img {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px;
+    transition: 0.3s;
+}
+
+/**
+ * Avatars
+ */
+
+.avatar {
+   width: 50px;
+}
+
+.avatar--large {
+    width: 75px;
+}
+
+.avatar--rounded {
+   border-radius: 50%;
+}
+
+.avatar--bordered {
+   border: solid 3px #ccc;
+}
+
+/**
+ * Cards & Stories
+ */
+
+.card, .story{
+    display: block;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.story {
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.story__caption {
+    font-size: 1.7rem;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 10px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+.story__caption--italic {
+    font-style: italic;
+}
+
+.card__header, .card__footer {
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.card__header {
+    font-size: 1.2em;
+}
+
+.card img, .story img {
+    max-width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.story img:first-child {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.story img.top {
+    margin: 0 0 1em 0;
+}
+
+.story img.left {
+    float: left;
+    margin: 0 1rem 1rem 0;
+}
+
+.story img.right {
+    float: right;
+    margin: 0 0 1em 1em;
+}
+
+.story p {
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.story p.story--first-letter:first-letter {
+    font-weight: normal;
+    font-size: 1.3em;
+    font-style: italic;
+    margin: 5px 2px;
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+/**
+ * Navbar
+ */
+
+// Container
+.navbar {
+    width: 100%;
+    padding: 10px 0;
+    font-weight: normal;
+    line-height: 2em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+}
+
+// Default coloring
+.navbar--default {
+    background-color: #eee;
+    color: #000;
+}
+
+// Inverted coloring
+.navbar--inverted {
+    background-color: #000;
+    color: #fff;
+}
+
+// Expose/Collape icon
+.navbar__collapse-icon {
+    float: right;
+}
+
+// Fixes the Navbar to the top of the page
+.navbar--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+// Navbar Brand
+.navbar__brand {
+    float: left;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-right: 2em;
+}
+
+// Container for Navs
+.navbar__nav-items {
+    clear: both;
+    width: 100%;
+    display: none;
+    opacity: 1;
+    animation-name: opacity_fade_in;
+    animation-duration: 0.5s;
+}
+
+.navbar--default .navbar__nav-items {
+    background-color: #eee;
+    color: #000;
+}
+
+.navbar--inverted .navbar__nav-items {
+    background-color: #000;
+    color: #fff;
+}
+
+// Nav
+.navbar__nav {
+    font-size: 1.1rem;
+    line-height: 2rem;
+}
+
+// Right aligned Nav
+.navbar__nav--right {
+    float: none;
+}
+
+// Nav Anchor
+.navbar__nav a {
+    color: #000;
+    text-decoration: none;
+}
+
+.navbar.navbar--inverted .navbar__nav a {
+    color: #fff;
+}
+
+/**
+ * Carousel
+ */
+
+.carousel {
+    position: relative;
+    .carousel__slides {
+        .carousel__slide {
+            position: relative;
+            display: none;
+            overflow: hidden;
+            &.active {
+                display: block;
+            }
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+                margin: 0 auto;
+                animation-name: carousel;
+                animation-duration: 0.5s;
+            }
+            .carousel__caption {
+                position: absolute;
+                overflow: hidden;
+                z-index: 10;
+                right: 15%;
+                bottom: 20%;
+                left: 15%;
+                text-align: center;
+                background-color: transparent;
+            }
+        }
+    }
+}
+/**
  * 12 Column, Mobile First Grid System
  */
 
@@ -95,7 +345,7 @@ p.fancy-quotes:after {
 }
 
 /* tablet columns: */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 600px) {
     [class*="col-"] {
         float: left;
         padding: 15px;
@@ -205,241 +455,6 @@ p.fancy-quotes:after {
 }
 
 /* End of 12 Column, Mobile First Grid System */
-
-/**
- * Images
- */
-
-.rounded-img {
-    border-radius: 8px;
-}
-
-.circled-img {
-    border: 1px;
-    border-radius: 50%;
-}
-
-.thumbnail {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 5px;
-}
-
-.thumbnail-link {
-    display: inline-block;
-}
-
-.thumbnail-link img:hover {
-    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-}
-
-.thumbnail-link img {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 5px;
-    transition: 0.3s;
-}
-
-.avatar {
-   width: 50px;
-}
-
-.avatar--large {
-    width: 75px;
-}
-
-.avatar--rounded {
-   border-radius: 50%;
-}
-
-.avatar--bordered {
-   border: solid 3px #ccc;
-}
-
-/**
- * Card & Story
- */
-
-.card, .story{
-    display: block;
-    background-color: #fff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.story {
-    padding: 20px;
-    border-radius: 4px;
-}
-
-.story__caption {
-    font-size: 1.7rem;
-    font-style: italic;
-    color: rgba(0, 0, 0, 0.6);
-    margin-bottom: 10px;
-    border-bottom: solid 1px rgba(0, 0, 0, 0.15);
-}
-
-.story__caption--italic {
-    font-style: italic;
-}
-
-.card__header, .card__footer {
-    text-align: center;
-    padding: 10px 20px;
-}
-
-.card__header {
-    font-size: 1.2em;
-}
-
-.card img, .story img {
-    max-width: 100%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.story img:first-child {
-    margin-bottom: 10px;
-    position: relative;
-}
-
-.story img.top {
-    margin: 0 0 1em 0;
-}
-
-.story img.left {
-    float: left;
-    margin: 0 1rem 1rem 0;
-}
-
-.story img.right {
-    float: right;
-    margin: 0 0 1em 1em;
-}
-
-.story p {
-    margin-bottom: 10px;
-    color: rgba(0, 0, 0, 1);
-}
-
-.story p.story--first-letter:first-letter {
-    font-weight: normal;
-    font-size: 1.3em;
-    font-style: italic;
-    margin: 5px 2px;
-    background-color: rgba(128, 128, 128, 0.5);
-}
-
-/**
- * Navbar
- */
-
-// Container
-.navbar {
-    width: 100%;
-    padding: 10px 0;
-    font-weight: normal;
-    line-height: 2em;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    overflow: hidden;
-}
-
-// Default coloring
-.navbar--default {
-    background-color: #eee;
-    color: #000;
-}
-
-// Inverted coloring
-.navbar--inverted {
-    background-color: #000;
-    color: #fff;
-}
-
-// Expose/Collape icon
-.navbar__collapse-icon {
-    float: right;
-}
-
-// Fixes the Navbar to the top of the page
-.navbar--fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-}
-
-// Navbar Brand
-.navbar__brand {
-    float: left;
-    font-weight: bold;
-    font-size: 2rem;
-    margin-right: 2em;
-}
-
-// Container for Navs
-.navbar__nav-items {
-    clear: both;
-    width: 100%;
-    display: none;
-    opacity: 1;
-    animation-name: opacity_fade_in;
-    animation-duration: 0.5s;
-}
-
-.navbar--default .navbar__nav-items {
-    background-color: #eee;
-    color: #000;
-}
-
-.navbar--inverted .navbar__nav-items {
-    background-color: #000;
-    color: #fff;
-}
-
-// Nav
-.navbar__nav {
-    font-size: 1.1rem;
-    line-height: 2rem;
-}
-
-// Right aligned Nav
-.navbar__nav--right {
-    float: none;
-}
-
-// Nav Anchor
-.navbar__nav a {
-    color: #000;
-    text-decoration: none;
-}
-
-.navbar.navbar--inverted .navbar__nav a {
-    color: #fff;
-}
-
-/**
- * Carousel
- */
-
-.carousel {
-    overflow: hidden;
-    width: 100%;
-    .carousel__slides {
-        .carousel__slide {
-            width: 100%;
-            display: none;
-            &.active {
-                display: block;
-            }
-            img {
-                width: 100%;
-                height: auto;
-                animation-name: carousel;
-                animation-duration: 0.5s;
-            }
-        }
-    }
-}
-
 
 /**
  * keyframes

@@ -21,7 +21,7 @@
 
 let getSlidesEl = carouselChildEls => {
     let carouselSlidesEl = carouselChildEls.filter(carouselChild => {
-        // el.className return a string variable representing the
+        // el.className returns a string variable representing the
         // class or space- separated classes of the current element.
         let classes = carouselChild.className.split(" ");
         let slidesEl = classes.filter(clazz => {
@@ -29,6 +29,8 @@ let getSlidesEl = carouselChildEls => {
         });
         return slidesEl && slidesEl.length === 1;
     });
+    // returns the 1st child, which is a div.container
+    // whose chidren are div.carousel__slide elements
     return carouselSlidesEl[0];
 };
 
