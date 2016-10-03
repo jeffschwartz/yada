@@ -300,8 +300,8 @@ p.fancy-quotes:after {
     .carousel__slides {
         .carousel__slide {
             position: relative;
-            display: none;
             overflow: hidden;
+            display: none;
             &.active {
                 display: block;
             }
@@ -324,6 +324,18 @@ p.fancy-quotes:after {
                 background-color: transparent;
             }
         }
+    }
+    .carousel__chrome {
+        position: absolute;
+        bottom: 10%;
+        left: 0;
+        overflow: hidden;
+        z-index: 10;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        font-size: 1em;
+        color: white;
     }
 }
 /**
