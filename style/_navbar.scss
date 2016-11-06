@@ -1,0 +1,142 @@
+/**
+ * Navbar
+ */
+
+.navbar {
+    width: 100%;
+    padding: 10px 0;
+    font-weight: normal;
+    line-height: 2em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+}
+
+// Default coloring
+.navbar--default {
+    background-color: #eee;
+    color: #000;
+}
+
+// Inverted coloring
+.navbar--inverted {
+    background-color: #000;
+    color: #fff;
+}
+
+// Expose/Collape icon
+.navbar__collapse-icon {
+    float: right;
+}
+
+// Fixes the Navbar to the top of the page
+.navbar--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+// Navbar Brand
+.navbar__brand {
+    float: left;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-right: 2em;
+}
+
+// Container for Navs
+.navbar__nav-items {
+    clear: both;
+    width: 100%;
+    display: none;
+    opacity: 1;
+    animation-name: opacity_fade_in;
+    animation-duration: 0.5s;
+}
+
+.navbar--default .navbar__nav-items {
+    background-color: #eee;
+    color: #000;
+}
+
+.navbar--inverted .navbar__nav-items {
+    background-color: #000;
+    color: #fff;
+}
+
+// Nav
+.navbar__nav {
+    font-size: 1.1rem;
+    line-height: 2rem;
+}
+
+// Right aligned Nav
+.navbar__nav--right {
+    float: none;
+}
+
+// Nav Anchor
+.navbar__nav a {
+    color: #000;
+    text-decoration: none;
+}
+
+.navbar.navbar--inverted .navbar__nav a {
+    color: #fff;
+}
+
+/**
+ * ?????
+ */
+
+@media only screen and (min-width: 600px) {
+    .navbar__nav-items {
+        clear: none;
+        width: auto;
+        box-shadow: none;
+        display: block;
+    }
+    .navbar__nav {
+        display: block;
+        float: left;
+        font-size: 1.1rem;
+        line-height: 2rem;
+        margin-right: 20px;
+    }
+    .navbar__nav--right {
+        float: right;
+        margin-right: 0;
+        margin-left: 20px;
+    }
+    .navbar__collapse-icon {
+        display: none;
+    }
+}
+/* small device columns, e.g. tablet */
+@media only screen and (min-width: 768px) {
+    .navbar .container, .navbar .container-fluid {
+        padding: 0;
+    }
+}
+/* medium device columns, e.g. desktop */
+@media only screen and (min-width: 992px) {
+    .navbar .container, .navbar .container-fluid {
+        padding: 0;
+    }
+}
+
+/* large device columns, e.g. large desktop */
+@media only screen and (min-width: 1200px) {
+    .navbar .container, .navbar .container-fluid {
+        padding: 0;
+    }
+}
+
+/**
+ * keyframes
+ */
+
+@keyframes opacity_fade_in {
+    from {opacity: 0.3}
+    to {opacity: 1}
+}

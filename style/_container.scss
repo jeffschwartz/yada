@@ -1,0 +1,36 @@
+/**
+ * Container
+ */
+
+.container, .container-fluid, .navbar .container, .navbar .container-fluid {
+    padding: 0 15px 0 15px;
+    margin: 0 auto;
+    background-color: transparent;
+    &::after {
+        @include clearfix;
+    }
+}
+
+/* small device columns, e.g. tablet */
+@media only screen and (min-width: 768px) {
+    .container {
+        width: 738px;
+        padding: 0;
+    }
+}
+
+/* medium device columns, e.g. desktop */
+@media only screen and (min-width: 992px) {
+    .container {
+        width: 962px;
+        padding: 0;
+    }
+}
+
+/* large device columns, e.g. large desktop */
+@media only screen and (min-width: 1200px) {
+    .container {
+        width: 1170px;
+        padding: 0;
+    }
+}

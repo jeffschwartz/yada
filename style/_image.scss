@@ -1,0 +1,33 @@
+/**
+ * Images
+ */
+
+.rounded-img {
+    border-radius: 8px;
+}
+
+.circled-img {
+    border: 1px;
+    border-radius: 50%;
+}
+
+.thumbnail {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.thumbnail-link {
+    display: inline-block;
+}
+
+.thumbnail-link img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.thumbnail-link img {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px;
+    transition: 0.3s;
+}
