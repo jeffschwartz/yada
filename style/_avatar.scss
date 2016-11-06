@@ -1,0 +1,16 @@
+/**
+ * Avatars
+ */
+
+.avatar {
+    width: 50px;
+    &--large {
+        width: 75px;
+    }
+    &--rounded {
+        border-radius: 50%;
+    }
+    &--bordered {
+        border: solid 3px #ccc;
+    }
+}

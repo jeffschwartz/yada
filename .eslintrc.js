@@ -1,26 +1,33 @@
 module.exports = {
+    "extends": ["standard"],
+    "plugins": [
+        "standard",
+        "promise",
+        "json"
+    ],
     "env": {
-        "browser": true,
-        "es6": true
+        "browser": true
     },
-    "extends": "eslint:recommended",
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 5,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "settings": {
+        // "react": {
+        //     "pragma": "React",  // Pragma to use, default to "React"
+        //     "version": "15.0" // React version, default to the latest React stable release
+        // }
+    },
     "rules": {
-        "no-console": 0,
-        "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+        "semi": ["error", "always"],
+        "quotes": ["error", "double"],
+        "indent": ["error", 4],
+        "no-unused-vars": 0,
+        "eol-last": 0,
+        "no-class-assign": 0
     }
 };

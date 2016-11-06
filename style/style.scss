@@ -1,0 +1,30 @@
+#carousel1 {
+    background-color: red;
+    .carousel__caption {
+        font-size: .5rem;
+        font-weight: bold;
+        color: #4f0;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #carousel1 {
+        .carousel__caption {
+            font-size: 2rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #carousel1 {
+        .carousel__caption {
+            font-size: 2rem;
+        }
+    }
+}
+
+.brag {
+
+    border: solid 1px #000;
+    background-color: #fff;
+}

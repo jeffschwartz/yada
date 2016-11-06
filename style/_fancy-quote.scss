@@ -1,0 +1,17 @@
+/**
+ * Fancy Quotes
+ */
+
+p.fancy-quotes {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+p.fancy-quotes:before {
+    content: "\00201c";
+}
+
+p.fancy-quotes:after {
+    content: "\00201d";
+}
+
