@@ -1,0 +1,53 @@
+html {
+    font-size: 14px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.8; // 1.8 X the computed size of the element's font size
+    margin-top: 58px; // needed if using navbar--fixed, compute size according to your own needs
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+h5 {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+h6 {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+p + p {
+    margin-top: 1rem;
+    color: rgba(0, 0, 0, 1);
+    text-indent: 2em;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-center {
+  text-align: center;
+}

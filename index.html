@@ -6,15 +6,18 @@
     <title>Document</title>
     <!--<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600" rel="stylesheet">
-    <link href="style/open-iconic/font/css/open-iconic.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/yada.css">
     <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
     <header class="navbar navbar--fixed navbar--inverted">
         <div class="container">
-            <div class="navbar__brand">Yada</div>
-            <span class="navbar__collapse-icon oi" data-glyph="menu"></span>
+            <div class="navbar__header">
+                <div class="navbar__brand">Yada</div>
+                <label class="navbar__toggle" for="navbar-checkbox">≡</label>
+            </div>
+            <input type="checkbox" id="navbar-checkbox" class="navbar__checkbox"></input>
             <nav class="navbar__nav-items">
                 <div class="navbar__nav"><a href="http://google.com" target="_blank">Google</a></div>
                 <div class="navbar__nav navbar__nav--right"><a href="http://youtube.com" target="_blank">YouTube</a></div>
