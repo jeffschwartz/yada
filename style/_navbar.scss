@@ -23,9 +23,13 @@
     color: #fff;
 }
 
-// Expose/Collape icon
-.navbar__collapse-icon {
+.navbar__toggle {
+    font-size: 3rem;
     float: right;
+}
+
+.navbar__checkbox {
+    display: none;
 }
 
 // Fixes the Navbar to the top of the page
@@ -62,6 +66,10 @@
 .navbar--inverted .navbar__nav-items {
     background-color: #000;
     color: #fff;
+}
+
+.navbar__checkbox:checked ~ .navbar__nav-items {
+        display: block;
 }
 
 // Nav
@@ -108,7 +116,7 @@
         margin-right: 0;
         margin-left: 20px;
     }
-    .navbar__collapse-icon {
+    .navbar__toggle {
         display: none;
     }
 }
