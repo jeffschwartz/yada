@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
-    "sass": "node-sass style/yada.scss style/yada.css && node-sass style/style.scss style/style.css",
-    "sass-w": "node-sass --watch style/yada.scss style/yada.css  && node-sass style/style.scss style/style.css",
+    "sass": "node-sass style -o style",
+    "sass-w": "node-sass --watch style -o style",
     "dev": "npm run webpack & npm run sass & npm run sass-w & live-server"
   },
   "keywords": [],
