@@ -6,7 +6,6 @@
     width: 100%;
     padding: 10px 0;
     font-weight: normal;
-    line-height: 2em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     overflow: hidden;
 }
@@ -23,9 +22,18 @@
     color: #fff;
 }
 
+.navbar__header {
+    width: 100%;
+    overflow: hidden;
+}
+
 .navbar__toggle {
-    font-size: 3rem;
+    font-size: 36px;
+    height: 36px;
+    display: block;
+    position: relative;
     float: right;
+    top: -20px;
 }
 
 .navbar__checkbox {
@@ -45,14 +53,16 @@
     float: left;
     font-weight: bold;
     font-size: 2rem;
-    margin-right: 2em;
+    margin-right: 2rem;
 }
 
 // Container for Navs
 .navbar__nav-items {
+    overflow: hidden;
     clear: both;
     width: 100%;
     display: none;
+    list-style: none;
     opacity: 1;
     animation-name: opacity_fade_in;
     animation-duration: 0.5s;
@@ -74,8 +84,12 @@
 
 // Nav
 .navbar__nav {
+    display: block;
     font-size: 1.1rem;
-    line-height: 2rem;
+}
+
+.navbar__nav:first-child {
+    padding-top: 1rem;
 }
 
 // Right aligned Nav
@@ -98,24 +112,26 @@
  */
 
 @media only screen and (min-width: 600px) {
+    .navbar__header {
+        width: auto;
+        float: left;
+    }
     .navbar__nav-items {
         clear: none;
         width: auto;
-        box-shadow: none;
         display: block;
     }
     .navbar__nav {
         display: block;
         float: left;
         font-size: 1.1rem;
-        line-height: 2rem;
         margin-right: 20px;
+        padding-top: 1rem;
     }
     .navbar__nav--right {
         float: right;
-        margin-right: 0;
-        margin-left: 20px;
-    }
+        margin: 0 0 0 20px;
+   }
     .navbar__toggle {
         display: none;
     }
