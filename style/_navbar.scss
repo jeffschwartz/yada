@@ -10,15 +10,6 @@
     overflow: hidden;
 }
 
-.navbar .container, .navbar .container-fluid {
-    padding: 0 15px 0 15px;
-    margin: 0 auto;
-    background-color: transparent;
-    &::after {
-        @include clearfix;
-    }
-}
-
 // Default coloring
 .navbar--default {
     background-color: #eee;
