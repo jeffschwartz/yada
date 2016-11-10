@@ -1,0 +1,19 @@
+/**
+ * Hero
+ */
+
+.hero {
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 15px;
+    &::after {
+        @include clearfix;
+    }
+    p {
+        opacity: .7;
+    }
+}
+
+.hero--rounded {
+    border-radius: 4px;
+}
