@@ -67,7 +67,7 @@
     list-style: none;
     opacity: 1;
     animation-name: opacity_fade_in;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
 }
 
 .navbar--default .navbar__nav-items {
@@ -88,10 +88,9 @@
 .navbar__nav {
     display: block;
     font-size: 1.1rem;
-}
-
-.navbar__nav:first-child {
-    padding-top: 1rem;
+    &:first-child {
+        padding-top: 1rem;
+    }
 }
 
 // Right aligned Nav
@@ -109,10 +108,7 @@
     color: #fff;
 }
 
-/**
- * ?????
- */
-
+/* small device columns, e.g. tablet */
 @media only screen and (min-width: 600px) {
     .navbar__header {
         width: auto;
@@ -139,7 +135,6 @@
     }
 }
 
-/* small device columns, e.g. tablet */
 @media only screen and (min-width: 768px) {
     .navbar .container, .navbar .container-fluid {
         padding: 0;
@@ -165,6 +160,6 @@
  */
 
 @keyframes opacity_fade_in {
-    from {opacity: 0.3}
+    from {opacity: 0}
     to {opacity: 1}
 }
