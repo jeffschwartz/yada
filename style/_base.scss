@@ -4,7 +4,6 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    line-height: 1.8; // 1.8 X the computed size of the element's font size
     margin-top: 100px; // needed if using navbar--fixed, compute size according to your own needs
 }
 
@@ -36,6 +35,10 @@ h5 {
 h6 {
     font-size: 12px;
     font-weight: 500;
+}
+
+p {
+    line-height: 1.8;
 }
 
 p + p {

@@ -4,10 +4,11 @@
 
 .navbar {
     width: 100%;
-    padding: 10px 0;
     font-weight: normal;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     overflow: hidden;
+    min-height: 50px;
+    line-height: 50px;
 }
 
 // Default coloring
@@ -29,10 +30,9 @@
 
 .navbar__toggle {
     font-size: 48px;
-    height: 48px;
     position: relative;
     float: right;
-    top: -28px;
+    top: -13px;
 }
 
 .navbar__checkbox {
@@ -50,11 +50,12 @@
 // Navbar Brand
 .navbar__brand {
     float: left;
-    font-weight: bold;
-    font-size: 2rem;
+    font-weight: normal;
+    font-size: 1.1rem;
     margin-right: 2rem;
     a {
         text-decoration: none;
+        display: inline-block;
     }
 }
 
@@ -68,6 +69,17 @@
     opacity: 1;
     animation-name: opacity_fade_in;
     animation-duration: 1s;
+    line-height: 2rem;
+    font-size: .9rem;
+    font-weight: normal;
+}
+
+.navbar__nav-items:first-child {
+    padding-top: 1rem;
+}
+
+.navbar__nav-items:last-child {
+    padding-bottom: 1rem;
 }
 
 .navbar--default .navbar__nav-items {
@@ -87,10 +99,6 @@
 // Nav
 .navbar__nav {
     display: block;
-    font-size: 1.1rem;
-    &:first-child {
-        padding-top: 1rem;
-    }
 }
 
 // Right aligned Nav
@@ -100,6 +108,7 @@
 
 // Nav Anchor
 .navbar__nav a {
+    display: block;
     color: #000;
     text-decoration: none;
 }
@@ -115,21 +124,32 @@
         float: left;
     }
     .navbar__nav-items {
-        clear: none;
-        width: auto;
-        display: block;
-    }
-    .navbar__nav {
         display: block;
         float: left;
-        font-size: 1.1rem;
-        margin-right: 20px;
-        padding-top: 1rem;
+        clear: none;
+        width: auto;
+        &:first-child, &:last-child {
+            padding: 0;
+        }
+        .navbar__nav {
+            display: inline-block;
+            line-height: 50px;
+            margin-right: 20px;
+            &:first-child {
+                padding-top: 0;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+            a {
+                min-height: 50px;
+                line-height: 50px;
+            }
+        }
+        &--right {
+            float: right;
+        }
     }
-    .navbar__nav--right {
-        float: right;
-        margin: 0 0 0 20px;
-   }
     .navbar__toggle {
         display: none;
     }
