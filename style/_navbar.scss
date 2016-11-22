@@ -9,6 +9,10 @@
     overflow: hidden;
     min-height: 50px;
     line-height: 50px;
+    .container, .container-fluid {
+        margin: 0;
+        padding: 0;
+    }
 }
 
 // Default coloring
@@ -29,10 +33,20 @@
 }
 
 .navbar__toggle {
-    font-size: 48px;
+    min-height: 50px;
     position: relative;
     float: right;
-    top: -13px;
+    padding: 0 15px;
+    &:hover {
+        background-color: #d7d7d7;
+    }
+    label {
+        margin: 0;
+        padding: 0;
+        font-size: 48px;
+        top: -3px;
+
+    }
 }
 
 .navbar__checkbox {
@@ -51,15 +65,18 @@
 .navbar__brand {
     float: left;
     font-weight: normal;
-    font-size: 1.1rem;
-    margin-right: 2rem;
-    a {
-        text-decoration: none;
-        display: inline-block;
+    .navbar__nav-items {
+        display: block;
+        width: 100%;
+        line-height: inherit;
+        .navbar__nav {
+            display: block;
+            font-size: 1.1rem;
+        }
     }
 }
 
-// Container for Navs
+// nav-items container
 .navbar__nav-items {
     overflow: hidden;
     clear: both;
@@ -74,11 +91,11 @@
     font-weight: normal;
 }
 
-.navbar__nav-items:first-child {
+.container ~ .navbar__nav-items:first-child {
     padding-top: 1rem;
 }
 
-.navbar__nav-items:last-child {
+.container ~ .navbar__nav-items:last-child {
     padding-bottom: 1rem;
 }
 
@@ -99,6 +116,10 @@
 // Nav
 .navbar__nav {
     display: block;
+    padding: 0 15px;
+    &:hover {
+        background-color: #d7d7d7;
+    }
 }
 
 // Right aligned Nav
@@ -119,6 +140,10 @@
 
 /* small device columns, e.g. tablet */
 @media only screen and (min-width: 600px) {
+    .navbar .container, .navbar .container-fluid {
+        margin: 0 auto;
+        padding: 0;
+    }
     .navbar__header {
         width: auto;
         float: left;
@@ -134,7 +159,7 @@
         .navbar__nav {
             display: inline-block;
             line-height: 50px;
-            margin-right: 20px;
+            padding: 0 15px;
             &:first-child {
                 padding-top: 0;
             }
@@ -152,26 +177,6 @@
     }
     .navbar__toggle {
         display: none;
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    .navbar .container, .navbar .container-fluid {
-        padding: 0;
-    }
-}
-
-/* medium device columns, e.g. desktop */
-@media only screen and (min-width: 992px) {
-    .navbar .container, .navbar .container-fluid {
-        padding: 0;
-    }
-}
-
-/* large device columns, e.g. large desktop */
-@media only screen and (min-width: 1200px) {
-    .navbar .container, .navbar .container-fluid {
-        padding: 0;
     }
 }
 
