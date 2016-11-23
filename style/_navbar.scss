@@ -142,7 +142,7 @@
 @media only screen and (min-width: 600px) {
     .navbar .container, .navbar .container-fluid {
         margin: 0 auto;
-        padding: 0;
+        padding: 0 15px;
     }
     .navbar__header {
         width: auto;
@@ -177,6 +177,12 @@
     }
     .navbar__toggle {
         display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar .container, .navbar .container-fluid {
+        padding: 0;
     }
 }
 
