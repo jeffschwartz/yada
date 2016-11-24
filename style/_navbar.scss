@@ -36,16 +36,14 @@
     min-height: 50px;
     position: relative;
     float: right;
-    padding: 0 15px;
     &:hover {
         background-color: #d7d7d7;
     }
     label {
         margin: 0;
-        padding: 0;
+        padding: 0 15px;
         font-size: 48px;
         top: -3px;
-
     }
 }
 
@@ -84,8 +82,10 @@
     display: none;
     list-style: none;
     opacity: 1;
-    animation-name: opacity_fade_in;
-    animation-duration: 1s;
+    animation: {
+        name: opacity_fade_in;
+        duration: 1s;
+    }
     line-height: 2rem;
     font-size: .9rem;
     font-weight: normal;
@@ -116,7 +116,6 @@
 // Nav
 .navbar__nav {
     display: block;
-    padding: 0 15px;
     &:hover {
         background-color: #d7d7d7;
     }
@@ -130,6 +129,7 @@
 // Nav Anchor
 .navbar__nav a {
     display: block;
+    padding: 0 15px;
     color: #000;
     text-decoration: none;
 }
@@ -159,7 +159,6 @@
         .navbar__nav {
             float: left;
             line-height: 50px;
-            padding: 0 15px;
             &:first-child {
                 padding-top: 0;
             }
@@ -167,6 +166,7 @@
                 margin-right: 0;
             }
             a {
+                padding: 0 15px;
                 min-height: 50px;
                 line-height: 50px;
             }
