@@ -19,8 +19,10 @@
             max-width: 100%;
             height: auto;
             margin: 0 auto;
-            animation-name: carousel;
-            animation-duration: 0.5s;
+            animation: {
+                name: carousel;
+                duration: 0.5s;
+            }
         }
     }
     &__caption {
