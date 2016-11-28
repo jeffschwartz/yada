@@ -1,0 +1,21 @@
+/**
+ * Media Object
+ */
+
+ .media-object {
+     padding: 15px;
+     border: 1px solid #000;
+     border-radius: 4px;
+     img {
+         float: left;
+         margin-right: 10px;
+         border-radius: 4px;
+     }
+     p + p {
+         text-indent: 0;
+     }
+
+     & & {
+         margin-top: 20px;
+     }
+ }
