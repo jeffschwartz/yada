@@ -16,6 +16,11 @@
     }
 }
 
+.media-object > a:first-child img {
+    width: 50px;
+    height: auto;
+}
+
 #carousel1 {
     background-color: red;
     .carousel__caption {
