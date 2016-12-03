@@ -6,6 +6,10 @@ article.post {
     overflow: hidden;
     .media-object {
         border: none;
+        padding: {
+            top: 0;
+            left: 0;
+        }
         a[rel="author"] {
             display: block;
             color: blue;
