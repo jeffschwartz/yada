@@ -1,0 +1,33 @@
+article.post {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    overflow: hidden;
+    .media-object {
+        border: none;
+        a[rel="author"] {
+            display: block;
+            color: blue;
+            address.author, span.author {
+                font-style: italic;
+            }
+        }
+        time {
+            display: block;
+            font-size: .8rem;
+        }
+    }
+    h2 {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+article.post article.post {
+    margin-top: 15px;
+}

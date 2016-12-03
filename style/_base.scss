@@ -44,7 +44,7 @@ p {
 p + p {
     margin-top: 1rem;
     color: rgba(0, 0, 0, 1);
-    text-indent: 2em;
+    // text-indent: 2em;
 }
 
 .text-align-right {
@@ -53,4 +53,11 @@ p + p {
 
 .text-align-center {
   text-align: center;
+}
+
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
 }
