@@ -6,7 +6,7 @@
     width: 100%;
     padding: 15px;
     overflow: hidden;
-    border: 1px solid #000;
+    border: 10px solid #f8f8f8;
     border-radius: 4px;
     a:first-child {
         img {
@@ -21,47 +21,7 @@
         width: 100%;
         height: auto;
     }
+    & & {
+        margin-top: 15px;
+    }
 }
-
-.media-object .media-object {
-    margin-top: 15px;
-}
-
-// .media-object {
-//     width: 100%;
-//     padding: 15px;
-//     border: 1px solid #000;
-//     border-radius: 4px;
-//     a:first-child {
-//         display: block;
-//         width: 100%;
-//         img {
-//             float: left;
-//             margin-right: 10px;
-//             border-radius: 4px;
-//         }
-//     }
-//     a img {
-//         display: block;
-//         width: 100%;
-//         height: auto;
-//         border: 1px solid #000;
-//         margin: 10px 0;
-//         border-radius: 4px;
-//     }
-//     p:first-of-type a, p:first-of-type time {
-//         display: block;
-//         padding: .1rem .5rem;
-//         margin-right: .5rem;
-//         background-color: #efefef;
-//         border-radius: 4px;
-//         font-weight: bold;
-//         vertical-align: top;
-//     }
-//     p + p {
-//         text-indent: 0;
-//     }
-//     & & {
-//         margin-top: 20px;
-//     }
-//  }
