@@ -3,7 +3,7 @@
  */
 
  /* clear fix */
- .row {
+.row {
     width: 100%;
     &:after {
         @include clearfix;

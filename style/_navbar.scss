@@ -74,6 +74,9 @@
             font-size: 1.1rem;
         }
     }
+    .navbar__nav-items:first-of-type {
+        border: none;
+    }
 }
 
 // nav-items container
@@ -91,6 +94,9 @@
     line-height: 2em;
     font-size: .9rem;
     font-weight: normal;
+    &:first-of-type {
+        border-top: 1px solid #000;
+    }
 }
 
 .container ~ .navbar__nav-items:first-child {
@@ -155,6 +161,9 @@
         float: left;
         clear: none;
         width: auto;
+        &:first-of-type {
+            border: none;
+        }
         &:first-child, &:last-child {
             padding: 0;
         }

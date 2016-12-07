@@ -1,7 +1,7 @@
 article.post {
     width: 100%;
     padding: 15px;
-    border: 1px solid #000;
+    border: 10px solid #f8f8f8;
     border-radius: 4px;
     overflow: hidden;
     .media-object {
@@ -30,8 +30,7 @@ article.post {
         width: 100%;
         height: auto;
     }
-}
-
-article.post article.post {
-    margin-top: 15px;
+    & & {
+        margin-top: 15px;
+    }
 }
