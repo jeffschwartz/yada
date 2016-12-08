@@ -1,0 +1,32 @@
+.badge {
+    font-weight: bold;
+    font-size: .7rem;
+    border-radius: 50%;
+    padding: 7px;
+    &.default {
+        box-shadow: 0 0 1px 0 #000;
+        color: #000;
+        background-color: #fff;
+    }
+    &.inverse {
+        box-shadow: 0 0 1px 0 #fff;
+        color: #fff;
+        background-color: #000;
+    }
+    &.warning {
+        box-shadow: 0 0 1px 0 #ff0;
+        color: #000;
+        background-color: #ff0;
+    }
+    &.danger {
+        box-shadow: 0 0 1px 0 #f00;
+        color: #fff;
+        background-color: #f00;
+    }
+    &::before {
+        content: "(";
+    }
+    &::after {
+        content: ")";
+    }
+}
