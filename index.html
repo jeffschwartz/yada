@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Yada Sample Page</title>
     <!--<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600" rel="stylesheet">
     <link rel="stylesheet" href="style/yada.css">
@@ -88,7 +88,7 @@
     <br>
     <div class="container">
         <!--12 COLUMN MOBILE-FIRST RESPONSIVE GRID SYSTEM-->
-        <h2>12 Column Mobile-First Responsive Grid System</h2>
+        <h2>12 COLUMN MOBILE-FIRST RESPONSIVE GRID SYSTEM</h2>
         <div class="row">
             <div class="col-md-1 grid-outline">col-md-1</div>
             <div class="col-md-1 grid-outline">col-md-1</div>
@@ -410,6 +410,38 @@
             <div class="col-md-3 text-align-center">
                 <p>Danger</p><br>
                 <a class="badge danger" href="#">7</a>
+            </div>
+        </div>
+        <div class="row">
+            <h2>TOGGLABLE TAB BAR</h2>
+            <div class="col-md-12">
+                <!--compound component-->
+                <div class="tab-bar">
+                    <!--sub component-->
+                    <ul class="tab-bar__tabs">
+                        <li class="tab-bar-tab">
+                            <a class="tab-bar-tab__label" href="#tabbarpane1">Tab #1</a>
+                        </li>
+                        <li class="tab-bar-tab">
+                            <a class="tab-bar-tab__label" href="#tabbarpane2">Tab #2</a>
+                        </li>
+                        <li class="tab-bar-tab tab-bar-tab--active">
+                            <a class="tab-bar-tab__label" href="#tabbarpane3">Tab #3</a>
+                        </li>
+                    </ul>
+                    <!--sub component-->
+                    <div class="tab-bar__panes">
+                        <div id="tabbarpane1" class="tab-bar-pane">
+                            <div class="tab-bar-pane__content"><p>#1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque facere totam inventore, atque error ullam magnam exercitationem quas suscipit dignissimos molestiae enim, libero id culpa dolores nulla, modi eius iure!</p></div>
+                        </div>
+                        <div id="tabbarpane2" class="tab-bar-pane">
+                            <div class="tab-bar-pane__content"><p>#2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque facere totam inventore, atque error ullam magnam exercitationem quas suscipit dignissimos molestiae enim, libero id culpa dolores nulla, modi eius iure!</p></div>
+                        </div>
+                        <div id="tabbarpane3" class="tab-bar-pane">
+                            <div class="tab-bar-pane__content"><p>#3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque facere totam inventore, atque error ullam magnam exercitationem quas suscipit dignissimos molestiae enim, libero id culpa dolores nulla, modi eius iure!</p></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
