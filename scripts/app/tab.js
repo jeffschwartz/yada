@@ -1,3 +1,5 @@
+import { elRemoveClassName, elHasClassName } from "./generic";
+
 /**
  * Togglable Tab Bar
  */
@@ -16,8 +18,11 @@
  */
 const register = (tabBar, options) => {
     let elTabBar = typeof (tabBar) === "string" && document.getElementById(tabBar) || tabBar;
-    // configure the api
     let api = {};
+    // setup events
+    elTabBar.addEventListener("focusin", focusInEventHandler, false);
+    elTabBar.addEventListener("focusout", focusOutEventHandler, false);
+    // configure the api
     api.showTab = showTab;
     api.elsTabBarTabs = elTabBar.getElementsByClassName("tab-bar__tabs")[0];
     api.elsTabBarPanes = elTabBar.getElementsByClassName("tab-bar__panes")[0];
@@ -35,16 +40,32 @@ const register = (tabBar, options) => {
     return elTabBar;
 };
 
+let focusInEventHandler = (e) => {
+    let elParent = e.target && e.target.parentElement;
+    console.log("focusin event handler!. e.target=", e.target);
+    if (elParent && elHasClassName(elParent, "tab-bar-tab") && !elHasClassName(elParent, "tab-bar-tab--active")) {
+        e.preventDefault();
+        elParent.className = elParent.className + " tab-bar-tab--has-focus";
+    }
+};
+
+let focusOutEventHandler = (e) => {
+    let elParent = e.target && e.target.parentElement;
+    console.log("focusout event handler!. e.target=", e.target);
+    if (elParent && elHasClassName(elParent, "tab-bar-tab") &&
+        elHasClassName(elParent, "tab-bar-tab--has-focus")) {
+        e.preventDefault();
+        elRemoveClassName(elParent, "tab-bar-tab--has-focus");
+    }
+};
+
 let showTab = (elTab) => {
     console.log("showTab called. elTab=", elTab);
     let elsTab = elTab.parentElement.getElementsByClassName("tab-bar-tab");
     console.log("elsTab=", elsTab);
     Array.prototype.forEach.call(elsTab, el => {
-        let classNames = el.className.split(" ");
-        let classNamesFiltered = classNames.filter(className => {
-            return className !== "tab-bar-tab--active";
-        });
-        el.className = classNamesFiltered;
+        elRemoveClassName(el, "tab-bar-tab--active");
+        elRemoveClassName(el, "tab-bar-tab--has-focus");
     });
     elTab.className = elTab.className + " tab-bar-tab--active";
     let paneId = elTab.getElementsByClassName("tab-bar-tab__label")[0].getAttribute("href").substring(1);
@@ -52,11 +73,7 @@ let showTab = (elTab) => {
     let elsPane = elTab.parentElement.parentElement.getElementsByClassName("tab-bar-pane");
     console.log("elsPane=", elsPane);
     Array.prototype.forEach.call(elsPane, el => {
-        let classNames = el.className.split(" ");
-        let classNamesFiltered = classNames.filter(className => {
-            return className !== "tab-bar-pane--active";
-        });
-        el.className = classNamesFiltered;
+        elRemoveClassName(el, "tab-bar-pane--active");
     });
     let activePane = document.getElementById(paneId);
     activePane.className = activePane.className + " tab-bar-pane--active";

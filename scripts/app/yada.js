@@ -16,7 +16,7 @@ window.addEventListener("load", function (e) {
     Array.prototype.forEach.call(elsTab, (elTab) => {
         elTab.addEventListener("click", (e) => {
             e.preventDefault();
-            elTab.parentElement.parentElement.tabBar.showTab(elTab);
+            elTabBar.tabBar.showTab(elTab);
         }, false);
     });
 });
