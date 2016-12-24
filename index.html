@@ -416,7 +416,7 @@
             <h2>TOGGLABLE TAB BAR</h2>
             <div class="col-md-12">
                 <!--compound component-->
-                <div class="tab-bar">
+                <div id="tab-bar-static" class="tab-bar">
                     <!--sub component-->
                     <ul class="tab-bar__tabs">
                         <li class="tab-bar-tab">
@@ -439,6 +439,38 @@
                         </div>
                         <div id="tabbarpane3" class="tab-bar-pane">
                             <div class="tab-bar-pane__content"><p>#3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque facere totam inventore, atque error ullam magnam exercitationem quas suscipit dignissimos molestiae enim, libero id culpa dolores nulla, modi eius iure!</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2>TOGGLABLE TAB BAR - DYNAMIC CONTENT</h2>
+            <div class="col-md-12">
+                <!--compound component-->
+                <div id="tab-bar-dynamic" class="tab-bar">
+                    <!--sub component-->
+                    <ul class="tab-bar__tabs">
+                        <li class="tab-bar-tab">
+                            <a class="tab-bar-tab__label" href="#tabbarpanedc1">Tab #1</a>
+                        </li>
+                        <li class="tab-bar-tab">
+                            <a class="tab-bar-tab__label" href="#tabbarpanedc2">Tab #2</a>
+                        </li>
+                        <li class="tab-bar-tab tab-bar-tab--active">
+                            <a class="tab-bar-tab__label" href="#tabbarpanedc3">Tab #3</a>
+                        </li>
+                    </ul>
+                    <!--sub component-->
+                    <div class="tab-bar__panes">
+                        <div id="tabbarpanedc1" class="tab-bar-pane">
+                            <div class="tab-bar-pane__content"></div>
+                        </div>
+                        <div id="tabbarpanedc2" class="tab-bar-pane">
+                            <div class="tab-bar-pane__content"></div>
+                        </div>
+                        <div id="tabbarpanedc3" class="tab-bar-pane">
+                            <div class="tab-bar-pane__content"></div>
                         </div>
                     </div>
                 </div>
