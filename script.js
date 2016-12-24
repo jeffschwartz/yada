@@ -1,5 +1,4 @@
 (function () {
-
     let getElById = (id) => document.getElementById(id);
 
     let wire1 = (radioGroupId, pTag1, pTag2, radioBtn1, radioBtn2) => {
@@ -35,4 +34,4 @@
      */
     wire1("grp1", "redtext1", "greentext1", "red1", "green1");
     wire1("grp2", "redtext2", "greentext2", "red2", "green2");
-} ());
+}());
