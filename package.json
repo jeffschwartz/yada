@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
-    "sass": "node-sass style -o style",
-    "sass-w": "node-sass --watch style -o style",
-    "dev": "npm run webpack & npm run sass & npm run sass-w & live-server"
+    "webpack-dev-server": "webpack-dev-server --content-base public/ --inline --hot",
+    "sass": "node-sass style -o public/style",
+    "sass-w": "node-sass --watch style -o public/style",
+    "dev": "npm run sass & npm run sass-w & npm run webpack-dev-server"
   },
   "keywords": [],
   "author": "",
@@ -29,9 +30,8 @@
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-promise": "^2.0.0",
     "eslint-plugin-standard": "^2.0.0",
-    "live-server": "^1.1.0",
     "node-sass": "^3.13.1",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.16.2"
   }
 }

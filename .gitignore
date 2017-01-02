@@ -1,5 +1,5 @@
 node_modules
-style/yada.css
-style/style.css
+public/style
+public/script
 .sass-cache
 scripts/public/app.bundle.js
