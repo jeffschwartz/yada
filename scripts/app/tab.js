@@ -18,7 +18,11 @@ import { elRemoveClassName, elHasClassName } from "./generic";
  */
 const register = (tabBar, options) => {
     let elTabBar = typeof (tabBar) === "string" && document.getElementById(tabBar) || tabBar;
-    let api = {};
+    let api = {
+        elActiveTabBarTab: null,
+        elActiveTabBarPaneId: null,
+        elActiveTabBarPane: null
+    };
     // setup events
     elTabBar.addEventListener("focusin", focusInEventHandler, false);
     elTabBar.addEventListener("focusout", focusOutEventHandler, false);
@@ -26,14 +30,15 @@ const register = (tabBar, options) => {
     api.showTab = showTab;
     api.elsTabBarTabs = elTabBar.getElementsByClassName("tab-bar__tabs")[0];
     api.elsTabBarPanes = elTabBar.getElementsByClassName("tab-bar__panes")[0];
-    // Note: not setting a tab-bar-tab--active will break the code
     api.elActiveTabBarTab = api.elsTabBarTabs.getElementsByClassName("tab-bar-tab--active")[0];
-    // set the appropriate tab-bar-pane active
-    api.elActiveTabBarPaneId =
-        api.elActiveTabBarTab.getElementsByClassName("tab-bar-tab__label")[0]
-            .getAttribute("href").substring(1);
-    api.elActiveTabBarPane = document.getElementById(api.elActiveTabBarPaneId);
-    api.elActiveTabBarPane.className = api.elActiveTabBarPane.className + " tab-bar-pane--active";
+    if (api.elActiveTabBarTab) {
+        // set the appropriate tab-bar-pane active
+        api.elActiveTabBarPaneId =
+            api.elActiveTabBarTab.getElementsByClassName("tab-bar-tab__label")[0]
+                .getAttribute("href").substring(1);
+        api.elActiveTabBarPane = document.getElementById(api.elActiveTabBarPaneId);
+        api.elActiveTabBarPane.className = api.elActiveTabBarPane.className + " tab-bar-pane--active";
+    }
     // attach the api directly to the tab bar element
     elTabBar.tabBar = api;
     // return the tab-bar element for chaining
@@ -64,8 +69,7 @@ let showTab = (elTab) => {
     let elsTab = elTab.parentElement.getElementsByClassName("tab-bar-tab");
     console.log("elsTab=", elsTab);
     Array.prototype.forEach.call(elsTab, el => {
-        elRemoveClassName(el, "tab-bar-tab--active");
-        elRemoveClassName(el, "tab-bar-tab--has-focus");
+        elRemoveClassName(el, ["tab-bar-tab--active", "tab-bar-tab--has-focus"]);
     });
     elTab.className = elTab.className + " tab-bar-tab--active";
     let paneId = elTab.getElementsByClassName("tab-bar-tab__label")[0].getAttribute("href").substring(1);
@@ -77,6 +81,7 @@ let showTab = (elTab) => {
     });
     let activePane = document.getElementById(paneId);
     activePane.className = activePane.className + " tab-bar-pane--active";
+    return activePane;
 };
 
 export default register;

@@ -1,6 +1,6 @@
 import * as Yada from "./css";
 import registerTabBar from "./tab";
-import { elHasClassName } from "./generic";
+import { elHasClassName, elRemoveClassName } from "./generic";
 
 window.addEventListener("load", function (e) {
     /** Carousel */
@@ -15,8 +15,8 @@ window.addEventListener("load", function (e) {
         // register tab bar
         let elTabBar = document.getElementById("tab-bar-static");
 
-        // show the 1st tab
-        let elTabBarTab = elTabBar.querySelector("a.tab-bar-tab__label[href='#tabbarpane1']").parentElement;
+        // show the active tab
+        let elTabBarTab = elTabBar.querySelector("li.tab-bar-tab--active");
         registerTabBar(elTabBar).tabBar.showTab(elTabBarTab);
 
         //
@@ -51,12 +51,14 @@ window.addEventListener("load", function (e) {
     /** Tab Bar - Dynamic Content */
 
     (function () {
-        // register tab bar
         let elTabBar = document.getElementById("tab-bar-dynamic");
 
-        // show the 1st tab
-        let elTabBarTab = elTabBar.querySelector("a.tab-bar-tab__label[href='#tabbarpanedc1']").parentElement;
-        registerTabBar(elTabBar).tabBar.showTab(elTabBarTab);
+        // the 3rd tab's lablel element will receive the click event
+        let elTabBarTabLabel = elTabBar.getElementsByClassName("tab-bar__tabs")[0]
+            .getElementsByClassName("tab-bar-tab__label")[2];
+
+        // register tab bar
+        registerTabBar(elTabBar);
 
         //
         // tab bar event handling via delegation
@@ -64,33 +66,30 @@ window.addEventListener("load", function (e) {
 
         // call showTab whenever a "click" event bubbles up to a tab-bar-tab element
         elTabBar.addEventListener("click", (e) => {
-            if (elHasClassName(e.target.parentElement, "tab-bar-tab")) {
-                e.preventDefault();
-                elTabBar.tabBar.showTab(e.target.parentElement);
-            }
-        }, false);
-
-        // handle focusout events
-        elTabBar.addEventListener("focusout", (e) => {
-            if (elHasClassName(e.target.parentElement, "tab-bar-tab")) {
-                e.preventDefault();
-                console.log("focusout event handled in yada.js");
-            }
-        }, false);
-
-        // handle focusin events
-        elTabBar.addEventListener("click", (e) => {
-            if (elHasClassName(e.target.parentElement, "tab-bar-tab")) {
-                e.preventDefault();
+            let elTabBarTab = e.target.parentElement;
+            e.preventDefault();
+            // only respond to clicks on tabs that aren't already active
+            if (elHasClassName(elTabBarTab, "tab-bar-tab") &&
+                !elHasClassName(elTabBarTab, "tab-bar-tab--active")) {
+                elTabBar.tabBar.showTab(elTabBarTab);
                 let id = e.target.getAttribute("href").substring(1);
                 let elTabBarPaneContent =
-                    document.getElementById(id).querySelector(".tab-bar-pane__content");
-                console.log("focusin event handled in yada.js");
+                    document.getElementById(id).querySelector("div.tab-bar-pane__content");
+                elTabBarPaneContent.textContent = "Getting content. Please wait...";
+                let elTabBarPane = elTabBarPaneContent.parentElement;
+                elTabBarPane.className = elTabBarPane.className + " tab-bar-pane--pending";
+
                 // simulate an asyncrhonous process to retrieve the content
                 setTimeout(() => {
-                    elTabBarPaneContent.textContent = `The value of Date.now() = ${Date.now().toString()}`;
-                }, 10);
+                    elTabBarPaneContent.textContent = `The current date and time is: ${Date()}`;
+                    elRemoveClassName(elTabBarPane, "tab-bar-pane--pending");
+                    elTabBarPane.className += " tab-bar-pane--fulfilled";
+                    setTimeout(() => elRemoveClassName(elTabBarPane, "tab-bar-pane--fulfilled"), 500);
+                }, 1000);
             }
         }, false);
+
+        // fire a "click" event on the tab label
+        elTabBarTabLabel.click();
     }());
 });
