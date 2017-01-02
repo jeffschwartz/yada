@@ -1,8 +1,11 @@
-export let elRemoveClassName = (element, classNameToRemove) => {
-    let classNames = element.className.split(" ");
-    let filtered;
-    filtered = classNames.filter(className => className !== classNameToRemove);
-    element.className = filtered.join(" ");
+export let elRemoveClassName = (element, classNamesToRemove) => {
+    classNamesToRemove = Array.isArray(classNamesToRemove) && classNamesToRemove || [classNamesToRemove];
+    classNamesToRemove.forEach(classNameToRemove => {
+        let classNames = element.className.split(" ");
+        let filtered = classNames.filter(className => className !== classNameToRemove);
+        element.className = filtered.join(" ");
+    });
+    return element;
 };
 
 export let elHasClassName = (el, className) => {
