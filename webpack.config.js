@@ -1,15 +1,15 @@
 var webpack = require("webpack");
 var path = require("path");
 
-var PUBLIC_DIR = path.resolve(__dirname, "public");
+// var PUBLIC_DIR = path.resolve(__dirname, "public");
 var SOURCE_DIR = path.resolve(__dirname, "scripts/app");
-var BUILD_DIR = PUBLIC_DIR;
+var BUILD_DIR = path.resolve(__dirname, "public/script");
 
 module.exports = {
     entry: SOURCE_DIR + "/yada.js",
     output: {
-        path: BUILD_DIR + "/script",
-        publicPath: PUBLIC_DIR,
+        path: BUILD_DIR,
+        // publicPath: PUBLIC_DIR,
         filename: "app.bundle.js"
     },
     module: {
