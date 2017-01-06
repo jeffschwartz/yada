@@ -190,18 +190,16 @@
         <div class="row">
             <h2>IMAGES</h2>
             <div class="col-md-3 text-align-center">
-                <img src="images/2011-07-02-154408.jpg" width="140" alt="rounded image" title="rounded image" class="rounded-img">
+                <img src="images/2011-07-02-154408.jpg" width="140" alt="image" title="image" class="image">
             </div>
             <div class="col-md-3 text-align-center">
-                <img src="images/2011-07-02-154408.jpg" width="140" alt="circled image" title="circled image" class="circled-img">
+                <img src="images/2011-07-02-154408.jpg" width="140" alt="round image" title="round image" class="image image--round">
             </div>
             <div class="col-md-3 text-align-center">
-                <img src="images/2011-07-02-154408.jpg" width="140" alt="thumbnail" title="thumbnail" class="thumbnail">
+                <img src="images/2011-07-02-154408.jpg" width="140" alt="bordered image" title="bordered image" class="image image--border">
             </div>
             <div class="col-md-3 text-align-center">
-                <a href="#" title="thumbnail link" class="thumbnail-link">
-                    <img src="images/2011-07-02-154408.jpg" width="140" alt="thumbnail link">
-                </a>
+                <img src="images/2011-07-02-154408.jpg" width="140" alt="round bordered image" class="image image--border image--round">
             </div>
         </div>
 
@@ -209,41 +207,49 @@
         <div class="row">
             <h2>AVATARS</h2>
             <div class="col-md-3 text-align-center">
-                <img src="images/2011-07-02-154408.jpg" alt="avatar avatar--large" title="avatar" class="avatar avatar--large">
+                <a href="#" class="avatar">
+                    <img src="images/2011-07-02-154408.jpg" alt="avatar image" title="avatar" class="avatar__image image">
+                </a>
             </div>
             <div class="col-md-3 text-align-center">
-                <img src="images/2011-07-02-154408.jpg" alt="avatar with border" title="avatar with border" class="avatar avatar--bordered">
+                <a href="#" class="avatar">
+                    <img src="images/2011-07-02-154408.jpg" alt="round avatar" title="round avatar" class="avatar__image image image--round">
+                </a>
             </div>
             <div class="col-md-3 text-align-center">
-                <img src="images/2011-07-02-154408.jpg" alt="rounded avatar" title="rounded avatar" class="avatar avatar--rounded">
+                <a href="#" class="avatar">
+                   <img src="images/2011-07-02-154408.jpg" alt="avatar with border" title="avatar with border" class="avatar__image image image--border">
+                </a>
             </div>
             <div class="col-md-3 text-align-center">
-                <img src="images/2011-07-02-154408.jpg" alt="rounded avatar with border" title="rounded avatar with border" class="avatar avatar--rounded avatar--bordered">
+                <a href="#" class="avatar">
+                    <img src="images/2011-07-02-154408.jpg" alt="round avatar with border" title="round avatar with border" class="avatar__image image image--round image--border">
+                </a>
             </div>
         </div>
 
         <!--Cards-->
         <div class="row">
             <h2>CARDS</h2>
-            <div class="col-md-3">
+            <div class="col-md-3 text-align-center">
                 <div class="text-align-center"><span>Card with no header and footer</span></div>
                 <div class="card">
                     <img src="images/Beatles.jpg" alt="image" title="card">
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 text-align-center">
                 <div class="card">
                     <div class="card__header">Card with header</div>
                     <img src="images/Beatles.jpg" alt="image" title="card with header">
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 text-align-center">
                 <div class="card">
                     <img src="images/Beatles.jpg" alt="image" title="card with footer">
                     <div class="card__footer">Card with footer</div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 text-align-center">
                 <div class="card">
                     <div class="card__header">Card with header and footer</div>
                     <img src="images/Beatles.jpg" alt="image" title="card with header and footer">
@@ -255,7 +261,7 @@
         <!--Stories-->
         <div class="row">
             <h2>STORIES</h2>
-            <div class="col-md-4">
+            <div class="col-md-4 text-align-center">
                 <div class="story">
                     <h1 class="story__caption">Story Caption</h1>
                     <img class="left" width="140" src="images/Beatles.jpg" alt="image" title="story image">
@@ -267,7 +273,7 @@
                         veniam libero rem.</p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 text-align-center">
                 <div class="story">
                     <h1 class="story__caption">Story Caption</h1>
                     <img class="top" src="images/Beatles.jpg" alt="image" title="story image">
@@ -279,7 +285,7 @@
                         veniam libero rem.</p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 text-align-center">
                 <div class="story">
                     <h1 class="story__caption">Story Caption</h1>
                     <img class="right" width="140" src="images/Beatles.jpg" alt="image" title="story image">
@@ -295,13 +301,20 @@
         <div class="row">
             <h2>MEDIA OBJECT</h2>
             <div class="col-md-12">
-                <div class="media-object">
-                    <a href="#">
-                        <img src="images/2011-07-02-154408.jpg" alt="profile image">
+                <div class="media-object media-object--border media-object--padding">
+                    <a class="media-object__avatar avatar" href="#">
+                        <img class="avatar__image image" src="images/2011-07-02-154408.jpg" alt="profile image">
                     </a>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
-                    <a href="https://www.nasa.gov/topics/journeytomars/index.html" target="_blank">
-                        <img src="images/rocket_ship_retro_style_white_bg.gif" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2>MEDIA OBJECT RIGHT</h2>
+            <div class="col-md-12">
+                <div class="media-object media-object--right media-object--border media-object--padding">
+                    <a class="media-object__avatar avatar" href="#">
+                        <img class="avatar__image image" src="images/2011-07-02-154408.jpg" alt="profile image">
                     </a>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
                 </div>
@@ -310,22 +323,14 @@
         <div class="row">
             <h2>NESTED MEDIA OBJECTS</h2>
             <div class="col-md-12">
-                <div class="media-object">
-                    <a href="#">
-                        <img src="images/2011-07-02-154408.jpg" alt="profile image">
+                <div class="media-object media-object--border media-object--padding">
+                    <a class="media-object__avatar avatar" href="#">
+                        <img class="avatar__image image" src="images/2011-07-02-154408.jpg" alt="profile image">
                     </a>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
-                    <a href="https://www.nasa.gov/topics/journeytomars/index.html" target="_blank">
-                        <img src="images/rocket_ship_retro_style_white_bg.gif" alt="">
-                    </a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
-                    <div class="media-object">
-                        <a href="#">
-                            <img src="images/2011-07-02-154408.jpg" alt="profile image">
-                        </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
-                        <a href="https://www.nasa.gov/topics/journeytomars/index.html" target="_blank">
-                            <img src="images/rocket_ship_retro_style_white_bg.gif" alt="">
+                    <div class="media-object media-object--border media-object--padding">
+                        <a class="media-object__avatar avatar" href="#">
+                            <img class="avatar__image image" src="images/2011-07-02-154408.jpg" alt="profile image">
                         </a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
                     </div>
@@ -333,60 +338,60 @@
             </div>
         </div>
         <div class="row">
-            <h2>POST/ARTICLE</h2>
+            <h2>MEDIA POST</h2>
             <div class="col-md-12">
-                <article class="post">
+                <article class="media-post">
                     <div class="media-object">
-                        <a href="https://github.com/jeffschwartz" target="_blank">
-                            <img src="images/2011-07-02-154408.jpg" alt="profile image">
+                        <a class="media-object__avatar avatar" href="https://github.com/jeffschwartz" target="_blank">
+                            <img class="avatar__image image" src="images/2011-07-02-154408.jpg" alt="profile image">
                         </a>
-                        <a href="https://github.com/jeffschwartz" rel="author" target="_blank">
-                            <address class="author">Jeffrey Schwart</address>
+                        <a class="media-post__author-container" href="https://github.com/jeffschwartz" rel="author" target="_blank">
+                            <address class="post__author">Jeffrey Schwartz</address>
                         </a>
-                        <time datetime="2016-12-03">December 3, 2016</time>
+                        <time class="media-post__time" datetime="2016-12-03">December 3, 2016</time>
                     </div>
-                    <h2>Title</h2>
+                    <h2 class="media-post__title">Title</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
                     <a href="https://www.nasa.gov/topics/journeytomars/index.html" target="_blank">
-                        <img src="images/rocket_ship_retro_style_white_bg.gif" alt="">
+                        <img class="media-post__image" src="images/rocket_ship_retro_style_white_bg.gif" alt="">
                     </a>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
                 </article>
             </div>
         </div>
         <div class="row">
-            <h2>NESTED POST/ARTICLES</h2>
+            <h2>NESTED MEDIA POSTS</h2>
             <div class="col-md-12">
-                <article class="post">
+                <article class="media-post">
                     <div class="media-object">
-                        <a href="https://github.com/jeffschwartz" target="_blank">
-                            <img src="images/2011-07-02-154408.jpg" alt="profile image">
+                        <a class="media-object__avatar avatar" href="https://github.com/jeffschwartz" target="_blank">
+                            <img class="avatar__image image" src="images/2011-07-02-154408.jpg" alt="profile image">
                         </a>
-                        <a href="https://github.com/jeffschwartz" rel="author" target="_blank">
-                            <address class="author">Jeffrey Schwart</address>
+                        <a class="media-post__author-container" href="https://github.com/jeffschwartz" rel="author" target="_blank">
+                            <address class="media-post__author">Jeffrey Schwartz</address>
                         </a>
-                        <time datetime="2016-12-03">December 3, 2016</time>
+                        <time class="media-post__time" datetime="2016-12-03">December 3, 2016</time>
                     </div>
-                    <h2>Title</h2>
+                    <h2 class="media-post__title">Title</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
                     <a href="https://www.nasa.gov/topics/journeytomars/index.html" target="_blank">
-                        <img src="images/rocket_ship_retro_style_white_bg.gif" alt="">
+                        <img class="media-post__image" src="images/rocket_ship_retro_style_white_bg.gif" alt="">
                     </a>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
-                    <article class="post">
+                    <article class="media-post">
                         <div class="media-object">
-                            <a href="https://github.com/jeffschwartz" target="_blank">
-                                <img src="images/2011-07-02-154408.jpg" alt="profile image">
+                            <a class="media-object__avatar avatar" href="https://github.com/jeffschwartz" target="_blank">
+                                <img class="avatar__image image" src="images/2011-07-02-154408.jpg" alt="profile image">
                             </a>
-                            <a href="https://github.com/jeffschwartz" rel="author" target="_blank">
-                                <span class="author">Jeffrey Schwart</span>
+                            <a class="media-post__author-container" href="https://github.com/jeffschwartz" rel="author" target="_blank">
+                                <address class="media-post__author">Jeffrey Schwartz</address>
                             </a>
-                            <time datetime="2016-12-03">December 3, 2016</time>
+                            <time class="media-post__time" datetime="2016-12-03">December 3, 2016</time>
                         </div>
-                        <h2>Title</h2>
+                        <h2 class="media-post__title">Title</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
                         <a href="https://www.nasa.gov/topics/journeytomars/index.html" target="_blank">
-                            <img src="images/rocket_ship_retro_style_white_bg.gif" alt="">
+                            <img class="media-post__image" src="images/rocket_ship_retro_style_white_bg.gif" alt="">
                         </a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt suscipit nihil eligendi, unde. Nobis magnam nostrum incidunt autem deleniti, eum fugit commodi. Error quos earum quod quo quas veritatis.</p>
                     </article>
@@ -445,7 +450,7 @@
             </div>
         </div>
         <div class="row">
-            <h2>TOGGLABLE TAB BAR - DYNAMIC CONTENT</h2>
+            <h2>TOGGLABLE TAB BAR WITH DYNAMIC CONTENT</h2>
             <div class="col-md-12">
                 <!--compound component-->
                 <div id="tab-bar-dynamic" class="tab-bar">
