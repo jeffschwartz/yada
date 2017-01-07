@@ -27,22 +27,25 @@
             font-style: italic;
         }
     }
-    &__image:first-child {
-        margin-bottom: 10px;
-        position: relative;
-    }
-    &__image--top {
-        margin-bottom: 1rem;
-    }
-    &__image--left {
-        float: left;
-        margin: 0 1rem 1rem 0;
-        width: 60%;
-    }
-    &__image--right {
-        float: right;
-        margin: 0 0 1rem 1em;
-        width: 60%;
+    &__image {
+        border-radius: 4px;
+        &:first-child {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        &--top {
+            margin-bottom: 1rem;
+        }
+        &--left {
+            float: left;
+            margin: 0 1rem 1rem 0;
+            width: 60%;
+        }
+        &--right {
+            float: right;
+            margin: 0 0 1rem 1em;
+            width: 60%;
+        }
     }
 }
 
