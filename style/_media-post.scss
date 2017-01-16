@@ -1,0 +1,30 @@
+.media-post {
+    width: 100%;
+    padding: 15px;
+    border: 10px solid #f8f8f8;
+    border-radius: 4px;
+    overflow: hidden;
+    &__author-container {
+        display: block;
+        color: #00f;
+    }
+    &__author {
+        font-style: normal;
+    }
+    &__time {
+        display: block;
+        font-size: .8rem;
+    }
+    &__title {
+        margin-top: 15px;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    &__image {
+        width: 100%;
+        height: auto;
+    }
+    & & {
+        margin-top: 15px;
+    }
+}

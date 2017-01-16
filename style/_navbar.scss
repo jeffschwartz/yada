@@ -9,7 +9,8 @@
     overflow: hidden;
     min-height: 50px;
     line-height: 50px;
-    .container, .container-fluid {
+    &__container, &__container-fluid {
+        @extend .container;
         margin: 0;
         padding: 0;
     }
@@ -62,7 +63,7 @@
 }
 
 // Navbar Brand
-.navbar__brand {
+.navbar-brand {
     float: left;
     font-weight: normal;
     .navbar__nav-items {
@@ -99,11 +100,11 @@
     }
 }
 
-.container ~ .navbar__nav-items:first-child {
+.navbar__container ~ .navbar__nav-items:first-child {
     padding-top: 1rem;
 }
 
-.container ~ .navbar__nav-items:last-child {
+.navbar__container ~ .navbar__nav-items:last-child {
     padding-bottom: 1rem;
 }
 
@@ -148,7 +149,7 @@
 
 /* small device columns, e.g. tablet */
 @media only screen and (min-width: 600px) {
-    .navbar .container, .navbar .container-fluid {
+    .navbar__container, .navbar__container-fluid {
         margin: 0 auto;
         padding: 0 15px;
     }
@@ -192,7 +193,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-    .navbar .container, .navbar .container-fluid {
+    .navbar__container, .navbar__container-fluid {
         padding: 0;
     }
 }
