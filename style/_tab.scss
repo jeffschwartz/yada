@@ -58,4 +58,13 @@
         display: block;
         background-color: #fff;
     }
+    &--pending &__content {
+        background-color: #ff0;
+    }
+    &--fulfilled &__content {
+        background-color: #0f0;
+    }
+    &--rejected &__content {
+        background-color: #f00;
+    }
 }

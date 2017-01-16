@@ -16,26 +16,20 @@
     }
 }
 
-// .media-object {
-//     border : {
-//         top: none;
-//         right: none;
-//         bottom: none;
-//         left: 10px solid #f3f3f3;
-//     }
-// }
-
-// .media-object > a:first-child img {
-//     width: 50px;
-//     height: auto;
-// }
-
 #carousel1 {
     background-color: red;
     .carousel__caption {
         font-size: .5rem;
         font-weight: bold;
         color: #4f0;
+    }
+}
+
+.media-post__image--demo {
+    width: 265px;
+    margin: {
+        top: -30px;
+        bottom: -50px;
     }
 }
 
