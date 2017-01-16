@@ -61,3 +61,15 @@
     box-shadow: 0 0 1px 0 #000;
     background-color: #fff;
 }
+
+.footer {
+    margin-top: 50px;
+    &__container {
+        text-align: center;
+        font-size: .8rem;
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
