@@ -1,0 +1,36 @@
+/**
+ * Footer
+ */
+
+.footer {
+    width: 100%;
+    font-weight: normal;
+    border-top: 1px solid #d8d8d8;
+    &__container, &__container-fluid {
+        @extend .container;
+        padding: {
+            top: 15px;
+            bottom: 15px;
+        }
+    }
+}
+
+// Default coloring
+.footer--default {
+    background-color: #f2f4f4;
+    color: #000;
+}
+
+// Inverted coloring
+.footer--inverted {
+    background-color: #000;
+    color: #fff;
+}
+
+// Fixes the Footer to the bottom of the page
+.footer--fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
