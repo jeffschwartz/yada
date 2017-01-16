@@ -24,8 +24,8 @@ const register = (tabBar, options) => {
         elActiveTabBarPane: null
     };
     // setup events
-    elTabBar.addEventListener("focusin", focusInEventHandler, false);
-    elTabBar.addEventListener("focusout", focusOutEventHandler, false);
+    elTabBar.addEventListener("focus", focusEventHandler, true);
+    elTabBar.addEventListener("blur", blurEventHandler, true);
     // configure the api
     api.showTab = showTab;
     api.elsTabBarTabs = elTabBar.getElementsByClassName("tab-bar__tabs")[0];
@@ -45,18 +45,18 @@ const register = (tabBar, options) => {
     return elTabBar;
 };
 
-let focusInEventHandler = (e) => {
+let focusEventHandler = (e) => {
     let elParent = e.target && e.target.parentElement;
-    console.log("focusin event handler!. e.target=", e.target);
+    console.log("focus event handler!. e.target=", e.target);
     if (elParent && elHasClassName(elParent, "tab-bar-tab") && !elHasClassName(elParent, "tab-bar-tab--active")) {
         e.preventDefault();
         elParent.className = elParent.className + " tab-bar-tab--has-focus";
     }
 };
 
-let focusOutEventHandler = (e) => {
+let blurEventHandler = (e) => {
     let elParent = e.target && e.target.parentElement;
-    console.log("focusout event handler!. e.target=", e.target);
+    console.log("blur event handler!. e.target=", e.target);
     if (elParent && elHasClassName(elParent, "tab-bar-tab") &&
         elHasClassName(elParent, "tab-bar-tab--has-focus")) {
         e.preventDefault();

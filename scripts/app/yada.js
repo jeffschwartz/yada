@@ -30,22 +30,6 @@ window.addEventListener("load", function (e) {
                 elTabBar.tabBar.showTab(e.target.parentElement);
             }
         }, false);
-
-        // handle focusout events
-        elTabBar.addEventListener("focusout", (e) => {
-            if (elHasClassName(e.target.parentElement, "tab-bar-tab")) {
-                e.preventDefault();
-                console.log("focusout event handled in yada.js");
-            }
-        }, false);
-
-        // handle focusin events
-        elTabBar.addEventListener("focusin", (e) => {
-            if (elHasClassName(e.target.parentElement, "tab-bar-tab")) {
-                e.preventDefault();
-                console.log("focusin event handled in yada.js");
-            }
-        }, false);
     }());
 
     /** Tab Bar - Dynamic Content */
