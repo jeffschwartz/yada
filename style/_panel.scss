@@ -1,0 +1,23 @@
+.panel {
+    width: 100%;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 1rem;
+    &__heading, &__footer {
+        padding: 10px 15px;
+        background-color: #f5f5f5;
+    }
+    &__heading {
+        border-bottom: 1px solid #dcdcdc;
+    }
+    &__title {
+        font-weight: bold;
+    }
+    &__footer {
+        border-top: 1px solid #dcdcdc;
+    }
+    &__body {
+        padding: 15px;
+    }
+}
