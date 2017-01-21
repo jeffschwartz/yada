@@ -12,7 +12,7 @@ Most importantly, the framework is intended to be minimalistic and doesn't attem
 
 ## Important
 
-Like all adventures, this project is a work in progress. See [Things To Do](#Things-To-Do) below.
+Like all adventures, this project is a work in progress. See [Things To Do](#things-to-do) below.
 
 ## Things To Do
 
