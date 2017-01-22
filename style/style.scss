@@ -1,15 +1,9 @@
-.navbar__brand img {
-    display: inline-block;
-    width: 40px;
-    height: auto;
-    border-radius: 50%;
-    vertical-align: middle;
-    margin: 5px 1rem 5px 0;
-}
-
 .hero {
-    h1 {
+    padding: 3rem 15px;
+    h2 {
+        font-size: 4rem;
         font-weight: bold;
+        padding-bottom: 3rem;
     }
     p {
         font-size: 1.5rem;
@@ -37,14 +31,6 @@
     #carousel1 {
         .carousel__caption {
             font-size: 2rem;
-        }
-    }
-    .hero {
-        h1 {
-            font-size: 4rem;
-        }
-        p {
-            font-size: 1.75rem;
         }
     }
 }
