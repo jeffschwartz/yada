@@ -3,24 +3,76 @@
  */
 
 .media-object {
+    float: left;
     width: 100%;
-    overflow: hidden;
-    &--padding {
-        padding: 15px;
+    margin-top: 15px;
+    padding-left: 25px;
+    &:first-child {
+        margin-top: 0;
     }
     &--border {
-        border: 10px solid #f8f8f8;
-        border-radius: 4px;
+        border-left: 1px solid #dcdcdc;
     }
-    &__avatar {
+    &__header {
+        display: block;
+        margin-bottom: 5px;
+        &-author {
+            color: #00f;
+        }
+        &-time {
+            display: block;
+            font-size: .8rem;
+        }
+    }
+    &__title {
+        padding: 5px 0;
+        @include clearfix;
+    }
+    &__image-container {
+        display: block;
         float: left;
         margin-right: 10px;
     }
-    &--right > &__avatar {
+    &__image {
+        display: block;
+        width: 64px;
+        height: auto;
+    }
+    &__media-content {
+        display: block;
+    }
+    &--post &__media-content {
+        padding-top: 5px;
+        float: left;
+    }
+    &--post &__media-content::before {
+        @include clearfix;
+    }
+    &--right {
+        padding-left: 0;
+        padding-right: 25px;
+    }
+    &--right.media-object--border {
+        border-left: none;
+        border-right: 1px solid #dcdcdc;
+    }
+    &--right &__image-container {
         float: right;
+        margin-right: 0;
         margin-left: 10px;
     }
     & & {
         margin-top: 15px;
+    }
+    & + & {
+        margin-top: 0;
+        padding-top: 15px;
+    }
+}
+
+.media-object-list {
+    list-style: none;
+    &__item {
+        display: list-item;
     }
 }
