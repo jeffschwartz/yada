@@ -1,12 +1,12 @@
 .pre {
     display: block;
+    margin: 0;
     padding: 15px;
     background-color: #f5f2f0;
-    border: 1px solid #dcdcdc;
     text-align: left;
     max-height: 20em;
     overflow: auto;
-    &--border {
+    &--border-left {
         border-left: 4px solid #00f;
     }
 }
