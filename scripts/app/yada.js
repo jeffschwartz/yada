@@ -3,11 +3,11 @@ import registerTabBar from "./tab";
 import { elHasClassName, elRemoveClassName } from "./generic";
 
 window.addEventListener("load", function (e) {
-    /** Carousel */
+    // /** Carousel */
 
-    // play the carousel - it returns a func that when called stops the carousel
-    let carouselEl = document.getElementById("carousel1");
-    carouselEl.carousel.play(0);
+    // // play the carousel - it returns a func that when called stops the carousel
+    // let carouselEl = document.getElementById("carousel1");
+    // carouselEl.carousel.play(0);
 
     /** Tab Bar - Static Content */
 
