@@ -2,79 +2,68 @@
     display: block;
     position: relative;
     width: 100%;
-    border: 5px solid red;
     &__viewer {
         display: block;
         width: 100%;
-        border: 5px solid green;
-        text-align: center;
-        color: #fff;
+        // border: 5px solid green;
+        overflow: hidden;
     }
     &__slide {
-        display: block;
+        display: none;
+        position: relative;
         width: 100%;
-        border: 5px solid yellow;
+        &--active {
+            display: block;
+        }
         &-image {
             display: block;
-            max-width: 100%;
+            width: 70%;
             height: auto;
-            margin: 0 auto;
+            margin: auto;
+        }
+        &-caption {
+            position: absolute;
+            z-index: 100;
+            bottom: 20px;
+            right: 20%;
+            left: 20%;
+            margin: 20px 0 30px 0;
+            text-align: center;
+            &--dark {
+                color: #000;
+            }
+            &--light {
+                color: #fff;
+            }
         }
     }
-    &__control-container {
-        display: block;
+    &__control {
         position: absolute;
+        z-index: 100;
         top: 0;
         bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 5px solid blue;
-        background-color: transparent;
-    }
-    &__control-left {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
         width: 15%;
         height: 100%;
-        padding-left: 7.5%;
         background-color: #666;
-    }
-    &__control-right {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        width: 15%;
-        height: 100%;
-        padding-left: 7.5%;
-        background-color: #666;
-    }
-    &__control-bottom {
-        position: absolute;
-        // top: 0;
-        left: 15%;
-        bottom: 0;
-        width: 70%;
-        height: 15%;
-        background-color: transparent;
         text-align: center;
-        color: black;
+        &--left {
+            left: 0;
+        }
+        &--right {
+            right: 0;
+        }
     }
     &__control-glyph {
-        position: relative;
-        display: block;
+        position: absolute;
         top: 50%;
-        // left: 50%;
-        font-size: 3rem;
-        // width: 3rem;
-        // height: 3rem;
-        // margin: auto 0;
         color: #fff;
-        // width: 3rem;
-        // height: 3rem;
-        // margin: 50% auto;
+        font-size: 3rem;
+        margin: -24px;
+        &--left {
+            left: 50%;
+        }
+        &--right {
+            right: 50%;
+        }
     }
 }

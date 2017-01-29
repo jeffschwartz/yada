@@ -45,21 +45,23 @@
     <h2>CAROUSEL</h2>
     <div class="carousel">
         <div class="carousel__viewer">
-            <div class="carousel__slide">
-                <img class="carousel__slide-image" width="900px" height="500px" src="images/cats-900x500/142706o3yfs8813eq081f1.jpg" alt="">
+            <div data-carousel-slide="1" class="carousel__slide">
+                <img class="carousel__slide-image" src="images/cats-900x500/142706o3yfs8813eq081f1.jpg" alt="">
+                <div class="carousel__slide-caption carousel__slide-caption--dark">
+                    <h3>Slide #1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <div data-carousel-slide="2"  class="carousel__slide carousel__slide--active">
+                <img class="carousel__slide-image" src="images/cats-900x500/198d9dfcd75913e10c5bf977cb66935d.jpg" alt="">
+                <div class="carousel__slide-caption carousel__slide-caption--light">
+                    <h3>Slide #1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
             </div>
         </div>
-        <div class="carousel__control-container">
-            <div class="carousel__control-left">
-                <a href="#" class="carousel__control-glyph">&lt;</a>
-            </div>
-            <div class="carousel__control-right">
-                <a href="#" class="carousel__control-glyph">&gt;</a>
-            </div>
-            <div class="carousel__control-bottom">
-                yada yada yada
-            </div>
-        </div>
+        <a class="carousel__control carousel__control--left" href="#"><span class="carousel__control-glyph carousel__control-glyph--left">&lt;</span></a>
+        <a class="carousel__control carousel__control--right" href="#"><span class="carousel__control-glyph carousel__control-glyph--right">&gt;</span></a>
     </div>
     <!--Carousel-->
     <!--<h2>CAROUSEL</h2>
