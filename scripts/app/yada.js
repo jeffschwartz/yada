@@ -1,13 +1,16 @@
 import * as Yada from "./css";
 import registerTabBar from "./tab";
+import registerCarousel from "./carousel2";
 import { elHasClassName, elRemoveClassName } from "./generic";
 
 window.addEventListener("load", function (e) {
-    // /** Carousel */
+    /** Carousel */
 
     // // play the carousel - it returns a func that when called stops the carousel
     // let carouselEl = document.getElementById("carousel1");
     // carouselEl.carousel.play(0);
+
+    registerCarousel(document.getElementsByClassName("carousel")[0]);
 
     /** Tab Bar - Static Content */
 
