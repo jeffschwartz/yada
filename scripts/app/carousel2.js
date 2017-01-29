@@ -31,7 +31,12 @@ const register = (carousel, options) => {
 
 let clickEventHandler = function (e) {
     console.log("click event handler!. e.target=", e.target);
-    if (elHasClassName(e.target, "carousel__control-glyph--left") || elHasClassName(e.target, "carousel__control-glyph--right")) {
+    if (elHasClassName(e.target, [
+        "carousel__control--left",
+        "carousel__control-glyph--left",
+        "carousel__control--right",
+        "carousel__control-glyph--right"
+    ])) {
         e.preventDefault();
         // remove "carousel__slide--active" from class names
         console.log("this", this);
@@ -39,13 +44,13 @@ let clickEventHandler = function (e) {
             this.getElementsByClassName("carousel__slide--active")[0],
             "carousel__slide--active"
         );
-        if (elHasClassName(e.target, "carousel__control-glyph--left")) {
+        if (elHasClassName(e.target, ["carousel__control--left", "carousel__control-glyph--left"])) {
             this.carousel.currentSlide = this.carousel.currentSlide === 0 && this.carousel.totalSlides - 1 || this.carousel.currentSlide - 1;
             let elCurrentSlide = this.getElementsByClassName("carousel__slide")[this.carousel.currentSlide];
             elCurrentSlide.className += " carousel__slide--active";
             return;
         }
-        if (elHasClassName(e.target, "carousel__control-glyph--right")) {
+        if (elHasClassName(e.target, ["carousel__control--right", "carousel__control-glyph--right"])) {
             this.carousel.currentSlide =
                 this.carousel.currentSlide === (this.carousel.totalSlides - 1) ? 0 : this.carousel.currentSlide + 1;
             let elCurrentSlide = this.getElementsByClassName("carousel__slide")[this.carousel.currentSlide];
