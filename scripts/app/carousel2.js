@@ -6,25 +6,37 @@ import { elRemoveClassName, elHasClassName } from "./generic";
 
 const register = (carousel, options) => {
     let elCarousel = typeof (carousel) === "string" && document.getElementById(carousel) || carousel;
-    let api = {
-        currentSlide: 0,
-        totalSlides: 0
+    // attach the api to the carousel element
+    let api = elCarousel.carousel = {
+        currentSlide: null,
+        elActiveSlide: null,
+        elActiveIndicator: null,
+        totalSlides: elCarousel.getElementsByClassName("carousel__slide").length
     };
-    // setup events
+    // abort if there are no slides
+    if (!api.totalSlides) {
+        console.log("Carousel Error -- carousel has no slides");
+        return;
+    }
+    // setup events which are all delegated through the carousel element
     elCarousel.addEventListener("click", clickEventHandler, false);
     // note the current active slide
-    let elsCarouselSlide = elCarousel.getElementsByClassName("carousel__slide");
-    for (let x = 0; x < elsCarouselSlide.length; x++) {
-        let elCarouselSlide = elsCarouselSlide[x];
-        if (elHasClassName(elCarouselSlide, "carousel__slide--active")) {
-            api.currentSlide = x;
-            break;
-        }
+    api.elActiveSlide = elCarousel.querySelector("div.carousel__slide.carousel__slide--active");
+    // abort if there is no active slide
+    if (!api.elActiveSlide) {
+        console.log("Carousel Error - no active slide found!");
+        return;
     }
-    // note the total number of slides
-    api.totalSlides = elsCarouselSlide.length;
-    // attach the api directly to the carousel element
-    elCarousel.carousel = api;
+    // get the slide's "data-carousel-slide" attribute value
+    let forIndicator = api.currentSlide = parseInt(api.elActiveSlide.getAttribute("data-carousel-slide"));
+    // abort if slide missing "data-carousel-slide" attribute
+    if (!forIndicator) {
+        console.log("Carousel Error - all slides must have a \"data-carousel-slide\" attribute");
+        return;
+    }
+    // set the appropriate indicator active
+    api.elActiveIndicator = elCarousel.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
+    api.elActiveIndicator.className += " carousel__indicator--active";
     // return the carousel element for chaining
     return elCarousel;
 };
@@ -37,27 +49,78 @@ let clickEventHandler = function (e) {
         "carousel__control--right",
         "carousel__control-glyph--right"
     ])) {
-        e.preventDefault();
-        // remove "carousel__slide--active" from class names
-        console.log("this", this);
-        elRemoveClassName(
-            this.getElementsByClassName("carousel__slide--active")[0],
-            "carousel__slide--active"
-        );
-        if (elHasClassName(e.target, ["carousel__control--left", "carousel__control-glyph--left"])) {
-            this.carousel.currentSlide = this.carousel.currentSlide === 0 && this.carousel.totalSlides - 1 || this.carousel.currentSlide - 1;
-            let elCurrentSlide = this.getElementsByClassName("carousel__slide")[this.carousel.currentSlide];
-            elCurrentSlide.className += " carousel__slide--active";
-            return;
-        }
-        if (elHasClassName(e.target, ["carousel__control--right", "carousel__control-glyph--right"])) {
-            this.carousel.currentSlide =
-                this.carousel.currentSlide === (this.carousel.totalSlides - 1) ? 0 : this.carousel.currentSlide + 1;
-            let elCurrentSlide = this.getElementsByClassName("carousel__slide")[this.carousel.currentSlide];
-            elCurrentSlide.className += " carousel__slide--active";
-            return;
-        }
+        handleCarouselControlClick.call(this, e);
+    } else if (elHasClassName(e.target, "carousel__indicator-glyph")) {
+        handleCarouselIndicatorClick.call(this, e);
     }
+};
+
+/**
+ * Handle carousel control click events.
+ */
+
+let handleCarouselControlClick = function (e) {
+    e.preventDefault();
+    // remove "carousel__slide--active" from class names
+    elRemoveClassName(this.carousel.elActiveSlide, "carousel__slide--active");
+    // remove "carousel__indicator--active" from class names
+    elRemoveClassName(this.carousel.elActiveIndicator, "carousel__indicator--active");
+    // increment or decrement current slide accordingly
+    if (elHasClassName(e.target, ["carousel__control--left", "carousel__control-glyph--left"])) {
+        this.carousel.currentSlide =
+            this.carousel.currentSlide === 1 && this.carousel.totalSlides || this.carousel.currentSlide - 1;
+    } else {
+        this.carousel.currentSlide =
+            this.carousel.currentSlide === (this.carousel.totalSlides) ? 1 : this.carousel.currentSlide + 1;
+    }
+    // note the active slide
+    this.carousel.elActiveSlide =
+        this.querySelector(`div.carousel__slide[data-carousel-slide="${this.carousel.currentSlide}"]`);
+    // add class "carousel__slide--active" to the active slide
+    this.carousel.elActiveSlide.className += " carousel__slide--active";
+    // get the slide's "data-carousel-slide" attribute value
+    let forIndicator = this.carousel.elActiveSlide.getAttribute("data-carousel-slide");
+    // abort if slide missing "data-carousel-slide" attribute
+    if (!forIndicator) {
+        console.log("Carousel Error - all slides must have a \"data-carousel-slide\" attribute");
+        return;
+    }
+    // set the appropriate indicator active
+    this.carousel.elActiveIndicator =
+        this.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
+    this.carousel.elActiveIndicator.className += " carousel__indicator--active";
+    return;
+};
+
+/**
+ * Handle carousel indicator click events.
+ */
+
+let handleCarouselIndicatorClick = function (e) {
+    e.preventDefault();
+    // remove "carousel__slide--active" from class names
+    elRemoveClassName(this.carousel.elActiveSlide, "carousel__slide--active");
+    // remove "carousel__indicator--active" from class names
+    elRemoveClassName(this.carousel.elActiveIndicator, "carousel__indicator--active");
+    // get the indicator's "data-for-slide" attribute value
+    let forIndicator = this.carousel.currentSlide =
+        parseInt(e.target.parentElement.getAttribute("data-for-slide"));
+    // abort if slide missing "data-carousel-slide" attribute
+    if (!forIndicator) {
+        console.log("Carousel Error - all indicators must have a \"data-for-slide\" attribute");
+        return;
+    }
+    // note the active slide
+    this.carousel.elActiveSlide =
+        this.querySelector(`div.carousel__slide[data-carousel-slide="${this.carousel.currentSlide}"]`);
+    // add class "carousel__slide--active" to the active slide
+    this.carousel.elActiveSlide.className += " carousel__slide--active";
+    // note the active indicator
+    this.carousel.elActiveIndicator =
+        this.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
+    // add class "carousel__indicator--active" to the active indicator
+    this.carousel.elActiveIndicator.className += " carousel__indicator--active";
+    return;
 };
 
 export default register;
