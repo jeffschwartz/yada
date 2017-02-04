@@ -26,7 +26,7 @@ module.exports = {
         "semi": ["error", "always"],
         "quotes": ["error", "double"],
         "indent": ["error", 4],
-        "no-unused-vars": 0,
+        "no-unused-vars": 1,
         "eol-last": 0,
         "no-class-assign": 0
     }
