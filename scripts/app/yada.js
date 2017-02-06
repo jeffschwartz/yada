@@ -1,4 +1,5 @@
-import * as Yada from "./css";
+// TODO(JS): remove css.js & following import from project before merging carousel feature into development
+// import * as Yada from "./css";
 import registerTabBar from "./tab";
 import registerCarousel from "./carousel2";
 import { elHasClassName, elRemoveClassName } from "./generic";
@@ -6,11 +7,9 @@ import { elHasClassName, elRemoveClassName } from "./generic";
 window.addEventListener("load", function (e) {
     /** Carousel */
 
-    // // play the carousel - it returns a func that when called stops the carousel
-    // let carouselEl = document.getElementById("carousel1");
-    // carouselEl.carousel.play(0);
-
-    registerCarousel(document.getElementsByClassName("carousel")[0]);
+    (function () {
+        registerCarousel(document.getElementsByClassName("carousel")[0], { cycleDelay: 3000 });
+    }());
 
     /** Tab Bar - Static Content */
 
@@ -40,7 +39,7 @@ window.addEventListener("load", function (e) {
     (function () {
         let elTabBar = document.getElementById("tab-bar-dynamic");
 
-        // the 3rd tab's lablel element will receive the click event
+        // the 3rd tab's label element will receive the click event
         let elTabBarTabLabel = elTabBar.getElementsByClassName("tab-bar__tabs")[0]
             .getElementsByClassName("tab-bar-tab__label")[2];
 
@@ -66,7 +65,7 @@ window.addEventListener("load", function (e) {
                 let elTabBarPane = elTabBarPaneContent.parentElement;
                 elTabBarPane.className = elTabBarPane.className + " tab-bar-pane--pending";
 
-                // simulate an asyncrhonous process to retrieve the content
+                // simulate an asynchronous process to retrieve the content
                 setTimeout(() => {
                     elTabBarPaneContent.textContent = `The current date and time is: ${Date()}`;
                     elRemoveClassName(elTabBarPane, "tab-bar-pane--pending");

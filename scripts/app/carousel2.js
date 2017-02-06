@@ -4,14 +4,16 @@ import { elRemoveClassName, elHasClassName } from "./generic";
  * Carousel
  */
 
-const register = (carousel, options) => {
+const register = (carousel, { cycleDelay = 0 }) => {
     let elCarousel = typeof (carousel) === "string" && document.getElementById(carousel) || carousel;
     // attach the api to the carousel element
     let api = elCarousel.carousel = {
         currentSlide: null,
         elActiveSlide: null,
         elActiveIndicator: null,
-        totalSlides: elCarousel.getElementsByClassName("carousel__slide").length
+        totalSlides: elCarousel.getElementsByClassName("carousel__slide").length,
+        cycleDelay: cycleDelay, // cycle delay between slides expressed in milliseconds, defaults to 0
+        cycleIntervalID: 0
     };
     // abort if there are no slides
     if (!api.totalSlides) {
@@ -37,6 +39,10 @@ const register = (carousel, options) => {
     // set the appropriate indicator active
     api.elActiveIndicator = elCarousel.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
     api.elActiveIndicator.className += " carousel__indicator--active";
+    // initiate slide cycling if indicated
+    if (api.cycleDelay) {
+        cycleSlides(elCarousel);
+    }
     // return the carousel element for chaining
     return elCarousel;
 };
@@ -61,6 +67,10 @@ let clickEventHandler = function (e) {
 
 let handleCarouselControlClick = function (e) {
     e.preventDefault();
+    // terminate slide cycling if indicated
+    if (this.carousel.cycleIntervalID) {
+        clearInterval(this.carousel.cycleIntervalID);
+    }
     // remove "carousel__slide--active" from class names
     elRemoveClassName(this.carousel.elActiveSlide, "carousel__slide--active");
     // remove "carousel__indicator--active" from class names
@@ -89,6 +99,10 @@ let handleCarouselControlClick = function (e) {
     this.carousel.elActiveIndicator =
         this.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
     this.carousel.elActiveIndicator.className += " carousel__indicator--active";
+    // restart slide cycling if indicated
+    if (this.carousel.cycleDelay) {
+        cycleSlides(this);
+    }
     return;
 };
 
@@ -98,6 +112,10 @@ let handleCarouselControlClick = function (e) {
 
 let handleCarouselIndicatorClick = function (e) {
     e.preventDefault();
+    // terminate slide cycling if indicated
+    if (this.carousel.cycleIntervalID) {
+        clearInterval(this.carousel.cycleIntervalID);
+    }
     // remove "carousel__slide--active" from class names
     elRemoveClassName(this.carousel.elActiveSlide, "carousel__slide--active");
     // remove "carousel__indicator--active" from class names
@@ -120,7 +138,18 @@ let handleCarouselIndicatorClick = function (e) {
         this.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
     // add class "carousel__indicator--active" to the active indicator
     this.carousel.elActiveIndicator.className += " carousel__indicator--active";
+    // restart slide cycling if indicated
+    if (this.carousel.cycleDelay) {
+        cycleSlides(this);
+    }
     return;
+};
+
+let cycleSlides = (elCarousel) => {
+    elCarousel.carousel.cycleIntervalID = setInterval(function () {
+        // alert("Cycle timer callback fired");
+        elCarousel.getElementsByClassName("carousel__control-glyph--right")[0].click();
+    }, elCarousel.carousel.cycleDelay);
 };
 
 export default register;
