@@ -8,7 +8,11 @@ window.addEventListener("load", function (e) {
     /** Carousel */
 
     (function () {
-        registerCarousel(document.getElementsByClassName("carousel")[0], { cycleDelay: 3000 });
+        // registerCarousel(document.getElementsByClassName("carousel")[0]);
+        registerCarousel(document.getElementsByClassName("carousel")[0], {
+            cycleDelay: 2000,
+            loopNTimes: 1
+        });
     }());
 
     /** Tab Bar - Static Content */
