@@ -1,59 +1,149 @@
-/**
- * Carousel
- */
-
 .carousel {
+    display: block;
     position: relative;
-    &__slides {
+    width: 100%;
+    &__viewer {
         display: block;
+        width: 100%;
+        // border: 5px solid green;
+        overflow: hidden;
     }
     &__slide {
-        position: relative;
-        overflow: hidden;
         display: none;
-        &.active {
+        position: relative;
+        width: 100%;
+        &--active {
             display: block;
         }
-        img {
+        &-image {
             display: block;
-            max-width: 100%;
+            width: 70%;
             height: auto;
-            margin: 0 auto;
-            animation: {
-                name: carousel;
-                duration: 0.5s;
+            margin: auto;
+        }
+        &-caption {
+            position: absolute;
+            z-index: 100;
+            bottom: 20px;
+            right: 20%;
+            left: 20%;
+            margin: 20px 0 10px 0;
+            text-align: center;
+            font-size: 1rem;
+            &--dark {
+                color: #000;
+            }
+            &--light {
+                color: #fff;
             }
         }
     }
-    &__caption {
+    &__control {
         position: absolute;
-        overflow: hidden;
-        z-index: 10;
-        right: 15%;
-        bottom: 20%;
+        z-index: 100;
+        top: 0;
+        bottom: 0;
+        width: 15%;
+        height: 100%;
+        background-color: #666;
+        text-align: center;
+        &--left {
+            left: 0;
+        }
+        &--right {
+            right: 0;
+        }
+        &:hover &-glyph {
+            opacity: 1;
+            transition: opacity .8s;
+        }
+    }
+    &__control-glyph {
+        position: absolute;
+        top: 50%;
+        color: #fff;
+        opacity: 0.5;
+        transition: opacity .8s;
+        font-size: 1.5rem;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        margin: -15px;
+        padding: 0 7px;
+        &--left {
+            left: 50%;
+        }
+        &--right {
+            right: 50%;
+        }
+    }
+    &__indicators {
+        position: absolute;
+        z-index: 100;
+        bottom: 0;
         left: 15%;
+        right: 15%;
+        list-style: none;
+        display: block;
+        width: 70%;
+        height: 32px;
+        line-height: 32px;
+        overflow: hidden;
         text-align: center;
         background-color: transparent;
     }
-    &__chrome {
-        position: absolute;
-        bottom: 10%;
-        left: 0;
+    &__indicator {
+        display: inline-block;
+        height: 100%;
+        line-height: 32px;
         overflow: hidden;
-        z-index: 10;
-        width: 100%;
-        height: auto;
-        text-align: center;
-        font-size: 1em;
-        color: white;
+        cursor: pointer;
+        &-glyph {
+            display: inline-block;
+            overflow: hidden;
+            line-height: 32px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            opacity: 0.5;
+            &::before {
+                display: inline-block;
+                content: "\2022";
+            }
+        }
+        & + & {
+            padding-left: 5px;
+        }
+        &:hover &-glyph {
+            opacity: 1;
+        }
+        &--active {
+            .carousel__indicator-glyph {
+                color: #fff;
+                opacity: 1;
+            }
+        }
     }
 }
 
-/**
- * keyframes
- */
-@keyframes carousel {
-    0% {opacity: 0.0}
-    10% {opacity: 0.5}
-    100% {opacity: 1}
+@media only screen and (min-width: 768px) {
+    .carousel__control-glyph {
+        margin: -28px;
+        font-size: 3rem;
+        padding: 0 15px;
+    }
+    .carousel__indicators {
+        height: 48px;
+        line-height:48px;
+    }
+    .carousel__indicator {
+        line-height: 48px;
+    }
+    .carousel__indicator-glyph {
+        line-height: 48px;
+        font-size: 3rem;
+    }
+    .carousel__slide-caption {
+        bottom: 20px;
+        margin: 20px 0 30px 0;
+    }
 }
