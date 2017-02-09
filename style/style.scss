@@ -64,3 +64,8 @@
     display: inline-block;
     font-size: 1.3em;
 }
+
+/*remove the margin from Prism generated pre element*/
+pre.pre[class*="language-"] {
+  margin: 0;
+}

@@ -1,128 +1,174 @@
+import { elRemoveClassName, elHasClassName } from "./generic";
+
 /**
  * Carousel
- *
- * Displays each image whose class is className for delay ms
- * Returns a func to caller that when called stops
- * the carousel on the next iteration of play
  */
 
 /**
- * Defer handling until the document content is loaded.
- *
- * Note: this event is triggered when the initial HTML
- * document has been completely loaded and parsed, without
- * waiting for stylesheets, images, and subframes to finish
- * loading.
- *
- * Requires IE ^9.0.
- *
- * See https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded.
+ * Register a carousel.
  */
 
-let getSlidesEl = carouselChildEls => {
-    let carouselSlidesEl = carouselChildEls.filter(carouselChild => {
-        // el.className returns a string variable representing the
-        // class or space- separated classes of the current element.
-        let classes = carouselChild.className.split(" ");
-        let slidesEl = classes.filter(clazz => {
-            return clazz === "carousel__slides";
-        });
-        return slidesEl && slidesEl.length === 1;
-    });
-    // returns the 1st child, which is a div.container
-    // whose chidren are div.carousel__slide elements
-    return carouselSlidesEl[0];
-};
-
-let getSlideEls = (carouselSlidesEl) => {
-    return [...carouselSlidesEl.children];
-};
-
-let getActiveSlideEl = slideEls => {
-    let i = -1;
-    for (let x = 0; x < slideEls.length; x++) {
-        let classNames = slideEls[x].className.split(" ");
-        for (let xx = 0; xx < classNames.length; xx++) {
-            if (classNames[xx] === "active") {
-                i = x;
-                break;
-            }
-        }
-        if (i !== -1) { break; }
+const register = (carousel, { cycleDelay = 0, loopNTimes = 0 } = {}) => {
+    let elCarousel = typeof (carousel) === "string" && document.getElementById(carousel) || carousel;
+    // attach the api to the carousel element
+    let api = elCarousel.carousel = {
+        currentSlide: null,
+        elActiveSlide: null,
+        elActiveIndicator: null,
+        totalSlides: elCarousel.getElementsByClassName("carousel__slide").length,
+        cycleDelay, // cycle delay between slides expressed in milliseconds, defaults to 0
+        cycleIntervalID: 0,
+        cycleCount: 0,
+        loopNTimes,
+        loopNTimesCount: 0
+    };
+    // abort if there are no slides
+    if (!api.totalSlides) {
+        console.log("Carousel Error -- carousel has no slides");
+        return;
     }
-    i = i === -1 && 0 || i;
-    console.log("active slide index =", i);
-    return i;
+    // setup events which are all delegated through the carousel element
+    elCarousel.addEventListener("click", clickEventHandler, false);
+    // note the current active slide
+    api.elActiveSlide = elCarousel.querySelector("div.carousel__slide.carousel__slide--active");
+    // abort if there is no active slide
+    if (!api.elActiveSlide) {
+        console.log("Carousel Error - no active slide found!");
+        return;
+    }
+    // get the slide's "data-carousel-slide" attribute value
+    let forIndicator = api.currentSlide = parseInt(api.elActiveSlide.getAttribute("data-carousel-slide"));
+    // abort if slide missing "data-carousel-slide" attribute
+    if (!forIndicator) {
+        console.log("Carousel Error - all slides must have a \"data-carousel-slide\" attribute");
+        return;
+    }
+    // set the appropriate indicator active
+    api.elActiveIndicator = elCarousel.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
+    api.elActiveIndicator.className += " carousel__indicator--active";
+    // initiate slide cycling if indicated
+    if (api.cycleDelay) {
+        cycleSlides(elCarousel);
+    }
+    // return the carousel element for chaining
+    return elCarousel;
 };
 
-let removeActiveClassFromSlideEl = slideEl => {
-    let classNames = slideEl.className.split(" ");
-    slideEl.className = classNames.reduce((prev, el) => {
-        if (el !== "active") {
-            return prev === "" ? el : prev + " " + el;
-        } else {
-            return prev;
-        }
-    }, "");
+/**
+ * Handle all click events via delegation through the carousel element.
+ */
+
+let clickEventHandler = function (e) {
+    console.log("click event handler!. e.target=", e.target);
+    // cancel cycling through slides when user clicks anywhere in the carousel
+    clearInterval(this.carousel.cycleIntervalID);
+    if (elHasClassName(e.target, [
+        "carousel__control--left",
+        "carousel__control-glyph--left",
+        "carousel__control--right",
+        "carousel__control-glyph--right"
+    ])) {
+        handleCarouselControlClick.call(this, e);
+    } else if (elHasClassName(e.target, "carousel__indicator-glyph")) {
+        handleCarouselIndicatorClick.call(this, e);
+    }
 };
 
-let addActiveClassToSlideEl = slideEl => {
-    slideEl.className = slideEl.className + " active";
+/**
+ * Handle carousel control click events.
+ * Note: handleCarouselControlClick is called when a user clicks on
+ * either of the carousel controls as well as programmatically by the
+ * cycleSlides function to force the advance to the next slide. When
+ * called programmatically by the cycleSlides function, there is no
+ * event object passed, but when called in response to a click
+ * event, there is an event object passed.
+ */
+
+let handleCarouselControlClick = function (e) {
+    if (e) {
+        e.preventDefault();
+    }
+    // remove "carousel__slide--active" from class names
+    elRemoveClassName(this.carousel.elActiveSlide, "carousel__slide--active");
+    // remove "carousel__indicator--active" from class names
+    elRemoveClassName(this.carousel.elActiveIndicator, "carousel__indicator--active");
+    // increment or decrement current slide accordingly
+    if (e && elHasClassName(e.target, ["carousel__control--left", "carousel__control-glyph--left"])) {
+        this.carousel.currentSlide =
+            this.carousel.currentSlide === 1 && this.carousel.totalSlides || this.carousel.currentSlide - 1;
+    } else {
+        this.carousel.currentSlide =
+            this.carousel.currentSlide === (this.carousel.totalSlides) ? 1 : this.carousel.currentSlide + 1;
+    }
+    // note the active slide
+    this.carousel.elActiveSlide =
+        this.querySelector(`div.carousel__slide[data-carousel-slide="${this.carousel.currentSlide}"]`);
+    // add class "carousel__slide--active" to the active slide
+    this.carousel.elActiveSlide.className += " carousel__slide--active";
+    // get the slide's "data-carousel-slide" attribute value
+    let forIndicator = this.carousel.elActiveSlide.getAttribute("data-carousel-slide");
+    // abort if slide missing "data-carousel-slide" attribute
+    if (!forIndicator) {
+        console.log("Carousel Error - all slides must have a \"data-carousel-slide\" attribute");
+        return;
+    }
+    // set the appropriate indicator active
+    this.carousel.elActiveIndicator =
+        this.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
+    this.carousel.elActiveIndicator.className += " carousel__indicator--active";
+    return;
 };
 
-let elApi = (carouselEl, slideEls, duration, autoPlay) => {
-    let stopped = false;
-    let stop = () => { stopped = true; };
-    let i = getActiveSlideEl(slideEls);
-    let play = () => {
-        if (!stopped) {
-            // prevent adding class active when already present, which
-            // will be the case when play is called for the first time
-            if (slideEls[i].className.indexOf("active") === -1) {
-                addActiveClassToSlideEl(slideEls[i]);
+/**
+ * Handle carousel indicator click events.
+ */
+
+let handleCarouselIndicatorClick = function (e) {
+    e.preventDefault();
+    // remove "carousel__slide--active" from class names
+    elRemoveClassName(this.carousel.elActiveSlide, "carousel__slide--active");
+    // remove "carousel__indicator--active" from class names
+    elRemoveClassName(this.carousel.elActiveIndicator, "carousel__indicator--active");
+    // get the indicator's "data-for-slide" attribute value
+    let forIndicator = this.carousel.currentSlide =
+        parseInt(e.target.parentElement.getAttribute("data-for-slide"));
+    // abort if slide missing "data-carousel-slide" attribute
+    if (!forIndicator) {
+        console.log("Carousel Error - all indicators must have a \"data-for-slide\" attribute");
+        return;
+    }
+    // note the active slide
+    this.carousel.elActiveSlide =
+        this.querySelector(`div.carousel__slide[data-carousel-slide="${this.carousel.currentSlide}"]`);
+    // add class "carousel__slide--active" to the active slide
+    this.carousel.elActiveSlide.className += " carousel__slide--active";
+    // note the active indicator
+    this.carousel.elActiveIndicator =
+        this.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
+    // add class "carousel__indicator--active" to the active indicator
+    this.carousel.elActiveIndicator.className += " carousel__indicator--active";
+    return;
+};
+
+/**
+ * Handle cycling slides
+ */
+
+let cycleSlides = function (elCarousel) {
+    let api = elCarousel.carousel;
+    api.cycleIntervalID = setInterval(function () {
+        if (api.loopNTimes) {
+            api.cycleCount += 1;
+            api.loopNTimesCount =
+                api.cycleCount === api.totalSlides ? api.loopNTimesCount + 1 : api.loopNTimesCount;
+            api.cycleCount = api.cycleCount === api.totalSlides ? 0 : api.cycleCount;
+            if (api.loopNTimes === api.loopNTimesCount) {
+                clearInterval(api.cycleIntervalID);
+                api.cycleCount = 0;
             }
-            setTimeout(() => {
-                removeActiveClassFromSlideEl(slideEls[i]);
-                i = i === slideEls.length - 1 ? 0 : i + 1;
-                play();
-            }, duration);
         }
-    };
-    return {
-        stop: stop,
-        play: play
-    };
+        handleCarouselControlClick.call(elCarousel);
+    }, api.cycleDelay);
 };
 
-document.addEventListener("DOMContentLoaded", function (e) {
-    // get all the carousels on the page
-    let carousels = [...document.getElementsByClassName("carousel")];
-    carousels.forEach((el) => {
-        let id = el.id;
-        let slidesEl = getSlidesEl([...el.children]);
-        let slides = getSlideEls(slidesEl);
-        let x = 0;
-        let duration = el.getAttribute("data-slide-duration");
-        duration = duration && duration.length && parseInt(duration, 10) || 5000;
-        if (isNaN(duration)) {
-            console.log("Carousel duration is NaN.");
-            throw new Error("Carousel duration is NaN");
-        }
-        let autoPlay = el.getAttribute("data-auto-play");
-        if (autoPlay && autoPlay.length && autoPlay !== "true" && autoPlay !== "false") {
-            console.log("Carousel autoPlay is invalid. Expected true or false");
-            throw new Error("Carousel autoPlay is invalid. Expected true or false");
-        }
-        autoPlay = autoPlay === "true" && true || autoPlay === "false" && false || false;
-        console.log("Carousel ${id} duration", duration);
-        console.log("Carousel ${id} auto-play", autoPlay);
-        el.carousel = elApi(el, slides, duration, autoPlay);
-        if (autoPlay) {
-            // defer auto playing until after all stylesheets,
-            // images & subframes have been loaded
-            window.addEventListener("load", function (e) {
-                el.carousel.play();
-            });
-        };
-    });
-});
+export default register;

@@ -18,6 +18,10 @@
         border-top: 1px solid #dcdcdc;
     }
     &__body {
-        padding: 15px;
+        margin: 0;
+        padding: 0;
+        &--padding {
+            padding: 15px;
+        }
     }
 }
