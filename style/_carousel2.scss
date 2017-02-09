@@ -62,8 +62,11 @@
         top: 50%;
         color: #fff;
         opacity: 0.5;
-        font-size: 2rem;
-        margin: -16px;
+        font-size: 1.5rem;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        margin: -15px;
+        padding: 0 7px;
         &--left {
             left: 50%;
         }
@@ -112,8 +115,9 @@
 
 @media only screen and (min-width: 768px) {
     .carousel__control-glyph {
-        font-size: 6rem;
-        margin: -48px;
+        margin: -28px;
+        font-size: 3rem;
+        padding: 0 15px;
     }
     .carousel__indicator-glyph {
         font-size: 3rem;
