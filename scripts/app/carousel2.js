@@ -54,6 +54,10 @@ const register = (carousel, { cycleDelay = 0, loopNTimes = 0 } = {}) => {
     return elCarousel;
 };
 
+/**
+ * Handle all click events via delegation through the carousel element.
+ */
+
 let clickEventHandler = function (e) {
     console.log("click event handler!. e.target=", e.target);
     // cancel cycling through slides when user clicks anywhere in the carousel
