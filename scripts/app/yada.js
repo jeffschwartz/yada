@@ -1,7 +1,5 @@
-// TODO(JS): remove css.js & following import from project before merging carousel feature into development
-// import * as Yada from "./css";
 import registerTabBar from "./tab";
-import registerCarousel from "./carousel2";
+import registerCarousel from "./carousel";
 import { elHasClassName, elRemoveClassName } from "./generic";
 
 window.addEventListener("load", function (e) {
