@@ -6,8 +6,12 @@ window.addEventListener("load", function (e) {
     /** Carousel */
 
     (function () {
-        // registerCarousel(document.getElementsByClassName("carousel")[0]);
-        registerCarousel(document.getElementsByClassName("carousel")[0], {
+        let elsCarousel = document.getElementsByClassName("carousel");
+        registerCarousel(elsCarousel[0], {
+            cycleDelay: 2000,
+            loopNTimes: 1
+        });
+        registerCarousel(elsCarousel[1], {
             cycleDelay: 2000,
             loopNTimes: 1
         });

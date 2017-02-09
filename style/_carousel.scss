@@ -85,18 +85,28 @@
         list-style: none;
         display: block;
         width: 70%;
+        height: 32px;
+        line-height: 32px;
+        overflow: hidden;
         text-align: center;
         background-color: transparent;
     }
     &__indicator {
         display: inline-block;
+        height: 100%;
+        line-height: 32px;
+        overflow: hidden;
         cursor: pointer;
         &-glyph {
+            display: inline-block;
+            overflow: hidden;
+            line-height: 32px;
             font-size: 2rem;
             font-weight: bold;
             color: #fff;
             opacity: 0.5;
             &::before {
+                display: inline-block;
                 content: "\2022";
             }
         }
@@ -121,7 +131,15 @@
         font-size: 3rem;
         padding: 0 15px;
     }
+    .carousel__indicators {
+        height: 48px;
+        line-height:48px;
+    }
+    .carousel__indicator {
+        line-height: 48px;
+    }
     .carousel__indicator-glyph {
+        line-height: 48px;
         font-size: 3rem;
     }
     .carousel__slide-caption {
