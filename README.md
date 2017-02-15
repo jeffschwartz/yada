@@ -18,6 +18,6 @@ Like all adventures, this project is a work in progress. See [Things To Do](#thi
 
 + Add more components. Obviously this one is where the WIP comes from.
 + Accessibility.
-+ Carousel desperately needs to be revisited and might merit its own separate project.
++ <del>Carousel desperately needs to be revisited and might merit its own separate project.</del>
 + Constant refactoring.
 + A React version? Maybe?
