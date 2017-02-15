@@ -1,5 +1,6 @@
 import registerTabBar from "./tab";
 import registerCarousel from "./carousel";
+import registerBillboard from "./billboard";
 import { elHasClassName, elRemoveClassName } from "./generic";
 
 window.addEventListener("load", function (e) {
@@ -15,6 +16,13 @@ window.addEventListener("load", function (e) {
             cycleDelay: 2000,
             loopNTimes: 1
         });
+    }());
+
+    /** Billboard */
+
+    (function () {
+        let elBillboard = document.getElementsByClassName("billboard")[0];
+        registerBillboard(elBillboard);
     }());
 
     /** Tab Bar - Static Content */
