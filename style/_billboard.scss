@@ -2,6 +2,9 @@
     display: block;
     position: relative;
     width: 100%;
+    &--rounded &__slide-image {
+        border-radius: 4px;
+    }
     &__viewer {
         display: block;
         width: 100%;
