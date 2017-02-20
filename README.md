@@ -6,7 +6,7 @@ An HTML, CSS, Javascript Framework.
 
 YADA uses SASS, BABEL and Webpack.
 
-To achieve low specificity and highly explicit CSS, YADA uses the BEM (Block, Element, Modifier) CSS naming convention.
+To achieve low specificity and highly explicit CSS, YADA uses the BEM (Block, Element, Modifier) CSS naming convention with a few exceptions.
 
 Most importantly, the framework is intended to be minimalistic and doesn't attempt to boil the ocean.
 
