@@ -69,7 +69,7 @@ let clickEventHandler = function (e) {
         "carousel__control-glyph--right"
     ])) {
         handleCarouselControlClick.call(this, e);
-    } else if (elHasClassName(e.target, "carousel__indicator-glyph")) {
+    } else if (elHasClassName(e.target, ["carousel__indicator-glyph", "carousel__indicator-glyph-inner"])) {
         handleCarouselIndicatorClick.call(this, e);
     }
 };
@@ -124,14 +124,18 @@ let handleCarouselControlClick = function (e) {
  */
 
 let handleCarouselIndicatorClick = function (e) {
+    let elCarouselIndicator;
     e.preventDefault();
     // remove "carousel__slide--active" from class names
     elRemoveClassName(this.carousel.elActiveSlide, "carousel__slide--active");
     // remove "carousel__indicator--active" from class names
     elRemoveClassName(this.carousel.elActiveIndicator, "carousel__indicator--active");
+    // get the carousel indicator associated with this click event
+    elCarouselIndicator = elHasClassName(e.target, "carousel__indicator-glyph-inner")
+        && e.target.parentElement.parentElement || e.target.parentElement;
     // get the indicator's "data-for-slide" attribute value
     let forIndicator = this.carousel.currentSlide =
-        parseInt(e.target.parentElement.getAttribute("data-for-slide"));
+        parseInt(elCarouselIndicator.getAttribute("data-for-slide"));
     // abort if slide missing "data-carousel-slide" attribute
     if (!forIndicator) {
         console.log("Carousel Error - all indicators must have a \"data-for-slide\" attribute");
