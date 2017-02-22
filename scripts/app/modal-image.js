@@ -35,7 +35,7 @@ let imageSourceClickEventHandler = function (e) {
 let modalImageContentClickHandler = function (self) {
     return function () {
         elRemoveClassName(self.modalImage.elViewer, "modal-image--visible");
-    }
+    };
 };
 
 export default register;
