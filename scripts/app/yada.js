@@ -1,9 +1,17 @@
+import registerModalImage from "./modal-image";
 import registerTabBar from "./tab";
 import registerCarousel from "./carousel";
 import registerBillboard from "./billboard";
 import { elHasClassName, elRemoveClassName } from "./generic";
 
 window.addEventListener("load", function (e) {
+    /** Modal Image */
+
+    (function () {
+        let elDemoModalImage = document.getElementsByClassName("demo-modal-image")[0];
+        registerModalImage(elDemoModalImage);
+    }());
+
     /** Carousel */
 
     (function () {
