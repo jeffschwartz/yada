@@ -9,7 +9,6 @@ export let elRemoveClassName = (element, classNamesToRemove) => {
 };
 
 export let elHasClassName = (el, classNames) => {
-    let elClassNames = el.className.split(" ");
     classNames = Array.isArray(classNames) && classNames || [classNames];
     return el.className.split(" ").some(elClassName => {
         return classNames.some(elClassName2 => elClassName === elClassName2);
