@@ -8,8 +8,11 @@ window.addEventListener("load", function (e) {
     /** Modal Image */
 
     (function () {
-        let elDemoModalImage = document.getElementsByClassName("demo-modal-image")[0];
-        registerModalImage(elDemoModalImage);
+        let elsDemoModalImage = document.getElementsByClassName("demo-modal-image");
+        registerModalImage(elsDemoModalImage[0]);
+        registerModalImage(elsDemoModalImage[1]);
+        registerModalImage(elsDemoModalImage[2]);
+        registerModalImage(elsDemoModalImage[3]);
     }());
 
     /** Carousel */
