@@ -6,8 +6,11 @@ import { elRemoveClassName } from "./generic";
 
 const register = (image, options) => {
     let elImage = typeof image === "string" && document.getElementById(image) || image;
+    let elViewer = document.getElementsByClassName("modal-image")[0];
     let api = elImage.modalImage = {
-        elViewer: document.getElementsByClassName("modal-image")[0],
+        elViewer,
+        elModalImageContent: elViewer.getElementsByClassName("modal-image__content")[0],
+        elModalImageCaption: elViewer.getElementsByClassName("modal-image__caption")[0],
         imageSource: elImage.src,
         imageCaption: elImage.alt
     };
@@ -24,10 +27,8 @@ const register = (image, options) => {
 };
 
 let imageSourceClickEventHandler = function (e) {
-    let elModalImageContent = this.modalImage.elViewer.getElementsByClassName("modal-image__content")[0];
-    let elModalImageCaption = this.modalImage.elViewer.getElementsByClassName("modal-image__caption")[0];
-    elModalImageContent.src = this.modalImage.imageSource;
-    elModalImageCaption.innerHTML = this.modalImage.imageCaption;
+    this.modalImage.elModalImageContent.src = this.modalImage.imageSource;
+    this.modalImage.elModalImageCaption.innerHTML = this.modalImage.imageCaption;
     this.modalImage.elViewer.className += " modal-image--visible";
     this.modalImage.elViewer.addEventListener("click", modalImageContentClickHandler(this), false);
 };
