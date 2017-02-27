@@ -2,9 +2,16 @@
  * Navbar
  */
 
+$navbar-background-color: #eee;
+$navbar-inverted-background-color: #000;
+$navbar-color: #000;
+$navbar-inverted-color: #fff;
+
 .navbar {
     width: 100%;
     font-weight: normal;
+    color: $navbar-color;
+    background-color: $navbar-background-color;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     overflow: hidden;
     min-height: 50px;
@@ -14,18 +21,20 @@
         margin: 0;
         padding: 0;
     }
-}
-
-// Default coloring
-.navbar--default {
-    background-color: #eee;
-    color: #000;
+    .navbar__nav:hover, .navbar__toggle:hover {
+        color: $navbar-inverted-color;
+        background-color: $navbar-inverted-background-color;
+    }
 }
 
 // Inverted coloring
 .navbar--inverted {
-    background-color: #000;
-    color: #fff;
+    color: $navbar-inverted-color;
+    background-color: $navbar-inverted-background-color;
+    .navbar__nav:hover, .navbar__toggle:hover {
+        color: $navbar-color;
+        background-color: $navbar-background-color;
+    }
 }
 
 .navbar__header {
@@ -38,7 +47,8 @@
     position: relative;
     float: right;
     &:hover {
-        background-color: #d7d7d7;
+        color: $navbar-inverted-color;
+        background-color: $navbar-inverted-background-color;
     }
     label {
         display: block;
@@ -108,16 +118,6 @@
     padding-bottom: 1rem;
 }
 
-.navbar--default .navbar__nav-items {
-    background-color: #eee;
-    color: #000;
-}
-
-.navbar--inverted .navbar__nav-items {
-    background-color: #000;
-    color: #fff;
-}
-
 .navbar__checkbox:checked ~ .navbar__nav-items {
         display: block;
 }
@@ -126,7 +126,8 @@
 .navbar__nav {
     display: block;
     &:hover {
-        background-color: #d7d7d7;
+        color: $navbar-inverted-color;
+        background-color: $navbar-inverted-background-color;
     }
 }
 
@@ -139,12 +140,9 @@
 .navbar__nav a {
     display: block;
     padding: 0 15px;
-    color: #000;
+    background-color: inherit;
+    color: inherit;
     text-decoration: none;
-}
-
-.navbar.navbar--inverted .navbar__nav a {
-    color: #fff;
 }
 
 /* small device columns, e.g. tablet */
