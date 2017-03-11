@@ -1,3 +1,4 @@
+import registerAccordion from "./accordion";
 import registerModalImage from "./modal-image";
 import registerTabBar from "./tab";
 import registerCarousel from "./carousel";
@@ -5,6 +6,41 @@ import registerBillboard from "./billboard";
 import { elHasClassName, elRemoveClassName } from "./generic";
 
 window.addEventListener("load", function (e) {
+    /** Accordion */
+
+    (function () {
+        let elsAccordion = document.getElementsByClassName("accordion");
+
+        // Enabled
+        registerAccordion(elsAccordion[0]);
+
+        // Disabled
+        registerAccordion(elsAccordion[1]);
+
+        // Pass openCallback option to register, which Accordion will call when user clicks
+        // to display the content. Return true to show content and false to not show content.
+
+        let openCallback = (elContent, cb) => {
+            // simulate an async process
+            setTimeout(function () {
+                elContent.textContent = "Content displayed dynamically via accordion's openCallback option.";
+                cb(true); // show the content
+            }, 1);
+        };
+        registerAccordion(elsAccordion[2], {openCallback: openCallback});
+
+        // Pass closeCallback option to register, which Accordion will call when user clicks
+        // to close the content. Return true to close content and false to not close content.
+
+        let closeCallback = (elContent, cb) => {
+            // simulate an async process
+            setTimeout(function () {
+                cb(false); // don't allow the accordion to close
+            }, 1);
+        };
+        registerAccordion(elsAccordion[3], {closeCallback: closeCallback});
+    }());
+
     /** Modal Image */
 
     (function () {

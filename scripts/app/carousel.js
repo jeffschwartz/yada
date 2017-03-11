@@ -131,8 +131,8 @@ let handleCarouselIndicatorClick = function (e) {
     // remove "carousel__indicator--active" from class names
     elRemoveClassName(this.carousel.elActiveIndicator, "carousel__indicator--active");
     // get the carousel indicator associated with this click event
-    elCarouselIndicator = elHasClassName(e.target, "carousel__indicator-glyph-inner")
-        && e.target.parentElement.parentElement || e.target.parentElement;
+    elCarouselIndicator = elHasClassName(e.target, "carousel__indicator-glyph-inner") &&
+        e.target.parentElement.parentElement || e.target.parentElement;
     // get the indicator's "data-for-slide" attribute value
     let forIndicator = this.carousel.currentSlide =
         parseInt(elCarouselIndicator.getAttribute("data-for-slide"));
