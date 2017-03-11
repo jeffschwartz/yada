@@ -17,17 +17,28 @@ window.addEventListener("load", function (e) {
         // Disabled
         registerAccordion(elsAccordion[1]);
 
-        // Pass optional callback to register, which Accordion will call when user clicks
+        // Pass openCallback option to register, which Accordion will call when user clicks
         // to display the content. Return true to show content and false to not show content.
 
-        let cb = (elContent, cb) => {
+        let openCallback = (elContent, cb) => {
             // simulate an async process
             setTimeout(function () {
-                elContent.textContent = "This content will be shown.";
+                elContent.textContent = "Content displayed dynamically via accordion's openCallback option.";
                 cb(true); // show the content
             }, 1);
         };
-        registerAccordion(elsAccordion[2], {callback: cb});
+        registerAccordion(elsAccordion[2], {openCallback: openCallback});
+
+        // Pass closeCallback option to register, which Accordion will call when user clicks
+        // to close the content. Return true to close content and false to not close content.
+
+        let closeCallback = (elContent, cb) => {
+            // simulate an async process
+            setTimeout(function () {
+                cb(false); // don't allow the accordion to close
+            }, 1);
+        };
+        registerAccordion(elsAccordion[3], {closeCallback: closeCallback});
     }());
 
     /** Modal Image */

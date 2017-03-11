@@ -8,14 +8,15 @@ import { elRemoveClassName, elHasClassName } from "./generic";
  * Accordion
  */
 
-const register = (accordion, { callback = null } = {}) => {
+const register = (accordion, { openCallback = null, closeCallback = null } = {}) => {
     let elAccordion = typeof accordion === "string" && document.getElementById(accordion) || accordion;
     if (!elAccordion) {
         console.log("Accordion Error - expected accordion to be either an element or element id");
         return;
     }
     elAccordion.accordion = {
-        callback,
+        openCallback,
+        closeCallback,
         elOpenClose: elAccordion.getElementsByClassName("accordion__open-close")[0],
         elOpenCloseGlyph: elAccordion.getElementsByClassName("accordion__open-close-glyph")[0],
         elContent: elAccordion.getElementsByClassName("accordion__content")[0]
@@ -31,10 +32,18 @@ let clickHandler = function (e) {
     if (e.target === this.accordion.elOpenClose ||
         e.target === this.accordion.elOpenCloseGlyph) {
         if (elHasClassName(this, "accordion--visible")) {
-            elRemoveClassName(this, "accordion--visible");
+            if (this.accordion.closeCallback) {
+                this.accordion.closeCallback(this.accordion.elContent, (close) => {
+                    if (close) {
+                        elRemoveClassName(this, "accordion--visible");
+                    }
+                });
+            } else {
+                elRemoveClassName(this, "accordion--visible");
+            }
         } else {
-            if (this.accordion.callback) {
-                this.accordion.callback(this.accordion.elContent, (show) => {
+            if (this.accordion.openCallback) {
+                this.accordion.openCallback(this.accordion.elContent, (show) => {
                     if (show) {
                         this.className += " accordion--visible";
                     }
