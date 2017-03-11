@@ -8,14 +8,14 @@ import { elRemoveClassName, elHasClassName } from "./generic";
  * Accordion
  */
 
-const register = (accordion, options) => {
+const register = (accordion, { callback = null } = {}) => {
     let elAccordion = typeof accordion === "string" && document.getElementById(accordion) || accordion;
     if (!elAccordion) {
         console.log("Accordion Error - expected accordion to be either an element or element id");
         return;
     }
     elAccordion.accordion = {
-        callback: options && typeof options === "function" && options || null,
+        callback,
         elOpenClose: elAccordion.getElementsByClassName("accordion__open-close")[0],
         elOpenCloseGlyph: elAccordion.getElementsByClassName("accordion__open-close-glyph")[0],
         elContent: elAccordion.getElementsByClassName("accordion__content")[0]
@@ -25,7 +25,11 @@ const register = (accordion, options) => {
 
 let clickHandler = function (e) {
     e.preventDefault();
-    if (e.target === this.accordion.elOpenClose || e.target === this.accordion.elOpenCloseGlyph) {
+    if (elHasClassName(this, "accordion--disabled")) {
+        return;
+    }
+    if (e.target === this.accordion.elOpenClose ||
+        e.target === this.accordion.elOpenCloseGlyph) {
         if (elHasClassName(this, "accordion--visible")) {
             elRemoveClassName(this, "accordion--visible");
         } else {

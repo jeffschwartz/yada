@@ -8,6 +8,10 @@
         background-color: #f5f5f5;
         font-size: 1rem;
     }
+    &__heading {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
     &__open-close {
         display: block;
         position: absolute;
@@ -39,5 +43,11 @@
     }
     &--visible &__open-close-glyph::before {
         content: "-";
+    }
+    &--disabled &__open-close {
+        cursor: not-allowed;
+    }
+    &--disabled &__heading, &--disabled &__open-close-glyph::before {
+        color: #d5d5d5;
     }
 }

@@ -10,24 +10,24 @@ window.addEventListener("load", function (e) {
 
     (function () {
         let elsAccordion = document.getElementsByClassName("accordion");
+
+        // Enabled
         registerAccordion(elsAccordion[0]);
+
+        // Disabled
+        registerAccordion(elsAccordion[1]);
 
         // Pass optional callback to register, which Accordion will call when user clicks
         // to display the content. Return true to show content and false to not show content.
 
-        registerAccordion(elsAccordion[1], (elContent, cb) => {
+        let cb = (elContent, cb) => {
             // simulate an async process
             setTimeout(function () {
-                cb(false); // don't show the content
-            }, 2000);
-        });
-
-        registerAccordion(elsAccordion[2], (elContent, cb) => {
-            // simulate an async process
-            setTimeout(function () {
+                elContent.textContent = "This content will be shown.";
                 cb(true); // show the content
-            }, 2000);
-        });
+            }, 1);
+        };
+        registerAccordion(elsAccordion[2], {callback: cb});
     }());
 
     /** Modal Image */
