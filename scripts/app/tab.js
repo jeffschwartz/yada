@@ -21,11 +21,13 @@ const register = (tabBar, options) => {
     let api = {
         elActiveTabBarTab: null,
         elActiveTabBarPaneId: null,
-        elActiveTabBarPane: null
+        elActiveTabBarPane: null,
+        focusHandler,
+        blurHandler
     };
     // setup events
-    elTabBar.addEventListener("focus", focusEventHandler, true);
-    elTabBar.addEventListener("blur", blurEventHandler, true);
+    elTabBar.addEventListener("focus", focusHandler, true);
+    elTabBar.addEventListener("blur", blurHandler, true);
     // configure the api
     api.showTab = showTab;
     api.elsTabBarTabs = elTabBar.getElementsByClassName("tab-bar__tabs")[0];
@@ -45,7 +47,7 @@ const register = (tabBar, options) => {
     return elTabBar;
 };
 
-let focusEventHandler = (e) => {
+let focusHandler = (e) => {
     let elParent = e.target && e.target.parentElement;
     console.log("focus event handler!. e.target=", e.target);
     if (elParent && elHasClassName(elParent, "tab-bar-tab") && !elHasClassName(elParent, "tab-bar-tab--active")) {
@@ -54,7 +56,7 @@ let focusEventHandler = (e) => {
     }
 };
 
-let blurEventHandler = (e) => {
+let blurHandler = (e) => {
     let elParent = e.target && e.target.parentElement;
     console.log("blur event handler!. e.target=", e.target);
     if (elParent && elHasClassName(elParent, "tab-bar-tab") &&
