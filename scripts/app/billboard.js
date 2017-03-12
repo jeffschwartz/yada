@@ -1,4 +1,4 @@
-import { elRemoveClassName, elHasClassName } from "./generic";
+import { elRemoveClassName } from "./generic";
 
 /**
  * Billboard
@@ -60,17 +60,6 @@ let handleBillboardCycle = function () {
         this.querySelector(`div.billboard__slide[data-billboard-slide="${this.billboard.currentSlide}"]`);
     // add class "billboard__slide--active" to the active slide
     this.billboard.elActiveSlide.className += " billboard__slide--active";
-    // // get the slide's "data-billboard-slide" attribute value
-    // let forIndicator = this.billboard.elActiveSlide.getAttribute("data-carousel-slide");
-    // // abort if slide missing "data-carousel-slide" attribute
-    // if (!forIndicator) {
-    //     console.log("Carousel Error - all slides must have a \"data-carousel-slide\" attribute");
-    //     return;
-    // }
-    // // set the appropriate indicator active
-    // this.billboard.elActiveIndicator =
-    //     this.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
-    // this.billboard.elActiveIndicator.className += " carousel__indicator--active";
     return;
 };
 

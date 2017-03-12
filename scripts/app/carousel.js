@@ -20,7 +20,8 @@ const register = (carousel, { cycleDelay = 0, loopNTimes = 0 } = {}) => {
         cycleIntervalID: 0,
         cycleCount: 0,
         loopNTimes,
-        loopNTimesCount: 0
+        loopNTimesCount: 0,
+        clickHandler
     };
     // abort if there are no slides
     if (!api.totalSlides) {
@@ -28,7 +29,7 @@ const register = (carousel, { cycleDelay = 0, loopNTimes = 0 } = {}) => {
         return;
     }
     // setup events which are all delegated through the carousel element
-    elCarousel.addEventListener("click", clickEventHandler, false);
+    elCarousel.addEventListener("click", clickHandler, false);
     // note the current active slide
     api.elActiveSlide = elCarousel.querySelector("div.carousel__slide.carousel__slide--active");
     // abort if there is no active slide
@@ -58,7 +59,7 @@ const register = (carousel, { cycleDelay = 0, loopNTimes = 0 } = {}) => {
  * Handle all click events via delegation through the carousel element.
  */
 
-let clickEventHandler = function (e) {
+let clickHandler = function (e) {
     console.log("click event handler!. e.target=", e.target);
     // cancel cycling through slides when user clicks anywhere in the carousel
     clearInterval(this.carousel.cycleIntervalID);

@@ -1,9 +1,5 @@
 import { elRemoveClassName, elHasClassName } from "./generic";
 
-// TODO(JS): standardize event handler function names - project-wide
-// TODO(JS): make all event handlers removable - project-wide
-// TODO(JS): refactor element === null guards
-
 /**
  * Accordion
  */
@@ -19,7 +15,8 @@ const register = (accordion, { openCallback = null, closeCallback = null } = {})
         closeCallback,
         elOpenClose: elAccordion.getElementsByClassName("accordion__open-close")[0],
         elOpenCloseGlyph: elAccordion.getElementsByClassName("accordion__open-close-glyph")[0],
-        elContent: elAccordion.getElementsByClassName("accordion__content")[0]
+        elContent: elAccordion.getElementsByClassName("accordion__content")[0],
+        clickHandler
     };
     elAccordion.addEventListener("click", clickHandler, false);
 };
