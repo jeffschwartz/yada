@@ -1,10 +1,5 @@
 import { elRemoveClassName, elHasClassName } from "./generic";
 
-// TODO(JS): add event handlers to apis so they can be removed - done
-// TODO(JS): standardize event handler function names - project-wide - done
-// TODO(JS): refactor element === null guards
-// TODO(JS): make the register function callable multiple times by removing event listeners and apis from the component
-
 /**
  * Accordion
  */
