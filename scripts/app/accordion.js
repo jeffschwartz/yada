@@ -5,20 +5,40 @@ import { elRemoveClassName, elHasClassName } from "./generic";
  */
 
 const register = (accordion, { openCallback = null, closeCallback = null } = {}) => {
-    let elAccordion = typeof accordion === "string" && document.getElementById(accordion) || accordion;
+    let elAccordion;
+    let elOpenClose;
+    let elOpenCloseGlyph;
+    let elContent;
+    elAccordion = typeof accordion === "string" && document.getElementById(accordion) || accordion;
     if (!elAccordion) {
         console.log("Accordion Error - expected accordion to be either an element or element id");
+        return;
+    }
+    elOpenClose = elAccordion.getElementsByClassName("accordion__open-close")[0];
+    if (!elOpenClose) {
+        console.log(`Accordion Error - expected element with class "accordion__open-close"`);
+        return;
+    }
+    elOpenCloseGlyph = elAccordion.getElementsByClassName("accordion__open-close-glyph")[0];
+    if (!elOpenCloseGlyph) {
+        console.log(`Accordion Error - expected element with class "accordion__open-close-glyph"`);
+        return;
+    }
+    elContent = elAccordion.getElementsByClassName("accordion__content")[0];
+    if (!elContent) {
+        console.log(`Accordion Error - expected element with class "accordion__content"`);
         return;
     }
     elAccordion.accordion = {
         openCallback,
         closeCallback,
-        elOpenClose: elAccordion.getElementsByClassName("accordion__open-close")[0],
-        elOpenCloseGlyph: elAccordion.getElementsByClassName("accordion__open-close-glyph")[0],
-        elContent: elAccordion.getElementsByClassName("accordion__content")[0],
+        elOpenClose,
+        elOpenCloseGlyph,
+        elContent,
         clickHandler
     };
     elAccordion.addEventListener("click", clickHandler, false);
+    return elAccordion;
 };
 
 let clickHandler = function (e) {
