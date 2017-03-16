@@ -5,25 +5,47 @@ import { elRemoveClassName } from "./generic";
  */
 
 const register = (image, options) => {
-    let elImage = typeof image === "string" && document.getElementById(image) || image;
-    let elViewer = document.getElementsByClassName("modal-image")[0];
-    let api = elImage.modalImage = {
+    let elImage;
+    let elViewer;
+    let elModalImageContent;
+    let elModalImageCaption;
+    let imageSource;
+    let imageCaption;
+    elImage = typeof image === "string" && document.getElementById(image) || image;
+    if (!elImage) {
+        console.log("Modal-Image Error - expected image to be either an element or element id");
+        return;
+    }
+    imageSource = elImage.src;
+    if (!imageSource) {
+        console.log(`Modal-Image Error - expected source image to have "src" attribute!`);
+        return;
+    }
+    imageCaption = elImage.alt; // optional
+    elViewer = document.getElementsByClassName("modal-image")[0];
+    if (!elViewer) {
+        console.log("Modal-Image Error - expected to find image viewer!");
+        return;
+    }
+    elModalImageContent = elViewer.getElementsByClassName("modal-image__content")[0];
+    if (!elModalImageContent) {
+        console.log(`Modal-Image-Viewer Error - expected to find element with class "modal-image__content!`);
+        return;
+    }
+    elModalImageCaption = elViewer.getElementsByClassName("modal-image__caption")[0];
+    if (!elModalImageCaption) {
+        console.log(`Modal-Image-Viewer Error - expected to find element with class "modal-image__caption!`);
+        return;
+    }
+    elImage.modalImage = {
         elViewer,
-        elModalImageContent: elViewer.getElementsByClassName("modal-image__content")[0],
-        elModalImageCaption: elViewer.getElementsByClassName("modal-image__caption")[0],
-        imageSource: elImage.src,
-        imageCaption: elImage.alt,
+        elModalImageContent,
+        elModalImageCaption,
+        imageSource,
+        imageCaption,
         imageSourceClickHandler,
         modalImageContentClickHandler: modalImageContentClickHandler.bind(elImage)
     };
-    if (!elImage) {
-        console.log("Modal-Image Error - expected to find source image!");
-        return;
-    }
-    if (!api.imageSource) {
-        console.log("Modal-Image Error - expected source image to have a \"src\" attribute!");
-        return;
-    }
     elImage.addEventListener("click", imageSourceClickHandler, false);
     return elImage;
 };

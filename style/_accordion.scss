@@ -12,7 +12,7 @@
         font-size: 1.1rem;
         font-weight: bold;
     }
-    &__open-close {
+    &__toggle {
         display: block;
         position: absolute;
         top: 5px;
@@ -41,13 +41,13 @@
     &--visible &__content {
         display: block;
     }
-    &--visible &__open-close-glyph::before {
+    &--visible &__toggle-glyph::before {
         content: "-";
     }
-    &--disabled &__open-close {
+    &--disabled &__toggle {
         cursor: not-allowed;
     }
-    &--disabled &__heading, &--disabled &__open-close-glyph::before {
+    &--disabled &__heading, &--disabled &__toggle-glyph::before {
         color: #d5d5d5;
     }
 }

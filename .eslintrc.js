@@ -6,7 +6,8 @@ module.exports = {
         "json"
     ],
     "env": {
-        "browser": true
+        "browser": true,
+        "es6": true
     },
     "parser": "babel-eslint",
     "parserOptions": {
@@ -24,7 +25,9 @@ module.exports = {
     },
     "rules": {
         "semi": ["error", "always"],
-        "quotes": ["error", "double"],
+        "quotes": ["error", "double", {
+            "allowTemplateLiterals": true
+        }],
         "indent": ["error", 4],
         "no-unused-vars": 1,
         "eol-last": 0,
