@@ -5,20 +5,40 @@ import { elRemoveClassName, elHasClassName } from "./generic";
  */
 
 const register = (accordion, { openCallback = null, closeCallback = null } = {}) => {
-    let elAccordion = typeof accordion === "string" && document.getElementById(accordion) || accordion;
+    let elAccordion;
+    let elToggle;
+    let elToggleGlyph;
+    let elContent;
+    elAccordion = typeof accordion === "string" && document.getElementById(accordion) || accordion;
     if (!elAccordion) {
         console.log("Accordion Error - expected accordion to be either an element or element id");
+        return;
+    }
+    elToggle = elAccordion.getElementsByClassName("accordion__toggle")[0];
+    if (!elToggle) {
+        console.log(`Accordion Error - expected element with class "accordion__toggle"`);
+        return;
+    }
+    elToggleGlyph = elAccordion.getElementsByClassName("accordion__toggle-glyph")[0];
+    if (!elToggleGlyph) {
+        console.log(`Accordion Error - expected element with class "accordion__toggle-glyph"`);
+        return;
+    }
+    elContent = elAccordion.getElementsByClassName("accordion__content")[0];
+    if (!elContent) {
+        console.log(`Accordion Error - expected element with class "accordion__content"`);
         return;
     }
     elAccordion.accordion = {
         openCallback,
         closeCallback,
-        elOpenClose: elAccordion.getElementsByClassName("accordion__open-close")[0],
-        elOpenCloseGlyph: elAccordion.getElementsByClassName("accordion__open-close-glyph")[0],
-        elContent: elAccordion.getElementsByClassName("accordion__content")[0],
+        elToggle,
+        elToggleGlyph,
+        elContent,
         clickHandler
     };
     elAccordion.addEventListener("click", clickHandler, false);
+    return elAccordion;
 };
 
 let clickHandler = function (e) {
@@ -26,8 +46,8 @@ let clickHandler = function (e) {
     if (elHasClassName(this, "accordion--disabled")) {
         return;
     }
-    if (e.target === this.accordion.elOpenClose ||
-        e.target === this.accordion.elOpenCloseGlyph) {
+    if (e.target === this.accordion.elToggle ||
+        e.target === this.accordion.elToggleGlyph) {
         if (elHasClassName(this, "accordion--visible")) {
             if (this.accordion.closeCallback) {
                 this.accordion.closeCallback(this.accordion.elContent, (close) => {

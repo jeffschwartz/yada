@@ -12,38 +12,46 @@ import { elRemoveClassName, elHasClassName } from "./generic";
  *   clickHandlers: array of tab click handlers, one for each tab.
  *   Use tab click handlers when your content is dynamic (e.g. calculated, AJAX, etc.)
  *   Pass null for any tab whose content is static and provided in its associated "tab-bar__pane."
- *   Pass null for clickHandlers itslelf if all of the tabs have static content provided in their
+ *   Pass null for clickHandlers itself if all of the tabs have static content provided in their
  *   associated "tab-bar__pane"s. Define you click handlers as follows:
  *   clickHandler(elTabBarTab, elTabBarPaneContent)
  */
 const register = (tabBar, options) => {
-    let elTabBar = typeof (tabBar) === "string" && document.getElementById(tabBar) || tabBar;
-    let api = {
-        elActiveTabBarTab: null,
-        elActiveTabBarPaneId: null,
-        elActiveTabBarPane: null,
+    let elTabBar;
+    let elsTabBarTabs;
+    let elActiveTabBarTab;
+    let elActiveTabBarPane;
+    let activeTabBarPaneId;
+    elTabBar = typeof (tabBar) === "string" && document.getElementById(tabBar) || tabBar;
+    if (!elTabBar) {
+        console.log("Tab-Bar Error - expected tabBar to be either an element or element id");
+        return;
+    }
+    elsTabBarTabs = elTabBar.getElementsByClassName("tab-bar__tabs")[0];
+    if (!elsTabBarTabs) {
+        console.log(`Tab-Bar Error - expected to find element with class "tab-bar__tabs"!`);
+        return;
+    }
+    elActiveTabBarTab = elsTabBarTabs.getElementsByClassName("tab-bar-tab--active")[0];
+    if (elActiveTabBarTab) {
+        // set the appropriate tab-bar-pane active
+        activeTabBarPaneId = elActiveTabBarTab.getElementsByClassName("tab-bar-tab__label")[0]
+            .getAttribute("href").substring(1);
+        if (!activeTabBarPaneId) {
+            console.log(`Tab-Bar Error - expected element with class "tab-bar-tab__label" to have "href" attribute!`);
+            return;
+        }
+        elActiveTabBarPane = document.getElementById(activeTabBarPaneId);
+        elActiveTabBarPane.className = elActiveTabBarPane.className + " tab-bar-pane--active";
+    }
+    elTabBar.tabBar = {
         focusHandler,
-        blurHandler
+        blurHandler,
+        showTab: showTab
     };
     // setup events
     elTabBar.addEventListener("focus", focusHandler, true);
     elTabBar.addEventListener("blur", blurHandler, true);
-    // configure the api
-    api.showTab = showTab;
-    api.elsTabBarTabs = elTabBar.getElementsByClassName("tab-bar__tabs")[0];
-    api.elsTabBarPanes = elTabBar.getElementsByClassName("tab-bar__panes")[0];
-    api.elActiveTabBarTab = api.elsTabBarTabs.getElementsByClassName("tab-bar-tab--active")[0];
-    if (api.elActiveTabBarTab) {
-        // set the appropriate tab-bar-pane active
-        api.elActiveTabBarPaneId =
-            api.elActiveTabBarTab.getElementsByClassName("tab-bar-tab__label")[0]
-                .getAttribute("href").substring(1);
-        api.elActiveTabBarPane = document.getElementById(api.elActiveTabBarPaneId);
-        api.elActiveTabBarPane.className = api.elActiveTabBarPane.className + " tab-bar-pane--active";
-    }
-    // attach the api directly to the tab bar element
-    elTabBar.tabBar = api;
-    // return the tab-bar element for chaining
     return elTabBar;
 };
 
