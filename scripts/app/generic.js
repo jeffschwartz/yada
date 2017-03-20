@@ -14,3 +14,9 @@ export let elHasClassName = (el, classNames) => {
         return classNames.some(elClassName2 => elClassName === elClassName2);
     });
 };
+
+export let objEquals = (el, els) => {
+    return els.some(element => {
+        return el === element;
+    });
+};
