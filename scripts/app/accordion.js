@@ -1,4 +1,4 @@
-import { elRemoveClassName, elHasClassName } from "./generic";
+import { elRemoveClassName, elHasClassName, objEquals } from "./generic";
 
 /**
  * Accordion
@@ -6,12 +6,24 @@ import { elRemoveClassName, elHasClassName } from "./generic";
 
 const register = (accordion, { openCallback = null, closeCallback = null } = {}) => {
     let elAccordion;
+    let elHeader;
+    let elHeading;
     let elToggle;
     let elToggleGlyph;
     let elContent;
     elAccordion = typeof accordion === "string" && document.getElementById(accordion) || accordion;
     if (!elAccordion) {
         console.log("Accordion Error - expected accordion to be either an element or element id");
+        return;
+    }
+    elHeader = elAccordion.getElementsByClassName("accordion__header")[0];
+    if (!elHeader) {
+        console.log(`Accordion Error - expected element with class "accordion__header"`);
+        return;
+    }
+    elHeading = elAccordion.getElementsByClassName("accordion__heading")[0];
+    if (!elHeading) {
+        console.log(`Accordion Error - expected element with class "accordion__heading"`);
         return;
     }
     elToggle = elAccordion.getElementsByClassName("accordion__toggle")[0];
@@ -32,6 +44,8 @@ const register = (accordion, { openCallback = null, closeCallback = null } = {})
     elAccordion.accordion = {
         openCallback,
         closeCallback,
+        elHeader,
+        elHeading,
         elToggle,
         elToggleGlyph,
         elContent,
@@ -42,12 +56,16 @@ const register = (accordion, { openCallback = null, closeCallback = null } = {})
 };
 
 let clickHandler = function (e) {
-    e.preventDefault();
-    if (elHasClassName(this, "accordion--disabled")) {
-        return;
-    }
-    if (e.target === this.accordion.elToggle ||
-        e.target === this.accordion.elToggleGlyph) {
+    if (objEquals(e.target, [
+        this.accordion.elHeader,
+        this.accordion.elHeading,
+        this.accordion.elToggle,
+        this.accordion.elToggleGlyph
+    ])) {
+        e.preventDefault();
+        if (elHasClassName(this, "accordion--disabled")) {
+            return;
+        }
         if (elHasClassName(this, "accordion--visible")) {
             if (this.accordion.closeCallback) {
                 this.accordion.closeCallback(this.accordion.elContent, (close) => {
