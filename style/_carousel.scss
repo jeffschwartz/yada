@@ -1,7 +1,5 @@
 .carousel {
-    display: block;
     position: relative;
-    width: 100%;
     &--rounded {
         .carousel__control--left {
             border-top-left-radius: 4px;
@@ -26,7 +24,7 @@
         }
         &-image {
             display: block;
-            width: 70%;
+            max-width: 100%;
             height: auto;
             margin: auto;
         }
@@ -54,7 +52,7 @@
         bottom: 0;
         width: 15%;
         height: 100%;
-        background-color: #666;
+        background-color: transparent;
         text-align: center;
         &--left {
             left: 0;
@@ -74,7 +72,7 @@
         opacity: 0.5;
         transition: opacity .8s;
         font-size: 1.5rem;
-        border: 1px solid #fff;
+        border: 3px solid #fff;
         border-radius: 50%;
         margin: -15px;
         padding: 0 7px;
