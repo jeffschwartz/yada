@@ -1,3 +1,4 @@
+import registerAccordionGroup from "./accordion-group";
 import registerAccordion from "./accordion";
 import registerModalImage from "./modal-image";
 import registerTabBar from "./tab";
@@ -6,6 +7,23 @@ import registerBillboard from "./billboard";
 import { elHasClassName, elRemoveClassName } from "./generic";
 
 window.addEventListener("load", function (e) {
+    /** Accordion Group */
+    (function () {
+        let elsAccordionGroup = document.getElementsByClassName("accordion-group");
+
+        // Accordion Group
+        let ag = registerAccordionGroup(elsAccordionGroup[0]);
+        registerAccordion(ag.accordionGroup.elsAccordion[0]);
+        registerAccordion(ag.accordionGroup.elsAccordion[1]);
+        registerAccordion(ag.accordionGroup.elsAccordion[2]);
+
+        // Accordion Group List
+        let agl = registerAccordionGroup(elsAccordionGroup[1]);
+        registerAccordion(agl.accordionGroup.elsAccordion[0]);
+        registerAccordion(agl.accordionGroup.elsAccordion[1]);
+        registerAccordion(agl.accordionGroup.elsAccordion[2]);
+    }());
+
     /** Accordion */
 
     (function () {
