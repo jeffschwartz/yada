@@ -16,6 +16,9 @@ const register = (image, options) => {
         console.log("Modal-Image Error - expected image to be either an element or element id");
         return;
     }
+    if (elImage.modalImage) {
+        elImage.removeEventListener("click", imageSourceClickHandler, false);
+    }
     imageSource = elImage.src;
     if (!imageSource) {
         console.log(`Modal-Image Error - expected source image to have "src" attribute!`);
