@@ -16,6 +16,9 @@ const register = (accordion, { openCallback = null, closeCallback = null } = {})
         console.log("Accordion Error - expected accordion to be either an element or element id");
         return;
     }
+    if (elAccordion.accordion) {
+        elAccordion.removeEventListener("click", clickHandler, false);
+    }
     elHeader = elAccordion.getElementsByClassName("accordion__header")[0];
     if (!elHeader) {
         console.log(`Accordion Error - expected element with class "accordion__header"`);

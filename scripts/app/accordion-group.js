@@ -12,6 +12,9 @@ const register = (accordionGroup, options) => {
         console.log("Accordion Group Error - expected accordionGroup to be either an element or element id");
         return;
     }
+    if (elAccordionGroup.accordionGroup) {
+        elAccordionGroup.removeEventListener("click", clickHandler, true);
+    }
     elsAccordion = elAccordionGroup.getElementsByClassName("accordion");
     if (!elsAccordion) {
         console.log(`Accordion Group Error - expected element(s) with class "accordion"`);

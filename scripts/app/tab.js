@@ -4,18 +4,6 @@ import { elRemoveClassName, elHasClassName } from "./generic";
  * Togglable Tab Bar
  */
 
-/**
- * register - call to add togglable functionality to a tab-bar.
- * tabBar - if string then assumed to be the tab bar's id, otherwise assumed to be the html DOM element.
- * options - {}, a hash of tab bar options.
- *  tabOptions: - {}, a hash of tab options.
- *   clickHandlers: array of tab click handlers, one for each tab.
- *   Use tab click handlers when your content is dynamic (e.g. calculated, AJAX, etc.)
- *   Pass null for any tab whose content is static and provided in its associated "tab-bar__pane."
- *   Pass null for clickHandlers itself if all of the tabs have static content provided in their
- *   associated "tab-bar__pane"s. Define you click handlers as follows:
- *   clickHandler(elTabBarTab, elTabBarPaneContent)
- */
 const register = (tabBar, options) => {
     let elTabBar;
     let elsTabBarTabs;
@@ -26,6 +14,10 @@ const register = (tabBar, options) => {
     if (!elTabBar) {
         console.log("Tab-Bar Error - expected tabBar to be either an element or element id");
         return;
+    }
+    if (elTabBar.tabBar) {
+        elTabBar.removeEventListener("focus", focusHandler, true);
+        elTabBar.removeEventListener("blur", blurHandler, true);
     }
     elsTabBarTabs = elTabBar.getElementsByClassName("tab-bar__tabs")[0];
     if (!elsTabBarTabs) {

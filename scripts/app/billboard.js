@@ -4,10 +4,6 @@ import { elRemoveClassName } from "./generic";
  * Billboard
  */
 
-/**
- * Register a billboard.
- */
-
 const register = (billboard, { cycleDelay = 3000 } = {}) => {
     let elBillboard;
     let currentSlide;

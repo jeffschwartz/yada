@@ -4,10 +4,6 @@ import { elRemoveClassName, elHasClassName } from "./generic";
  * Carousel
  */
 
-/**
- * Register a carousel.
- */
-
 const register = (carousel, { cycleDelay = 0, loopNTimes = 0 } = {}) => {
     let elCarousel;
     let currentSlide;
@@ -19,6 +15,9 @@ const register = (carousel, { cycleDelay = 0, loopNTimes = 0 } = {}) => {
     if (!elCarousel) {
         console.log("Carousel Error - expected carousel to be either an element or element id");
         return;
+    }
+    if (elCarousel.carousel) {
+        elCarousel.removeEventListener("click", clickHandler, false);
     }
     totalSlides = elCarousel.getElementsByClassName("carousel__slide").length;
     if (!totalSlides) {
