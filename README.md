@@ -16,8 +16,8 @@ Like all adventures, this project is a work in progress. See [Things To Do](#thi
 
 ## Things To Do
 
-+ Add more components. Obviously this one is where the WIP comes from.
++ Constant refactoring...
++ Add more components. Obviously! This is where the WIP comes from.
 + Accessibility.
-+ <del>Carousel desperately needs to be revisited and might merit its own separate project.</del>
-+ Constant refactoring.
++ A Web Component version based on Polymer? Maybe?
 + A React version? Maybe?
