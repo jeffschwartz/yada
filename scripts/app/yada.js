@@ -77,10 +77,6 @@ window.addEventListener("load", function (e) {
             cycleDelay: 2000,
             loopNTimes: 1
         });
-        registerCarousel(elsCarousel[1], {
-            cycleDelay: 2000,
-            loopNTimes: 1
-        });
     }());
 
     /** Billboard */
