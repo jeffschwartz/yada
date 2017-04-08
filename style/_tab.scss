@@ -8,10 +8,12 @@
             @include clearfix;
         }
     }
-    &__panes {}
+    &__panes {
+        display: block;
+    }
 }
 
-.tab-bar-tab {
+.tab {
     display: inline-block;
     border: {
         top: 1px solid transparent;
@@ -40,7 +42,7 @@
         }
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
-        .tab-bar-tab__label {
+        .tab__label {
             cursor: default;
             border-bottom: 1px solid #fff;
         }
