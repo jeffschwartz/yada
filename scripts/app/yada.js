@@ -1,24 +1,25 @@
 import registerAccordionGroup from "./accordion-group";
 import registerAccordion from "./accordion";
 import registerModalImage from "./modal-image";
-import registerTabBar from "./tab";
+import registerTabBar from "./tab-bar";
+import registerTab from "./tab";
 import registerCarousel from "./carousel";
 import registerBillboard from "./billboard";
-import { elHasClassName, elRemoveClassName } from "./generic";
+import { elRemoveClassName } from "./generic";
 
 window.addEventListener("load", function (e) {
     /** Accordion Group */
     (function () {
-        let elsAccordionGroup = document.getElementsByClassName("accordion-group");
+        let elsAG = document.getElementsByClassName("accordion-group");
 
         // Accordion Group
-        let ag = registerAccordionGroup(elsAccordionGroup[0]);
-        registerAccordion(ag.accordionGroup.elsAccordion[0]);
-        registerAccordion(ag.accordionGroup.elsAccordion[1]);
-        registerAccordion(ag.accordionGroup.elsAccordion[2]);
+        registerAccordionGroup(elsAG[0]);
+        registerAccordion(elsAG[0].accordionGroup.elsAccordion[0]);
+        registerAccordion(elsAG[0].accordionGroup.elsAccordion[1]);
+        registerAccordion(elsAG[0].accordionGroup.elsAccordion[2]);
 
         // Accordion Group List
-        let agl = registerAccordionGroup(elsAccordionGroup[1]);
+        let agl = registerAccordionGroup(elsAG[1]);
         registerAccordion(agl.accordionGroup.elsAccordion[0]);
         registerAccordion(agl.accordionGroup.elsAccordion[1]);
         registerAccordion(agl.accordionGroup.elsAccordion[2]);
@@ -89,68 +90,33 @@ window.addEventListener("load", function (e) {
     /** Tab Bar - Static Content */
 
     (function () {
-        // register tab bar
         let elTabBar = document.getElementById("tab-bar-static");
-
-        // show the active tab
-        let elTabBarTab = elTabBar.querySelector("li.tab-bar-tab--active");
-        registerTabBar(elTabBar).tabBar.showTab(elTabBarTab);
-
-        //
-        // tab bar event handling via delegation
-        //
-
-        // call showTab whenever a "click" event bubbles up to a tab-bar-tab element
-        elTabBar.addEventListener("click", (e) => {
-            if (elHasClassName(e.target.parentElement, "tab-bar-tab")) {
-                e.preventDefault();
-                elTabBar.tabBar.showTab(e.target.parentElement);
-            }
-        }, false);
+        registerTabBar(elTabBar, elsTab => {
+            Array.prototype.forEach.call(elsTab,
+                elTab => registerTab(elTab, elTabBar));
+        });
     }());
 
     /** Tab Bar - Dynamic Content */
 
     (function () {
         let elTabBar = document.getElementById("tab-bar-dynamic");
-
-        // the 3rd tab's label element will receive the click event
-        let elTabBarTabLabel = elTabBar.getElementsByClassName("tab-bar__tabs")[0]
-            .getElementsByClassName("tab-bar-tab__label")[2];
-
-        // register tab bar
-        registerTabBar(elTabBar);
-
-        //
-        // tab bar event handling via delegation
-        //
-
-        // call showTab whenever a "click" event bubbles up to a tab-bar-tab element
-        elTabBar.addEventListener("click", (e) => {
-            let elTabBarTab = e.target.parentElement;
-            e.preventDefault();
-            // only respond to clicks on tabs that aren't already active
-            if (elHasClassName(elTabBarTab, "tab-bar-tab") &&
-                !elHasClassName(elTabBarTab, "tab-bar-tab--active")) {
-                elTabBar.tabBar.showTab(elTabBarTab);
-                let id = e.target.getAttribute("href").substring(1);
-                let elTabBarPaneContent =
-                    document.getElementById(id).querySelector("div.tab-bar-pane__content");
-                elTabBarPaneContent.textContent = "Getting content. Please wait...";
-                let elTabBarPane = elTabBarPaneContent.parentElement;
-                elTabBarPane.className = elTabBarPane.className + " tab-bar-pane--pending";
-
-                // simulate an asynchronous process to retrieve the content
-                setTimeout(() => {
-                    elTabBarPaneContent.textContent = `The current date and time is: ${Date()}`;
-                    elRemoveClassName(elTabBarPane, "tab-bar-pane--pending");
-                    elTabBarPane.className += " tab-bar-pane--fulfilled";
-                    setTimeout(() => elRemoveClassName(elTabBarPane, "tab-bar-pane--fulfilled"), 500);
-                }, 1000);
-            }
-        }, false);
-
-        // fire a "click" event on the tab label
-        elTabBarTabLabel.click();
+        let clickCallback = function (elTab, cb) {
+            let elTabPane = elTab.tab.elTabBarPane;
+            let elTabPaneContent = elTab.tab.elTabBarPaneContent;
+            elTabPaneContent.textContent = "Getting content. Please wait...";
+            elTabPane.className = elTabPane.className + " tab-bar-pane--pending";
+            setTimeout(() => {
+                elTabPaneContent.textContent = `The current date and time is: ${Date()}`;
+                elRemoveClassName(elTabPane, "tab-bar-pane--pending");
+                elTabPane.className += " tab-bar-pane--fulfilled";
+                setTimeout(() => elRemoveClassName(elTabPane, "tab-bar-pane--fulfilled"), 500);
+            }, 1000);
+            cb();
+        };
+        registerTabBar(elTabBar, elsTab => {
+            Array.prototype.forEach.call(elsTab,
+                elTab => registerTab(elTab, elTabBar, {clickCallback}));
+        });
     }());
 });
