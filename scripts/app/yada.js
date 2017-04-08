@@ -93,7 +93,7 @@ window.addEventListener("load", function (e) {
         let elTabBar = document.getElementById("tab-bar-static");
         registerTabBar(elTabBar, elsTab => {
             Array.prototype.forEach.call(elsTab,
-                elTab => registerTab(elTab));
+                elTab => registerTab(elTab, elTabBar));
         });
     }());
 
@@ -102,12 +102,10 @@ window.addEventListener("load", function (e) {
     (function () {
         let elTabBar = document.getElementById("tab-bar-dynamic");
         let clickCallback = function (elTab, cb) {
-            let tabPaneId = elTab.getElementsByClassName("tab__label")[0].getAttribute("href").substring(1);
-            let elTabPane = document.getElementById(tabPaneId);
-            let elTabPaneContent = elTabPane.getElementsByClassName("tab-bar-pane__content")[0];
+            let elTabPane = elTab.tab.elTabBarPane;
+            let elTabPaneContent = elTab.tab.elTabBarPaneContent;
             elTabPaneContent.textContent = "Getting content. Please wait...";
             elTabPane.className = elTabPane.className + " tab-bar-pane--pending";
-            // simulate an asynchronous process to retrieve the content
             setTimeout(() => {
                 elTabPaneContent.textContent = `The current date and time is: ${Date()}`;
                 elRemoveClassName(elTabPane, "tab-bar-pane--pending");
@@ -118,7 +116,7 @@ window.addEventListener("load", function (e) {
         };
         registerTabBar(elTabBar, elsTab => {
             Array.prototype.forEach.call(elsTab,
-                elTab => registerTab(elTab, {clickCallback}));
+                elTab => registerTab(elTab, elTabBar, {clickCallback}));
         });
     }());
 });
