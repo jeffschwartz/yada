@@ -29,7 +29,7 @@ const register = (billboard, { cycleDelay = 3000 } = {}) => {
         console.log("Billboard Error - all slides must have a \"data-billboard-slide\" attribute");
         return;
     }
-    elBillboard.billboard = {
+    elBillboard.yadaBillboard = {
         currentSlide,
         elActiveSlide,
         totalSlides,
@@ -45,22 +45,22 @@ const register = (billboard, { cycleDelay = 3000 } = {}) => {
 
 let handleBillboardCycle = function () {
     // remove "billboard__slide--active" from class names
-    elRemoveClassName(this.billboard.elActiveSlide, "billboard__slide--active");
+    elRemoveClassName(this.yadaBillboard.elActiveSlide, "billboard__slide--active");
     // increment current slide accordingly
-    this.billboard.currentSlide =
-        this.billboard.currentSlide === (this.billboard.totalSlides) ? 1 : this.billboard.currentSlide + 1;
+    this.yadaBillboard.currentSlide =
+        this.yadaBillboard.currentSlide === (this.yadaBillboard.totalSlides) ? 1 : this.yadaBillboard.currentSlide + 1;
     // note the active slide
-    this.billboard.elActiveSlide =
-        this.querySelector(`div.billboard__slide[data-billboard-slide="${this.billboard.currentSlide}"]`);
+    this.yadaBillboard.elActiveSlide =
+        this.querySelector(`div.billboard__slide[data-billboard-slide="${this.yadaBillboard.currentSlide}"]`);
     // add class "billboard__slide--active" to the active slide
-    this.billboard.elActiveSlide.className += " billboard__slide--active";
+    this.yadaBillboard.elActiveSlide.className += " billboard__slide--active";
     return;
 };
 
 let cycleSlides = function (elBillboard) {
     setInterval(function () {
         handleBillboardCycle.call(elBillboard);
-    }, elBillboard.billboard.cycleDelay);
+    }, elBillboard.yadaBillboard.cycleDelay);
 };
 
 export default register;

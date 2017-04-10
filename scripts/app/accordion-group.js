@@ -12,7 +12,7 @@ const register = (accordionGroup, options) => {
         console.log("Accordion Group Error - expected accordionGroup to be either an element or element id");
         return;
     }
-    if (elAccordionGroup.accordionGroup) {
+    if (elAccordionGroup.yadaAccordionGroup) {
         elAccordionGroup.removeEventListener("click", clickHandler, true);
     }
     elsAccordion = elAccordionGroup.getElementsByClassName("accordion");
@@ -20,7 +20,7 @@ const register = (accordionGroup, options) => {
         console.log(`Accordion Group Error - expected element(s) with class "accordion"`);
         return;
     }
-    elAccordionGroup.accordionGroup = {
+    elAccordionGroup.yadaAccordionGroup = {
         elsAccordion,
         clickHandler
     };
@@ -44,7 +44,7 @@ let clickHandler = function (e) {
     if (elHasClassName(t, "accordion--visible")) {
         return;
     } else {
-        Array.prototype.forEach.call(this.accordionGroup.elsAccordion, a => elRemoveClassName(a, "accordion--visible"));
+        Array.prototype.forEach.call(this.yadaAccordionGroup.elsAccordion, a => elRemoveClassName(a, "accordion--visible"));
     }
 };
 

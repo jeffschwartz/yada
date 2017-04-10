@@ -1,5 +1,5 @@
 node_modules
 public/style
 public/script
-.sass-cache
 scripts/public/app.bundle.js
+.sass-cache

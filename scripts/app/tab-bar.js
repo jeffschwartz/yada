@@ -15,7 +15,7 @@ const register = (tabBar, registerTabsCallback, options) => {
         console.log("Tab-Bar Error - expected tabBar to be either an element or element id");
         return;
     }
-    if (elTabBar.tabBar) {
+    if (elTabBar.yadaTabBar) {
         elTabBar.removeEventListener("click", clickHandler, false);
         elTabBar.removeEventListener("focus", focusHandler, true);
         elTabBar.removeEventListener("blur", blurHandler, true);
@@ -36,8 +36,8 @@ const register = (tabBar, registerTabsCallback, options) => {
         console.log(`Tab-Bar Error - expected to find one element with class "tab-active"!`);
         return;
     }
-    elActiveTab.tab.elTabBarPane.className = elActiveTab.tab.elTabBarPane.className + " tab-bar-pane--active";
-    elTabBar.tabBar = {
+    elActiveTab.yadaTab.elTabBarPane.className = elActiveTab.yadaTab.elTabBarPane.className + " tab-bar-pane--active";
+    elTabBar.yadaTabBar = {
         elTabBar,
         elTabBarTabs,
         elsTab,
@@ -59,12 +59,12 @@ let clickHandler = function (e) {
     if (elHasClassName(e.target.parentElement, "tab")) {
         let elTab = e.target.parentElement;
         e.preventDefault();
-        if (elTab.tab.clickCallback) {
-            elTab.tab.clickCallback(elTab, () => {
-                this.tabBar.showTab(elTab);
+        if (elTab.yadaTab.clickCallback) {
+            elTab.yadaTab.clickCallback(elTab, () => {
+                this.yadaTabBar.showTab(elTab);
             });
         } else {
-            this.tabBar.showTab(elTab);
+            this.yadaTabBar.showTab(elTab);
         }
     }
 };
@@ -90,7 +90,7 @@ let blurHandler = e => {
 
 let showTab = elTab => {
     let elsTab = elTab.parentElement.getElementsByClassName("tab");
-    let elTabBarPane = elTab.tab.elTabBarPane;
+    let elTabBarPane = elTab.yadaTab.elTabBarPane;
     Array.prototype.forEach.call(elsTab, el => {
         elRemoveClassName(el, ["tab--active", "tab--has-focus"]);
     });
