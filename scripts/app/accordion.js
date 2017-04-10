@@ -16,7 +16,7 @@ const register = (accordion, { openCallback = null, closeCallback = null } = {})
         console.log("Accordion Error - expected accordion to be either an element or element id");
         return;
     }
-    if (elAccordion.accordion) {
+    if (elAccordion.yadaAccordion) {
         elAccordion.removeEventListener("click", clickHandler, false);
     }
     elHeader = elAccordion.getElementsByClassName("accordion__header")[0];
@@ -44,7 +44,7 @@ const register = (accordion, { openCallback = null, closeCallback = null } = {})
         console.log(`Accordion Error - expected element with class "accordion__content"`);
         return;
     }
-    elAccordion.accordion = {
+    elAccordion.yadaAccordion = {
         openCallback,
         closeCallback,
         elHeader,
@@ -60,18 +60,18 @@ const register = (accordion, { openCallback = null, closeCallback = null } = {})
 
 let clickHandler = function (e) {
     if (objEquals(e.target, [
-        this.accordion.elHeader,
-        this.accordion.elHeading,
-        this.accordion.elToggle,
-        this.accordion.elToggleGlyph
+        this.yadaAccordion.elHeader,
+        this.yadaAccordion.elHeading,
+        this.yadaAccordion.elToggle,
+        this.yadaAccordion.elToggleGlyph
     ])) {
         e.preventDefault();
         if (elHasClassName(this, "accordion--disabled")) {
             return;
         }
         if (elHasClassName(this, "accordion--visible")) {
-            if (this.accordion.closeCallback) {
-                this.accordion.closeCallback(this.accordion.elContent, (close) => {
+            if (this.yadaAccordion.closeCallback) {
+                this.yadaAccordion.closeCallback(this.yadaAccordion.elContent, (close) => {
                     if (close) {
                         elRemoveClassName(this, "accordion--visible");
                     }
@@ -80,8 +80,8 @@ let clickHandler = function (e) {
                 elRemoveClassName(this, "accordion--visible");
             }
         } else {
-            if (this.accordion.openCallback) {
-                this.accordion.openCallback(this.accordion.elContent, (show) => {
+            if (this.yadaAccordion.openCallback) {
+                this.yadaAccordion.openCallback(this.yadaAccordion.elContent, (show) => {
                     if (show) {
                         this.className += " accordion--visible";
                     }
