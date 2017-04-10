@@ -16,7 +16,7 @@ const register = (image, options) => {
         console.log("Modal-Image Error - expected image to be either an element or element id");
         return;
     }
-    if (elImage.modalImage) {
+    if (elImage.yadaModalImage) {
         elImage.removeEventListener("click", imageSourceClickHandler, false);
     }
     imageSource = elImage.src;
@@ -40,7 +40,7 @@ const register = (image, options) => {
         console.log(`Modal-Image-Viewer Error - expected to find element with class "modal-image__caption!`);
         return;
     }
-    elImage.modalImage = {
+    elImage.yadaModalImage = {
         elViewer,
         elModalImageContent,
         elModalImageCaption,
@@ -54,15 +54,15 @@ const register = (image, options) => {
 };
 
 let imageSourceClickHandler = function (e) {
-    this.modalImage.elModalImageContent.src = this.modalImage.imageSource;
-    this.modalImage.elModalImageCaption.innerHTML = this.modalImage.imageCaption;
-    this.modalImage.elViewer.className += " modal-image--visible";
-    this.modalImage.elViewer.addEventListener("click", this.modalImage.modalImageContentClickHandler, false);
+    this.yadaModalImage.elModalImageContent.src = this.yadaModalImage.imageSource;
+    this.yadaModalImage.elModalImageCaption.innerHTML = this.yadaModalImage.imageCaption;
+    this.yadaModalImage.elViewer.className += " modal-image--visible";
+    this.yadaModalImage.elViewer.addEventListener("click", this.yadaModalImage.modalImageContentClickHandler, false);
 };
 
 let modalImageContentClickHandler = function (e) {
-    elRemoveClassName(this.modalImage.elViewer, "modal-image--visible");
-    this.modalImage.elViewer.removeEventListener("click", this.modalImage.modalImageContentClickHandler, false);
+    elRemoveClassName(this.yadaModalImage.elViewer, "modal-image--visible");
+    this.yadaModalImage.elViewer.removeEventListener("click", this.yadaModalImage.modalImageContentClickHandler, false);
 };
 
 export default register;

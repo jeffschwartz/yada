@@ -14,15 +14,15 @@ window.addEventListener("load", function (e) {
 
         // Accordion Group
         registerAccordionGroup(elsAG[0]);
-        registerAccordion(elsAG[0].accordionGroup.elsAccordion[0]);
-        registerAccordion(elsAG[0].accordionGroup.elsAccordion[1]);
-        registerAccordion(elsAG[0].accordionGroup.elsAccordion[2]);
+        registerAccordion(elsAG[0].yadaAccordionGroup.elsAccordion[0]);
+        registerAccordion(elsAG[0].yadaAccordionGroup.elsAccordion[1]);
+        registerAccordion(elsAG[0].yadaAccordionGroup.elsAccordion[2]);
 
         // Accordion Group List
         let agl = registerAccordionGroup(elsAG[1]);
-        registerAccordion(agl.accordionGroup.elsAccordion[0]);
-        registerAccordion(agl.accordionGroup.elsAccordion[1]);
-        registerAccordion(agl.accordionGroup.elsAccordion[2]);
+        registerAccordion(agl.yadaAccordionGroup.elsAccordion[0]);
+        registerAccordion(agl.yadaAccordionGroup.elsAccordion[1]);
+        registerAccordion(agl.yadaAccordionGroup.elsAccordion[2]);
     }());
 
     /** Accordion */
@@ -102,8 +102,8 @@ window.addEventListener("load", function (e) {
     (function () {
         let elTabBar = document.getElementById("tab-bar-dynamic");
         let clickCallback = function (elTab, cb) {
-            let elTabPane = elTab.tab.elTabBarPane;
-            let elTabPaneContent = elTab.tab.elTabBarPaneContent;
+            let elTabPane = elTab.yadaTab.elTabBarPane;
+            let elTabPaneContent = elTab.yadaTab.elTabBarPaneContent;
             elTabPaneContent.textContent = "Getting content. Please wait...";
             elTabPane.className = elTabPane.className + " tab-bar-pane--pending";
             setTimeout(() => {

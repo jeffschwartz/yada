@@ -16,7 +16,7 @@ const register = (carousel, { cycleDelay = 0, loopNTimes = 0 } = {}) => {
         console.log("Carousel Error - expected carousel to be either an element or element id");
         return;
     }
-    if (elCarousel.carousel) {
+    if (elCarousel.yadaCarousel) {
         elCarousel.removeEventListener("click", clickHandler, false);
     }
     totalSlides = elCarousel.getElementsByClassName("carousel__slide").length;
@@ -40,7 +40,7 @@ const register = (carousel, { cycleDelay = 0, loopNTimes = 0 } = {}) => {
         return;
     }
     elActiveIndicator.className += " carousel__indicator--active";
-    elCarousel.carousel = {
+    elCarousel.yadaCarousel = {
         currentSlide,
         elActiveSlide,
         elActiveIndicator,
@@ -64,7 +64,7 @@ const register = (carousel, { cycleDelay = 0, loopNTimes = 0 } = {}) => {
 let clickHandler = function (e) {
     console.log("click event handler!. e.target=", e.target);
     // cancel cycling through slides when user clicks anywhere in the carousel
-    clearInterval(this.carousel.cycleIntervalID);
+    clearInterval(this.yadaCarousel.cycleIntervalID);
     if (elHasClassName(e.target, [
         "carousel__control--left",
         "carousel__control-glyph--left",
@@ -92,33 +92,33 @@ let handleCarouselControlClick = function (e) {
         e.preventDefault();
     }
     // remove "carousel__slide--active" from class names
-    elRemoveClassName(this.carousel.elActiveSlide, "carousel__slide--active");
+    elRemoveClassName(this.yadaCarousel.elActiveSlide, "carousel__slide--active");
     // remove "carousel__indicator--active" from class names
-    elRemoveClassName(this.carousel.elActiveIndicator, "carousel__indicator--active");
+    elRemoveClassName(this.yadaCarousel.elActiveIndicator, "carousel__indicator--active");
     // increment or decrement current slide accordingly
     if (e && elHasClassName(e.target, ["carousel__control--left", "carousel__control-glyph--left"])) {
-        this.carousel.currentSlide =
-            this.carousel.currentSlide === 1 && this.carousel.totalSlides || this.carousel.currentSlide - 1;
+        this.yadaCarousel.currentSlide =
+            this.yadaCarousel.currentSlide === 1 && this.yadaCarousel.totalSlides || this.yadaCarousel.currentSlide - 1;
     } else {
-        this.carousel.currentSlide =
-            this.carousel.currentSlide === (this.carousel.totalSlides) ? 1 : this.carousel.currentSlide + 1;
+        this.yadaCarousel.currentSlide =
+            this.yadaCarousel.currentSlide === (this.yadaCarousel.totalSlides) ? 1 : this.yadaCarousel.currentSlide + 1;
     }
     // note the active slide
-    this.carousel.elActiveSlide =
-        this.querySelector(`div.carousel__slide[data-carousel-slide="${this.carousel.currentSlide}"]`);
+    this.yadaCarousel.elActiveSlide =
+        this.querySelector(`div.carousel__slide[data-carousel-slide="${this.yadaCarousel.currentSlide}"]`);
     // add class "carousel__slide--active" to the active slide
-    this.carousel.elActiveSlide.className += " carousel__slide--active";
+    this.yadaCarousel.elActiveSlide.className += " carousel__slide--active";
     // get the slide's "data-carousel-slide" attribute value
-    let forIndicator = this.carousel.elActiveSlide.getAttribute("data-carousel-slide");
+    let forIndicator = this.yadaCarousel.elActiveSlide.getAttribute("data-carousel-slide");
     // abort if slide missing "data-carousel-slide" attribute
     if (!forIndicator) {
         console.log("Carousel Error - all slides must have a \"data-carousel-slide\" attribute");
         return;
     }
     // set the appropriate indicator active
-    this.carousel.elActiveIndicator =
+    this.yadaCarousel.elActiveIndicator =
         this.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
-    this.carousel.elActiveIndicator.className += " carousel__indicator--active";
+    this.yadaCarousel.elActiveIndicator.className += " carousel__indicator--active";
     return;
 };
 
@@ -130,14 +130,14 @@ let handleCarouselIndicatorClick = function (e) {
     let elCarouselIndicator;
     e.preventDefault();
     // remove "carousel__slide--active" from class names
-    elRemoveClassName(this.carousel.elActiveSlide, "carousel__slide--active");
+    elRemoveClassName(this.yadaCarousel.elActiveSlide, "carousel__slide--active");
     // remove "carousel__indicator--active" from class names
-    elRemoveClassName(this.carousel.elActiveIndicator, "carousel__indicator--active");
+    elRemoveClassName(this.yadaCarousel.elActiveIndicator, "carousel__indicator--active");
     // get the carousel indicator associated with this click event
     elCarouselIndicator = elHasClassName(e.target, "carousel__indicator-glyph-inner") &&
         e.target.parentElement.parentElement || e.target.parentElement;
     // get the indicator's "data-for-slide" attribute value
-    let forIndicator = this.carousel.currentSlide =
+    let forIndicator = this.yadaCarousel.currentSlide =
         parseInt(elCarouselIndicator.getAttribute("data-for-slide"));
     // abort if slide missing "data-carousel-slide" attribute
     if (!forIndicator) {
@@ -145,15 +145,15 @@ let handleCarouselIndicatorClick = function (e) {
         return;
     }
     // note the active slide
-    this.carousel.elActiveSlide =
-        this.querySelector(`div.carousel__slide[data-carousel-slide="${this.carousel.currentSlide}"]`);
+    this.yadaCarousel.elActiveSlide =
+        this.querySelector(`div.carousel__slide[data-carousel-slide="${this.yadaCarousel.currentSlide}"]`);
     // add class "carousel__slide--active" to the active slide
-    this.carousel.elActiveSlide.className += " carousel__slide--active";
+    this.yadaCarousel.elActiveSlide.className += " carousel__slide--active";
     // note the active indicator
-    this.carousel.elActiveIndicator =
+    this.yadaCarousel.elActiveIndicator =
         this.querySelector(`li.carousel__indicator[data-for-slide="${forIndicator}"]`);
     // add class "carousel__indicator--active" to the active indicator
-    this.carousel.elActiveIndicator.className += " carousel__indicator--active";
+    this.yadaCarousel.elActiveIndicator.className += " carousel__indicator--active";
     return;
 };
 
@@ -162,7 +162,7 @@ let handleCarouselIndicatorClick = function (e) {
  */
 
 let cycleSlides = function (elCarousel) {
-    let api = elCarousel.carousel;
+    let api = elCarousel.yadaCarousel;
     api.cycleIntervalID = setInterval(function () {
         if (api.loopNTimes) {
             api.cycleCount += 1;

@@ -27,7 +27,7 @@ const register = (tab, elTabBar, { clickCallback = null } = {}) => {
         console.log(`Tab Error - expected element with class "tab-bar-pane__content"!`);
         return;
     }
-    elTab.tab = {
+    elTab.yadaTab = {
         elTabBarPane,
         elTabBarPaneContent,
         clickCallback
